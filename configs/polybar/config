@@ -1,0 +1,394 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+;background = ${xrdb:color0:#222}
+background = #DD4e4e4e
+foreground = ${xrdb:color7:#222}
+primary = ${xrbd:color1:#222}
+secondary = ${xrbd:color2:#222}
+alert = #cc0000 
+
+[bar/phaalan]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 80%
+height = 40
+offset-x = 10%
+offset-y = 1%
+radius = 10.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 4
+padding-right = 4
+
+module-margin-leift = 1
+module-margin-right = 1
+
+font-0 = Inter:style=Regular:size=10;2
+font-1 = OverpassMono Nerd Font:style=Regular:size:12;3
+font-2 = feather:Style=Regular:size=16;4
+
+modules-left = powermenu gap
+modules-center = arch gap terminal www music im gap close
+modules-right = stxt gap sprev splay snext gap pulseaudio bluetooth wlan eth xkeyboard gap date
+;modules-right = filesystem temperature cpu memory wlan eth date 
+
+;tray-position = right
+;tray-padding = 1
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground}
+;format-prefix-underline = ${colors.secondary}
+format = <label-layout>
+format-spacing = 1
+
+label-layout = %layout%
+;label-layout-underline = ${colors.secondary}
+
+;label-indicator-padding = 1
+;label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+;label-indicator-underline = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+interval = 10
+
+mount-0 = /
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-} : %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground}
+
+[module/gap]
+type = custom/script
+exec = echo ""
+
+[module/arch]
+type = custom/script
+exec = echo ""
+click-left = xdotool key "Super_L+1"
+click-right = ~/.script/wallcolour.sh &
+
+[module/terminal]
+type = custom/script
+format-font = 3
+exec = echo "  "
+click-left = xdotool key "Super_L+2"
+click-right = alacritty &
+
+[module/www]
+type = custom/script
+format-font = 3
+exec = echo "  "
+click-left = xdotool key "Super_L+3"
+click-right = brave &
+
+[module/music]
+type = custom/script
+format-font = 3
+exec = echo "  "
+click-left = xdotool key "Super_L+4"
+click-right = spotify &
+
+[module/im]
+type = custom/script
+format-font = 3
+exec = echo "  "
+click-left = xdotool key "Super_L+5"
+click-right = signal-desktop &
+
+[module/bluetooth]
+type = custom/script
+exec = echo ""
+click-right = blueman-manager &
+
+[module/close]
+type = custom/script
+format-font = 3
+exec = echo ""
+click-right = xdotool key "Super_L+Ctrl+c"
+
+[module/stxt]
+type = custom/script
+tail = true
+exec = ~/.script/scroll_spotify_status.sh
+;format-underline = #1db954
+
+[module/sprev]
+type = custom/script
+exec = echo "玲"
+click-left = playerctl --player=spotify previous
+
+[module/splay]
+type = custom/script
+interval = 0
+exec = ~/.script/play_pause.sh
+click-left = playerctl --player=spotify play-pause
+
+[module/snext]
+type = custom/script
+exec = echo "怜"
+click-left = playerctl --player=spotify next
+
+;[module/mpd]
+;type = internal/mpd
+;format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+;
+;icon-prev = 
+;icon-stop = 
+;icon-play = 
+;icon-pause = 
+;icon-next = 
+;
+;label-song-maxlen = 25
+;label-song-ellipsis = true
+;
+;[module/xbacklight]
+;type = internal/xbacklight
+;
+;format = <label> <bar>
+;label = BL
+;
+;bar-width = 10
+;bar-indicator = |
+;bar-indicator-foreground = #fff
+;bar-indicator-font = 2
+;bar-fill = ─
+;bar-fill-font = 2
+;bar-fill-foreground = #9f78e1
+;bar-empty = ─
+;bar-empty-font = 2
+;bar-empty-foreground = ${colors.foreground}
+;
+;[module/backlight-acpi]
+;inherit = module/xbacklight
+;type = internal/backlight
+;card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+interval = 10
+format-prefix = "礪"
+format-prefix-foreground = ${colors.foreground}
+;format-underline = #f90000
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 10
+format-prefix = "閭"
+format-prefix-foreground = ${colors.foreground}
+;format-underline = #4bffdc
+label = %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = wlan0
+interval = 10
+
+format-connected = %{A3:nm-connection-editor &:}<ramp-signal>%{A}  
+format-connected-alt = <label-connected>
+;format-connected-underline = #9f78e1
+;label-connected = %essid%
+
+format-disconnected = %{A3:nm-connection-editor &:}<label-disconnected>%{A} 
+;format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = 睊
+label-disconnected-foreground = ${colors.alert}
+
+ramp-signal-0 = 1
+ramp-signal-1 = 2
+ramp-signal-2 = 3
+ramp-signal-3 = 4
+ramp-signal-4 = 5
+ramp-signal-foreground = ${colors.foreground}
+
+[module/eth]
+type = internal/network
+interface = enp4s0
+interval = 10
+
+format-connected = %{A3:nm-connection-editor &:}<label-connected>%{A} 
+;format-connected-underline = #55aa55
+label-connected = 
+label-connected-foreground = ${colors.foreground}
+
+format-disconnected = %{A3:nm-connection-editor &:}<label-disconnected>%{A}
+;format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = 
+label-disconnected-foreground = ${colors.alert}
+
+[module/date]
+type = internal/date
+interval = 10
+
+date = %a %b %d %Y
+time = %H:%M
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground}
+;format-underline = #0a6cf5
+
+label = %date% %time%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+use-ui-max = false
+
+format-volume = <ramp-volume>
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+ramp-volume-3 = 
+ramp-foreground = ${colors.foreground}
+
+format-muted = <label-muted>
+label-muted = 婢
+label-muted-foreground = ${colors.alert}
+
+click-right = pavucontrol &
+
+;[module/battery]
+;type = internal/battery
+;battery = BAT0
+;adapter = ADP1
+;full-at = 98
+;
+;format-charging = <animation-charging> <label-charging>
+;format-charging-underline = #ffb52a
+;
+;format-discharging = <animation-discharging> <label-discharging>
+;format-discharging-underline = ${self.format-charging-underline}
+;
+;format-full-prefix = " "
+;format-full-prefix-foreground = ${colors.foreground}
+;format-full-underline = ${self.format-charging-underline}
+;
+;ramp-capacity-0 = 
+;ramp-capacity-1 = 
+;ramp-capacity-2 = 
+;ramp-capacity-foreground = ${colors.foreground}
+;
+;animation-charging-0 = 
+;animation-charging-1 = 
+;animation-charging-2 = 
+;animation-charging-foreground = ${colors.foreground}
+;animation-charging-framerate = 750
+;
+;animation-discharging-0 = 
+;animation-discharging-1 = 
+;animation-discharging-2 = 
+;animation-discharging-foreground = ${colors.foreground}
+;animation-discharging-framerate = 750
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+;format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+;format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground}
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true 
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.foreground}
+label-close = 
+label-close-foreground = ${colors.secondary}
+label-separator = 
+label-separator-foreground = ${colors.foreground}
+
+menu-0-0 =  
+menu-0-0-exec = menu-open-1
+menu-0-1 = 
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = 
+menu-1-0-exec = reboot
+;menu-1-1 = cancel 
+;menu-1-1-exec = menu-open-0
+
+menu-2-0 = 
+menu-2-0-exec = shutdown now
+;menu-2-1 = cancel
+;menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
