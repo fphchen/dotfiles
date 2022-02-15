@@ -264,7 +264,10 @@ globalkeys = gears.table.join(
         {description = "focus previous by index", group = "client"}
     ),
     awful.key({ modkey, "Shift" }, "w", function () mymainmenu:show() end,
-              {description = "show main menu", group = "awesome"}),
+              {description = "main menu", group = "awesome"}),
+    
+    awful.key({ modkey, "Shift" }, "Print", function () awful.spawn.with_shell("import -window root screenshot.jpg") end,
+              {description = "screenshot", group = "awesome"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
