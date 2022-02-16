@@ -22,19 +22,17 @@ EXIT_CODE=$?
 if [ $EXIT_CODE -eq 0 ]; then
     STATUS=$PLAYERCTL_STATUS
 else
-    STATUS="No player is running"
+    STATUS=""
 fi
 
 if [ "$1" == "--status" ]; then
     echo "$STATUS"
 else
-    if [ "$STATUS" = "Stopped" ]; then
-        echo ""
+    if [ "$STATUS" = "Playing" ]; then
+        playerctl --player=$PLAYER metadata --format "$FORMAT"
     elif [ "$STATUS" = "Paused"  ]; then
         playerctl --player=$PLAYER metadata --format "$FORMAT"
-    elif [ "$STATUS" = "No player is running"  ]; then
-        echo ""
     else
-        playerctl --player=$PLAYER metadata --format "$FORMAT"
+    	echo "$STATUS"
     fi
 fi
