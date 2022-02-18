@@ -165,7 +165,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  #size: 11.0
+  size: 10.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -870,27 +870,27 @@ window:
 # BEGIN ACE
 colors:
   primary:
-    background: '#100f12'
-    foreground: '#dbd2d4'
+    background: '#0C0A06'
+    foreground: '#9eabdd'
   cursor:
-    text:       '#100f12'
-    cursor:     '#dbd2d4'
+    text:       '#0C0A06'
+    cursor:     '#9eabdd'
   normal:
-    black:      '#100f12'
-    red:        '#E79B71'
-    green:      '#31578E'
-    yellow:     '#5B6895'
-    blue:       '#96728D'
-    magenta:    '#758CB1'
-    cyan:       '#A092AA'
-    white:      '#dbd2d4'
+    black:      '#0C0A06'
+    red:        '#906D4C'
+    green:      '#74865C'
+    yellow:     '#A69D49'
+    blue:       '#214FB3'
+    magenta:    '#4F63AB'
+    cyan:       '#2E5DCC'
+    white:      '#9eabdd'
   bright:
-    black:      '#999394'
-    red:        '#E79B71'
-    green:      '#31578E'
-    yellow:     '#5B6895'
-    blue:       '#96728D'
-    magenta:    '#758CB1'
-    cyan:       '#A092AA'
-    white:      '#dbd2d4'
+    black:      '#6e779a'
+    red:        '#906D4C'
+    green:      '#74865C'
+    yellow:     '#A69D49'
+    blue:       '#214FB3'
+    magenta:    '#4F63AB'
+    cyan:       '#2E5DCC'
+    white:      '#9eabdd'
 # END ACE

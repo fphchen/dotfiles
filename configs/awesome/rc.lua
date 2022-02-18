@@ -179,9 +179,9 @@ awful.screen.connect_for_each_screen(function(s)
     -- awful.tag({ "1", "2", "3", "4" "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
     -- Setting default layout for each screen
-    local names = { "OVERVIEW", "CODE", "WEB", "MUSIC", "IM" }
+    local names = { "OVERVIEW", "GENERAL", "CODE", "WEB", "MUSIC", "IM" }
     local l = awful.layout.suit 
-    local layouts = {l.fair, l.tile, l.tile.fair, l.tile.fair, l.tile}
+    local layouts = {l.fair, l.tile, l.tile, l.tile.fair, l.tile.fair, l.tile}
     awful.tag(names, s, layouts)
 
 --    -- Create a promptbox for each screen
@@ -438,7 +438,7 @@ clientkeys = gears.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 5 do
+for i = 1, 6 do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
         awful.key({ modkey }, "#" .. i + 9,

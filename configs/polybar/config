@@ -42,19 +42,19 @@ line-color = #f00
 border-size = 0
 border-color = #00000000
 
-padding-left = 4
-padding-right = 4
+padding-left = 3
+padding-right = 3
 
 module-margin-leift = 1
 module-margin-right = 1
 
-font-0 = Inter:style=Regular:size=10;2
-font-1 = OverpassMono Nerd Font:style=Regular:size:12;3
-font-2 = feather:Style=Regular:size=16;4
+font-0 = OverpassMono Nerd Font:style=Regular:size:10;3
+font-1 = LiterationMono Nerd Font Mono:style=Regular:size=11;2
+font-2 = feather:Style=Regular:size=16;4 
 
-modules-left = powermenu gap
-modules-center = arch gap terminal www music im gap close
-modules-right = stxt gap sprev splay snext gap pulseaudio bluetooth wlan eth xkeyboard gap date
+modules-left = arch gimp exodus gap stxt gap 
+modules-center = gap general terminal www music im close gap
+modules-right = powermenu gap sprev splay snext gap pulseaudio bluetooth wlan eth xkeyboard gap date
 ;modules-right = filesystem temperature cpu memory wlan eth date 
 
 ;tray-position = right
@@ -83,6 +83,7 @@ label = %title:0:30:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard
+format-font = 1
 blacklist-0 = num lock
 
 format-prefix = 
@@ -99,70 +100,92 @@ label-layout = %layout%
 label-indicator-background = ${colors.secondary}
 ;label-indicator-underline = ${colors.secondary}
 
-[module/filesystem]
-type = internal/fs
-interval = 10
-
-mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-} : %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground}
+;[module/filesystem]
+;type = internal/fs
+;interval = 10
+;
+;mount-0 = /
+;
+;label-mounted = %{F#0a81f5}%mountpoint%%{F-} : %percentage_used%%
+;label-unmounted = %mountpoint% not mounted
+;label-unmounted-foreground = ${colors.foreground}
 
 [module/gap]
 type = custom/script
+format-font = 1
 exec = echo ""
 
 [module/arch]
 type = custom/script
-exec = echo ""
+format-font = 1
+exec = echo "  "
 click-left = xdotool key "Super_L+1"
 click-right = ~/.script/wallcolour.sh &
+
+[module/gimp]
+type = custom/script
+format-font = 1
+exec = echo "  "
+click-left = gimp &
+
+[module/exodus]
+type = custom/script
+format-font = 1
+exec = echo "  "
+click-left = exodus &
+
+[module/stxt]
+type = custom/script
+format-font = 2
+tail = true
+exec = ~/.script/scroll_spotify_status.sh
+;format-underline = #1db954
+
+[module/general]
+type = custom/script
+format-font = 3
+exec = echo "  "
+click-left = xdotool key "Super_L+2"
+click-right = nemo &
 
 [module/terminal]
 type = custom/script
 format-font = 3
 exec = echo "  "
-click-left = xdotool key "Super_L+2"
+click-left = xdotool key "Super_L+3"
 click-right = alacritty &
 
 [module/www]
 type = custom/script
 format-font = 3
 exec = echo "  "
-click-left = xdotool key "Super_L+3"
+click-left = xdotool key "Super_L+4"
 click-right = brave &
 
 [module/music]
 type = custom/script
 format-font = 3
 exec = echo "  "
-click-left = xdotool key "Super_L+4"
+click-left = xdotool key "Super_L+5"
 click-right = spotify &
 
 [module/im]
 type = custom/script
 format-font = 3
 exec = echo "  "
-click-left = xdotool key "Super_L+5"
+click-left = xdotool key "Super_L+6"
 click-right = signal-desktop &
+
+[module/close]
+type = custom/script
+format-font = 3
+exec = echo "  "
+click-right = xdotool key "Super_L+Ctrl+c"
 
 [module/bluetooth]
 type = custom/script
 exec = echo ""
 click-right = blueman-manager &
-
-[module/close]
-type = custom/script
-format-font = 3
-exec = echo ""
-click-right = xdotool key "Super_L+Ctrl+c"
-
-[module/stxt]
-type = custom/script
-tail = true
-exec = ~/.script/scroll_spotify_status.sh
-;format-underline = #1db954
 
 [module/sprev]
 type = custom/script
@@ -215,21 +238,21 @@ click-left = playerctl --player=spotify next
 ;type = internal/backlight
 ;card = intel_backlight
 
-[module/cpu]
-type = internal/cpu
-interval = 10
-format-prefix = "礪"
-format-prefix-foreground = ${colors.foreground}
-;format-underline = #f90000
-label = %percentage:2%%
+;[module/cpu]
+;type = internal/cpu
+;interval = 10
+;format-prefix = "礪"
+;format-prefix-foreground = ${colors.foreground}
+;;format-underline = #f90000
+;label = %percentage:2%%
 
-[module/memory]
-type = internal/memory
-interval = 10
-format-prefix = "閭"
-format-prefix-foreground = ${colors.foreground}
-;format-underline = #4bffdc
-label = %percentage_used%%
+;[module/memory]
+;type = internal/memory
+;interval = 10
+;format-prefix = "閭"
+;format-prefix-foreground = ${colors.foreground}
+;;format-underline = #4bffdc
+;label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
@@ -270,6 +293,7 @@ label-disconnected-foreground = ${colors.alert}
 
 [module/date]
 type = internal/date
+format-font = 2
 interval = 10
 
 date = %a %b %d %Y
@@ -331,29 +355,29 @@ click-right = pavucontrol &
 ;animation-discharging-foreground = ${colors.foreground}
 ;animation-discharging-framerate = 750
 
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-
-format = <ramp> <label>
-;format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-;format-warn-underline = ${self.format-underline}
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground}
+;[module/temperature]
+;type = internal/temperature
+;thermal-zone = 0
+;warn-temperature = 60
+;
+;format = <ramp> <label>
+;;format-underline = #f50a4d
+;format-warn = <ramp> <label-warn>
+;;format-warn-underline = ${self.format-underline}
+;
+;label = %temperature-c%
+;label-warn = %temperature-c%
+;label-warn-foreground = ${colors.secondary}
+;
+;ramp-0 = 
+;ramp-1 = 
+;ramp-2 = 
+;ramp-foreground = ${colors.foreground}
 
 [module/powermenu]
 type = custom/menu
 
-expand-right = true 
+expand-right = left 
 
 format-spacing = 1
 

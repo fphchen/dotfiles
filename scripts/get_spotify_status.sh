@@ -22,14 +22,14 @@ EXIT_CODE=$?
 if [ $EXIT_CODE -eq 0 ]; then
     STATUS=$PLAYERCTL_STATUS
 else
-    STATUS=""
+    STATUS="Welcome ${USER^}!"
 fi
 
 if [ "$1" == "--status" ]; then
     echo "$STATUS"
 else
     if [ "$STATUS" = "Playing" ]; then
-        playerctl --player=$PLAYER metadata --format "$FORMAT"
+	playerctl --player=$PLAYER metadata --format "$FORMAT"
     elif [ "$STATUS" = "Paused"  ]; then
         playerctl --player=$PLAYER metadata --format "$FORMAT"
     else
