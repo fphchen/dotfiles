@@ -112,6 +112,7 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     #family: monospace
+    #family: JetBrainsMono Nerd Font Mono
     family: JetBrainsMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
@@ -165,7 +166,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 10.0
+  size: 11.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -870,27 +871,27 @@ window:
 # BEGIN ACE
 colors:
   primary:
-    background: '#0C0A06'
-    foreground: '#9eabdd'
+    background: '#050406'
+    foreground: '#cedce8'
   cursor:
-    text:       '#0C0A06'
-    cursor:     '#9eabdd'
+    text:       '#050406'
+    cursor:     '#cedce8'
   normal:
-    black:      '#0C0A06'
-    red:        '#906D4C'
-    green:      '#74865C'
-    yellow:     '#A69D49'
-    blue:       '#214FB3'
-    magenta:    '#4F63AB'
-    cyan:       '#2E5DCC'
-    white:      '#9eabdd'
+    black:      '#050406'
+    red:        '#8D7A85'
+    green:      '#1487B6'
+    yellow:     '#3A94BD'
+    blue:       '#63A8D0'
+    magenta:    '#D2BAA2'
+    cyan:       '#91B7D4'
+    white:      '#cedce8'
   bright:
-    black:      '#6e779a'
-    red:        '#906D4C'
-    green:      '#74865C'
-    yellow:     '#A69D49'
-    blue:       '#214FB3'
-    magenta:    '#4F63AB'
-    cyan:       '#2E5DCC'
-    white:      '#9eabdd'
+    black:      '#909aa2'
+    red:        '#8D7A85'
+    green:      '#1487B6'
+    yellow:     '#3A94BD'
+    blue:       '#63A8D0'
+    magenta:    '#D2BAA2'
+    cyan:       '#91B7D4'
+    white:      '#cedce8'
 # END ACE

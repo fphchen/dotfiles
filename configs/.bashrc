@@ -14,16 +14,17 @@ set -o vi
 # Terminal Shortcut Alias
 alias clr='clear'
 alias h='history'
-alias lsa='ls -a'
+alias lsa='ls -ah'
 alias lsl='ls -l'
+alias lsla='ls -lah'
 alias ka='killall'
 
 # Terminal Directory Alias
 alias ~='cd ~'
-alias r='cd /'
+alias cdr='cd /'
 alias ..='cd ..;pwd'
-alias ...='cd ..; cd ..;pwd'
-alias ....='cd ..; cd ..; cd ..;pwd'
+alias .2='cd ..; cd ..;pwd'
+alias .3='cd ..; cd ..; cd ..;pwd'
 alias rmdir='sudo rm -rf'
 
 # Pacman Alias
