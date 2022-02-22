@@ -683,7 +683,7 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 -- Gaps
-beautiful.useless_gap = 20
+beautiful.useless_gap = 30
 
 -- Notification settings
 naughty.config.defaults['icon_size'] = 80

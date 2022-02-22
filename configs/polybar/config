@@ -18,7 +18,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #DD4e4e4e
+background = #DF222222
 foreground = ${xrdb:color7:#222}
 primary = ${xrbd:color1:#222}
 secondary = ${xrbd:color2:#222}
@@ -26,10 +26,10 @@ alert = #cc0000
 
 [bar/phaalan]
 ;monitor = ${env:MONITOR:HDMI-1}
-width = 80%
+width = 95%
 height = 40
-offset-x = 10%
-offset-y = 1%
+offset-x = 2.5%
+offset-y = 0.7%
 radius = 10.0
 fixed-center = true
 
@@ -49,11 +49,10 @@ module-margin-leift = 1
 module-margin-right = 1
 
 font-0 = OverpassMono Nerd Font:style=Regular:size:10;3
-;font-1 = LiterationMono Nerd Font Mono:style=Regular:size=11;2
 font-1 = JetBrainsMono Nerd Font:style=Regular:size=11;2
 font-2 = feather:Style=Regular:size=16;4 
 
-modules-left = nemo gimp exodus gap stxt gap 
+modules-left = nemo gimp exodus gap stxt gap polyxwin
 modules-center = gap arch general terminal www music im close gap
 modules-right = powermenu gap sprev splay snext gap pulseaudio bluetooth wlan eth xkeyboard gap date
 ;modules-right = filesystem temperature cpu memory wlan eth date 
@@ -65,7 +64,7 @@ modules-right = powermenu gap sprev splay snext gap pulseaudio bluetooth wlan et
 ;wm-restack = bspwm
 ;wm-restack = i3
 
-;override-redirect = true
+override-redirect = true
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
@@ -78,9 +77,11 @@ cursor-scroll = ns-resize
 
 enable-ipc = true
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
+[module/polyxwin]
+type = custom/script
+tail = true
+interval = 0
+exec = ~/.script/polyxwin.sh
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -145,7 +146,7 @@ click-left = exodus &
 type = custom/script
 format-font = 2
 tail = true
-exec = ~/.script/scroll_spotify_status.sh
+exec = ~/.script/scroll_status.sh
 ;format-underline = #1db954
 
 [module/general]
