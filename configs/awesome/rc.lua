@@ -181,7 +181,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Setting default layout for each screen
     local names = { "OVERVIEW", "GENERAL", "CODE", "WEB", "MUSIC", "IM" }
     local l = awful.layout.suit 
-    local layouts = {l.fair, l.tile, l.tile, l.tile.fair, l.tile.fair, l.tile}
+    local layouts = {l.fair, l.tile, l.tile, l.tile.fair, l.tile.top, l.tile}
     awful.tag(names, s, layouts)
 
 --    -- Create a promptbox for each screen

@@ -14,16 +14,17 @@ Modified to polyxwin.sh
 - PrayagS/polybar-spotify  
 https://github.com/PrayagS/polybar-spotify.git  
 (Polybar custom module w shell script displays scrolling current song info)  
-Modified to get_status.sh & scroll_status.sh  
+Renamed to get_status.sh & scroll_status.sh & minor code modification  
 Enhanced get_status.sh to paly_pause.sh for Polybar play-pause icon button toggle  
+Modified get_status.sh & scroll_status.sh to fill up 45 char w spaces (for titles less than 45 char) to provide module consistent width  
 
 - petra-fied/viscolourchanger  
 https://git.bune.city/petra-fied/viscolourchanger.git  
 (Custom shell script to import Pywal generated colourschemes into Vis)  
-Modified viscolourchanger to wallcolour.sh  
+Renamed viscolourchanger to wallcolour.sh & minor code modificaiton  
 Added random directory selection & random wallpaper file selection  
 
 - egeesin/alacritty-color-export  
 https://github.com/egeesin/alacritty-color-export.git  
 (Custom shell sript to import Pywal generated colour schemes into Alacritty)  
-Renamed to alacolour.sh
+Renamed to alacolour.sh  

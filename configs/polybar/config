@@ -81,6 +81,7 @@ enable-ipc = true
 type = custom/script
 tail = true
 interval = 0
+format-font = 2
 exec = ~/.script/polyxwin.sh
 
 [module/xkeyboard]
