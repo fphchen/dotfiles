@@ -6,8 +6,6 @@ wal -c
 # kill existing vis
 killall vis
 
-sleep 3
-
 # Randomly select directories in ~/Wallpapers
 # Randomly select file in above selcted directory
 initdir=~/wallpapers
@@ -17,17 +15,16 @@ wall=$randdir/$randfile
 
 # Pass full path of the randomly selected wallpaper to Feh & Pywall
 feh --bg-fill $wall
-sleep 0.5
 wal -n -q -i $wall
 
-# Generates vis colour file
-sleep 1.5
+# Apply Pywal colour scheme to Alacritty
+source $HOME/.script/alacolour.sh
 
 # Source the current wal colour scheme
 source $HOME/.cache/wal/colors.sh
 
 # Assign the variables in the wal scheme in vis' format
-cat > $HOME/.config/vis/colors/wal <<CONF
+cat > $HOME/.config/vis/colors/wal << EOF
 $color1
 $color2
 $color3
@@ -44,10 +41,5 @@ $color13
 $color14
 $color15
 $color16
-CONF
+EOF
 
-# Apply Pywal colour scheme to Alacritty
-source $HOME/.script/alacolour.sh
-
-# Restart Vis
-exec alacritty -e vis &

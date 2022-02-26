@@ -184,6 +184,9 @@ awful.screen.connect_for_each_screen(function(s)
     local layouts = {l.fair, l.tile, l.tile, l.tile.fair, l.tile.top, l.tile}
     awful.tag(names, s, layouts)
 
+    -- Top padding for each of the screen
+    awful.screen.padding(screen[s], {top=50})
+
 --    -- Create a promptbox for each screen
 --    s.mypromptbox = awful.widget.prompt()
 --    -- Create an imagebox widget which will contain an icon indicating which layout we're using.
@@ -529,11 +532,11 @@ awful.rules.rules = {
         },
         class = {
           "Arandr",
-          "Blueman-manager",
+          --"Blueman-manager",
           "Gpick",
           "Kruler",
           "MessageWin",  -- kalarm.
-          "Sxiv",
+          --"Sxiv",
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "veromix",
@@ -683,7 +686,7 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 -- Gaps
-beautiful.useless_gap = 30
+beautiful.useless_gap = 15
 
 -- Notification settings
 naughty.config.defaults['icon_size'] = 80

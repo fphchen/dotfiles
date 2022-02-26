@@ -21,7 +21,7 @@ alias ka='killall'
 
 # Terminal Directory Alias
 alias ~='cd ~'
-alias cdr='cd /'
+alias r='cd /'
 alias ..='cd ..;pwd'
 alias .2='cd ..; cd ..;pwd'
 alias .3='cd ..; cd ..; cd ..;pwd'
@@ -29,6 +29,7 @@ alias rmdir='sudo rm -rf'
 
 # Pacman Alias
 alias pcm='sudo pacman'
+alias pcmremove='sudo pacman -R $(pacman -Qdtq)'
 
 # 2022 Calendar Alias
 alias jan='cal -m 01 2022'
