@@ -9,7 +9,7 @@ Credits:
 - MateoNitro550/xxxwindowPolybarModule  
 https://github.com/MateoNitro550/xxxwindowPolybarModule.git  
 (Polybar custom module w shell script replacing xwindow module)  
-Modified to polyxwin.sh 
+Modified to polyxwin.sh   
 Rewrote polyxwin.sh to handle stderr outputs  
 
 - PrayagS/polybar-spotify  
@@ -30,6 +30,6 @@ https://github.com/egeesin/alacritty-color-export.git
 (Custom shell sript to import Pywal generated colour schemes into Alacritty)  
 Renamed to alacolour.sh  
 
--ranger/examples/rifle_sxiv.sh
-https://github.com/ranger/ranger.git
+-ranger/examples/rifle_sxiv.sh  
+https://github.com/ranger/ranger.git  
 (Recommanded shell script to configure Sxiv to searches image files in a directory, opens them all with sxiv and sets the first argument to the first image displayed by sxiv)  
