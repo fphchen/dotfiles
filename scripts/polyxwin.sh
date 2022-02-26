@@ -2,8 +2,10 @@
 
 # Generate exit_code check for error output
 # and redirect outputs (STDOUT & STDERR) to /dev/null
+xdotool getactivewindow > /dev/null 2>&1
+exit_code=$?
 
-if [ xdotool getactivewindow > /dev/null 2>&1 ]; then
+if [ ! $exit_code -eq 0 ]; then
 	echo "Desktop"	
 else
 	# Get WM_CLASS & WM_NAME variables from active window
