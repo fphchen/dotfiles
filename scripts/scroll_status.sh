@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # see man zscroll for documentation of the following parameters
-zscroll -l 45 \
+zscroll -l 40 \
         --delay 0.1 \
         --scroll-padding " " \
         --match-text "Playing" "--scroll 1" \

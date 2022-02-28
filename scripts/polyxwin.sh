@@ -14,11 +14,7 @@ else
 	
 	if [ $wm_class == "Brave-browser" ]; then
 		echo "Brave"
-	
 	elif [ $wm_class == "firefox" ]; then
-		echo "$wm_name"
-	
-	elif [ $wm_class == "feh" ]; then
 		echo "${wm_name^}"
 	else
 		echo "${wm_class^}"

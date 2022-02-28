@@ -19,28 +19,28 @@ playerctl_status=$(playerctl --player=$player status 2>/dev/null)
 exit_code=$?
 
 chk_char (){
-	if (( $1 >= 45 )) ; then
+	if (( $1 >= 40 )) ; then
 		echo "$status1"
 	else
-		printf '%-45s' "$status1"
+		printf '%-40s' "$status1"
 	fi
 }
 
 if [ $exit_code -eq 0 ]; then
 	status=$playerctl_status
 else
-    	status="Welcome ${USER^}!"
+   	status="Welcome ${USER^}!"
 fi
 
 
 if [ "$1" == "--status" ]; then
-	printf '%-45s' "$status"
+	printf '%-40s' "$status"
 else
 	if [ "$status" = "Playing" ] || [ "$status" = "Paused" ]; then
 		status1=$(playerctl --player=$player metadata --format "$format")
 		charnum=${#status1}
 		chk_char $charnum
 	else
-		printf '%-45s' "$status"
+		printf '%-40s' "$status"
 	fi
 fi

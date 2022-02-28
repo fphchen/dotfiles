@@ -155,7 +155,7 @@ type = custom/script
 format-font = 3
 exec = echo "  "
 click-left = xdotool key "Super_L+2"
-click-right = alacritty -e vifm &
+click-right = alacritty -e lf &
 
 [module/terminal]
 type = custom/script

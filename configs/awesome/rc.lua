@@ -340,6 +340,10 @@ globalkeys = gears.table.join(
 --              end,
 --              {description = "lua execute prompt", group = "awesome"}),
 
+    -- Toggle Polybar
+    awful.key({ modkey, "Control" }, "p", function() awful.spawn.with_shell("polybar-msg cmd toggle") end,
+    	      {description = "polybar", group = "client" }),
+
     -- Unimatrix
     awful.key({ modkey }, "u", function() awful.spawn("alacritty -e unimatrix") end,
     	      {description = "unimatrix", group = "launcher"}),
@@ -513,7 +517,7 @@ awful.rules.rules = {
     { rule = { },
       properties = { border_width = beautiful.border_width,
                      border_width = 0,
-		     border_color = beautiful.border_normal,
+					 border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,
