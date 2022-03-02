@@ -1,4 +1,4 @@
-Personal dotfiles for AwesomeWM configuration
+AwesomeWM configurations
 
 Screenshot:
 ![Screenshot](./images/screenshot01.jpg)
