@@ -1,9 +1,10 @@
-# interpreter for shell commands
+# inteirpreter for shell commands
 set shell sh
 
 set hidden true
 set ignorecase true
 set icons true
+set drawbox
 
 # set '-eu' options for shell commands
 # These options are used to have safer shell commands. Option '-e' is used to
@@ -50,7 +51,7 @@ map X !$f
 cmd open ${{
 	test -L $f && f=$(readlink -f $f)
 	case $(file --mime-type $f -b) in
-	text/*) $EDITOR $fx;;
+	text/*) vim $fx;;
 	*) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
 esac
 }}
@@ -105,7 +106,7 @@ cmd extract ${{
 		*.7z) 7z x $f;;
 	esac
 }}
-map	 extract
+map ex extract
 
 # compress current file or selected files with tar and gunzip
 cmd tar ${{
@@ -125,4 +126,4 @@ cmd zip ${{
 	zip -r $1.zip $1
 	rm -rf $1
 }}
-map zp zip
+map cz zip

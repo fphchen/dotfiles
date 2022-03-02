@@ -24,11 +24,8 @@ colorscheme elflord
 " Enable auto completion menu after pressing TAB
 set wildmenu
 
-" Show relative line number
-set number relativenumber
-
-" Auto indent
-set autoindent
+" List all matches and complete to the longest match
+set wildmode=list:longest
 
 " Show partial commands in the last line of the screen
 set showcmd
@@ -36,6 +33,12 @@ set showcmd
 " Instead of failing a command because of unsaved changes, instead raise a
 " dialogue asking if you wish to save changed files
 set confirm
+
+" Show relative line number
+set number relativenumber
+
+" Auto indent
+set autoindent
 
 " Set tab width to 4 columns
 set tabstop=4
