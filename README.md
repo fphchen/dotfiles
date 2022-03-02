@@ -1,7 +1,5 @@
 Personal dotfiles for AwesomeWM configuration
 
-The evolution of Arch noob's atttemp to rice
-
 Screenshot:
 ![Screenshot](./images/screenshot01.jpg)
 ![Screenshot](./images/screenshot02.jpg)
