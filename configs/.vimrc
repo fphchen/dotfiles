@@ -76,6 +76,11 @@ set smartcase
 
 " MAPPINGS --------------------------------------------------------------- {{{
 
+nnoremap <C-w> :w<CR>
+nnoremap <C-q> :q<CR>
+nnoremap <C-x> :q!<CR>
+nnoremap <C-s> :source ~/.vimrc<CR>
+
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
