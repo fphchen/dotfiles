@@ -48,12 +48,14 @@ alias dec='cal -m 12 2022'
 
 # VIM Alias
 alias v='vim'
-alias vrc.lua='vim ~/.config/awesome/rc.lua'
-alias vtheme.lua='vim ~/.config/awesome/theme.lua'
 alias v.brc='vim ~/.bashrc'
 alias s.brc='source ~/.bashrc'
 alias v.vrc='vim ~/.vimrc'
 alias rswap='rm -rf ~/.cache/vim/swap/*.*'
+alias vrc.lua='vim ~/.config/awesome/rc.lua'
+alias vtheme.lua='vim ~/.config/awesome/theme.lua'
+alias vpoly='vim ~/.config/polybar/config'
+alias vlf='vim ~/.config/lf/lfrc'
 
 # Git
 alias gi='git init'

@@ -1,4 +1,4 @@
- " BASIC ------------------------------------------------------------------ {{{
+" BASIC ------------------------------------------------------------------ {{{
 
 " Disable compatibility with vi which can cause unexpected issues
 set nocompatible
@@ -76,10 +76,16 @@ set smartcase
 
 " MAPPINGS --------------------------------------------------------------- {{{
 
-nnoremap <C-w> :w<CR>
-nnoremap <C-q> :q<CR>
-nnoremap <C-x> :q!<CR>
-nnoremap <C-s> :source ~/.vimrc<CR>
+" Set <leader> to m
+let mapleader = " "
+
+" Map common used vim commands to keys
+nnoremap <leader><C-s> :source ~/.vimrc<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :wq<CR>
+nnoremap <leader>t :q!<CR>
+nnoremap <leader>v :Vexplore<CR>
+nnoremap <leader>h :Sexplore<CR>
 
 " }}}
 
