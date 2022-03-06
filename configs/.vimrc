@@ -1,5 +1,11 @@
 " BASIC ------------------------------------------------------------------ {{{
 
+" Set Encoding to UTF-8
+set encoding=UTF-8
+
+" No backup and No write backup
+set nobackup nowritebackup
+
 " Disable compatibility with vi which can cause unexpected issues
 set nocompatible
 
@@ -25,10 +31,16 @@ colorscheme elflord
 set wildmenu
 
 " List all matches and complete to the longest match
-set wildmode=list:longest
+se wildmode=longest:full
 
 " Show partial commands in the last line of the screen
 set showcmd
+
+" Add split screen horizontally to bottom
+set splitbelow
+
+" Add split screen vertically to right
+set splitright
 
 " Instead of failing a command because of unsaved changes, instead raise a
 " dialogue asking if you wish to save changed files
@@ -38,11 +50,10 @@ set confirm
 set number relativenumber
 
 " Auto indent
-set autoindent
+set autoindent smartindent expandtab
 
 " Set tab width to 4 columns
-set tabstop=4
-set softtabstop=4
+set tabstop=4 softtabstop=4
 
 " Set shift width to 4 spaces
 set shiftwidth=4
@@ -72,6 +83,17 @@ set smartcase
 
 " PLUGINS ---------------------------------------------------------------- {{{
 
+call plug#begin('~/.vim/plugged')
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
+" Make sure you use single quotes
+
+" Initialize plugin system
+call plug#end()
+
 " }}}
 
 " MAPPINGS --------------------------------------------------------------- {{{
@@ -83,9 +105,12 @@ let mapleader = " "
 nnoremap <leader><C-s> :source ~/.vimrc<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :wq<CR>
-nnoremap <leader>t :q!<CR>
+nnoremap <leader>x :q!<CR>
 nnoremap <leader>v :Vexplore<CR>
 nnoremap <leader>h :Sexplore<CR>
+
+xnoremap K :move '<-2<CR>gv-gv
+xnoremap J :move '>+1<CR>gv-gv
 
 " }}}
 
@@ -100,22 +125,23 @@ augroup END
 
 " }}}
 
-
 " STATUS LINE ------------------------------------------------------------ {{{
+
+" Show the status on the second to last line.
+set laststatus=2
 
 " Clear status line when vimrc is reloaded.
 set statusline=
 
 " Status line left side.
-set statusline+=\ %F\ %M\ %Y\ %R
+set statusline+=%#NonText#
+set statusline+=\ %F
 
 " Use a divider to separate the left side from the right side.
 set statusline+=%=
 
 " Status line right side.
-set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
-
-" Show the status on the second to last line.
-set laststatus=2
+set statusline+=%#TermCursor#
+set statusline+=\ ascii:\%b\ hex:\0x%B\ %m\%r\%y\[%l/%L]\[%c]\[%p]
 
 " }}}
