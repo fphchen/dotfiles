@@ -716,6 +716,7 @@ table.insert(naughty.dbus.config.mapping, {{appname = "Spotify"}, naughty.config
 
 -- Initialize additional services
 -- Run single instance programs via autorun.sh script
+awful.spawn.with_shell("~/.script/awesome.sh")
 awful.spawn.with_shell("~/.script/init.sh")
 
 -- Run startup programs

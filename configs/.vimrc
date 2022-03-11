@@ -81,6 +81,13 @@ set smartcase
 
 " }}}
 
+" Netrw Settings ------------------------------------------------------------------ {{{
+
+let g:netrw_banner=0
+let g:netrw_liststyle = 3
+
+" }}}
+
 " PLUGINS ---------------------------------------------------------------- {{{
 
 call plug#begin('~/.vim/plugged')
@@ -90,7 +97,7 @@ call plug#begin('~/.vim/plugged')
 "   - e.g. `call plug#begin('~/.vim/plugged')`
 "   - Avoid using standard Vim directory names like 'plugin'
 " Make sure you use single quotes
-
+    Plug 'junegunn/fzf.vim'
 " Initialize plugin system
 call plug#end()
 
@@ -98,16 +105,24 @@ call plug#end()
 
 " MAPPINGS --------------------------------------------------------------- {{{
 
-" Set <leader> to m
-let mapleader = " "
+" Set <leader> to \
+let mapleader = "\\"
+noremap <A> <leader>
 
 " Map common used vim commands to keys
-nnoremap <leader><C-s> :source ~/.vimrc<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>s :source ~/.vimrc<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :wq<CR>
 nnoremap <leader>x :q!<CR>
 nnoremap <leader>v :Vexplore<CR>
 nnoremap <leader>h :Sexplore<CR>
+
+" Use Shift to navigate between split screen mode
+map <S-h> <C-w>h
+map <S-j> <C-w>j
+map <S-k> <C-w>k
+map <S-l> <C-w>l
 
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv

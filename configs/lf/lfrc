@@ -27,6 +27,7 @@ set scrolloff 5
 
 # remove lf default command mappings
 map e
+map f
 map m
 map n
 map o
@@ -55,11 +56,29 @@ map X !$f
 cmd open ${{
 	test -L $f && f=$(readlink -f $f)
 	case $(file --mime-type $f -b) in
-	text/*) $EDITOR $fx;;
-	*) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
+	text/*) $$EDITOR $fx;;
+	*) for f in $fx; do setsid $$OPENER $f > /dev/null 2> /dev/null & done;;
 esac
 }}
 map <enter> open
+
+# fzf file opening
+map fo $$OPENER $(fzf)
+
+# fzf script execution
+map fx $$(fzf)
+
+# fzf directory jump
+cmd fzf_jump ${{
+    res="$(find . -maxdepth 4 | fzf --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    if [ -d "$res" ]; then
+        cmd="cd"
+    else 
+        cmd="select"                                                       
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
+map fd fzf_jump
 
 # mkdir
 cmd mkdir ${{

@@ -1,8 +1,21 @@
 /** Basic config file **/
 
 configuration {
-  show-icons:         true;
-  icon-theme:         "Papirus";
+    show-icons:             true;
+    modi:                   "combi,window,drun,run,ssh";
+    combi-modi:             "window,drun,run,ssh";
+    terminal:               "Alacritty";
+    matching:               "fuzzy";
+    sorting-method:         "fzf";
+    icon-theme:             "Adwaita";
+    kb-remove-to-eol:       "";
+    kb-row-up:              "Up,Control+k";
+    kb-accept-entry:        "Control+m,Return,KP_Enter";
+    kb-row-down:            "Down,Control+j";
+    kb-remove-char-back:    "BackSpace,Shift+BackSpace";
+    kb-mode-previous:       "Control+h";
+    kb-mode-complete:       "";
+    kb-mode-next:           "Control+l";
 }
 
-@import "~/.cache/wal/colors-rofi-light"
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"

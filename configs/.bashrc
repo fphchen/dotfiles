@@ -1,7 +1,10 @@
-#
 # ~/.bashrc
-#export PATH=$PATH:/usr/local/bin
 export EDITOR=vim
+export OPENER=xdg-open
+
+# Source 
+source /usr/share/fzf/key-bindings.bash
+source /usr/share/fzf/completion.bash
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -11,6 +14,9 @@ PS1='[\u@\h \W]\$ '
 
 # Enable VIM commands in terminal
 set -o vi
+
+# Enable AutoCorrect
+shopt -s cdspell
 
 # Terminal Shortcut Alias
 alias clr='clear'
@@ -47,11 +53,11 @@ alias nov='cal -m 11 2022'
 alias dec='cal -m 12 2022'
 
 # VIM Alias
+alias rswap='rm -rf ~/.cache/vim/swap/*.*'
 alias v='vim'
 alias v.brc='vim ~/.bashrc'
 alias s.brc='source ~/.bashrc'
 alias v.vrc='vim ~/.vimrc'
-alias rswap='rm -rf ~/.cache/vim/swap/*.*'
 alias vrc.lua='vim ~/.config/awesome/rc.lua'
 alias vtheme.lua='vim ~/.config/awesome/theme.lua'
 alias vpoly='vim ~/.config/polybar/config'
@@ -64,6 +70,9 @@ alias gs='git status'
 alias gc='git commit'
 alias gps='git push'
 alias gpl='git pull'
+
+# Key Binding
+#bind "\C-f" vim $(fzf)
 
 # Function Alias
 mkcd (){
