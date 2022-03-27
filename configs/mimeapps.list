@@ -1,0 +1,24 @@
+[Default Applications]
+x-scheme-handler/http=brave-browser.desktop
+x-scheme-handler/https=brave-browser.desktop
+x-scheme-handler/about=brave-browser.desktop
+x-scheme-handler/unknown=brave-browser.desktop
+image/jpg=sxiv.desktop
+image/png=sxiv.desktop
+image/jpeg=sxiv.desktop
+image/gif=sxiv.desktop
+text/html=brave-browser.desktop
+text/markdown=vim.desktop
+text/plain=vim.desktop
+application/x-shellscript=
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
+application/postscript=org.pwmt.zathura-ps.desktop
+
+[Added Associations]
+image/png=sxiv.desktop;feh.desktop;
+text/markdown=vim.desktop;
+text/plain=vim.desktop;
+image/jpeg=sxiv.desktop;feh.desktop;gpicview.desktop;
+application/x-shellscript=
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
+application/postscript=org.pwmt.zathura-ps.desktop;

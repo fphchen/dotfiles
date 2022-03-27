@@ -107,10 +107,9 @@ call plug#end()
 
 " Set <leader> to \
 let mapleader = "\\"
-noremap <A> <leader>
 
 " Map common used vim commands to keys
-nnoremap <leader>f :Files<CR>
+nnoremap <leader>f :Files ~<CR>
 nnoremap <leader>s :source ~/.vimrc<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :wq<CR>

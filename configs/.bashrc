@@ -32,7 +32,7 @@ alias r='cd /'
 alias ..='cd ..;pwd'
 alias .2='cd ..; cd ..;pwd'
 alias .3='cd ..; cd ..; cd ..;pwd'
-alias rmdir='sudo rm -rf'
+alias rmd='sudo rm -rf'
 
 # Pacman Alias
 alias pcm='sudo pacman'
@@ -72,7 +72,7 @@ alias gps='git push'
 alias gpl='git pull'
 
 # Key Binding
-#bind "\C-f" vim $(fzf)
+bind -x '"\C-f":exec lf'
 
 # Function Alias
 mkcd (){
