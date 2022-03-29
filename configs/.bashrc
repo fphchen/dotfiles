@@ -60,7 +60,7 @@ alias s.brc='source ~/.bashrc'
 alias v.vrc='vim ~/.vimrc'
 alias vrc.lua='vim ~/.config/awesome/rc.lua'
 alias vtheme.lua='vim ~/.config/awesome/theme.lua'
-alias vpoly='vim ~/.config/polybar/config'
+alias vpoly='vim ~/.config/polybar/config.ini'
 alias vlf='vim ~/.config/lf/lfrc'
 
 # Git

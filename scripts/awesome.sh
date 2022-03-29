@@ -11,4 +11,4 @@ killall -q polybar
 # Launch Polybar using default location ~/.config/polybar/config.ini
 polybar awesome 2>&1 | tee -a /tmp/polybar.log & disown
 
-sleep 0.5
+sleep 1
