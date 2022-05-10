@@ -245,8 +245,41 @@ end)
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+-- Key bindings for AwesomeWM
     awful.key({ modkey, "Shift"   }, "`",      hotkeys_popup.show_help,
               {description="keyboard shortcuts", group="awesome"}),
+    awful.key({ modkey, "Shift" }, "m", function () mymainmenu:show() end,
+              {description = "main menu", group = "awesome"}),
+    awful.key({ modkey, "Shift" }, "Print", function () awful.spawn.with_shell("import -window root screenshot.jpg") end,
+              {description = "screenshot", group = "awesome"}),
+    awful.key({ modkey, "Shift" }, "r", awesome.restart,
+              {description = "reload awesome", group = "awesome"}),
+    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+              {description = "quit awesome", group = "awesome"}),
+    -- Toggle Polybar
+    awful.key({ modkey, "Shift" }, "p", function() awful.spawn.with_shell("polybar-msg cmd toggle") end,
+    	      {description = "(un)hide polybar", group = "awesome" }),
+    -- Reload Wallpaper & Colour scheme
+    awful.key({ modkey, "Shift" }, "w", function() awful.spawn.with_shell("~/.script/wallcolour.sh") end,
+    	      {description = "refresh wallpaper", group = "awesome" }),
+    -- Desktop
+    awful.key({ modkey, "Shift" }, "d", 
+    	function(c)
+	    if show_desktop then
+		    for _, c in ipairs(client.get()) do
+			c:emit_signal("request::activate", "key.unminimize", {raise = true})
+		    end
+			show_desktop = false
+	    else
+		    for _, c in ipairs(client.get()) do
+			c.minimized = true
+		    end
+			show_desktop = true
+	    end
+	end,
+	{description = "desktop", group = "awesome"}),
+    
+-- Key bindings for Tags
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
@@ -254,6 +287,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
+-- Key bindings for Client
     awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx( 1)
@@ -266,23 +300,23 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey, "Shift" }, "w", function () mymainmenu:show() end,
-              {description = "main menu", group = "awesome"}),
-    
-    awful.key({ modkey, "Shift" }, "Print", function () awful.spawn.with_shell("import -window root screenshot.jpg") end,
-              {description = "screenshot", group = "awesome"}),
-
-    -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
-    --awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
-    --          {description = "next screen", group = "screen"}),
-    --awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
-    --          {description = "previous screen", group = "screen"}),
-    awful.key({ modkey, "Control" }, "u", awful.client.urgent.jumpto,
-              {description = "urgent client", group = "client"}),
+    awful.key({ modkey, "Control" }, "k", awful.client.urgent.jumpto,
+              {description = "urgent", group = "client"}),
+    awful.key({ modkey, "Control" }, "j",
+        function ()
+            local c = awful.client.focus.history.list[2]
+            client.focus = c
+            local t = client.focus and client.focus.first_tag or nil
+            if t then
+                t:view_only()
+            end
+            c:raise()
+        end,
+        {description = "previous", group = "client"}),
     awful.key({ modkey,           }, "Tab",
         function ()
             awful.client.focus.history.previous()
@@ -291,14 +325,19 @@ globalkeys = gears.table.join(
             end
         end,
         {description = "go back", group = "client"}),
+    awful.key({ modkey, "Shift" }, "n",
+              function ()
+                  local c = awful.client.restore()
+                  -- Focus restored client
+                  if c then
+                    c:emit_signal(
+                        "request::activate", "key.unminimize", {raise = true}
+                    )
+                  end
+              end,
+              {description = "restore minimized", group = "client"}),
 
-    -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
-              {description = "terminal", group = "launcher"}),
-    awful.key({ modkey, "Shift" }, "r", awesome.restart,
-              {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
-              {description = "quit awesome", group = "awesome"}),
+-- Key bindings for Layout
     awful.key({ "Shift", "Control" }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "decrease master window", group = "layout"}),
     awful.key({ "Shift", "Control" }, "h",     function () awful.tag.incmwfact(-0.05)          end,
@@ -316,41 +355,13 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "previous layout", group = "layout"}),
 
-    awful.key({ modkey, "Control" }, "n",
-              function ()
-                  local c = awful.client.restore()
-                  -- Focus restored client
-                  if c then
-                    c:emit_signal(
-                        "request::activate", "key.unminimize", {raise = true}
-                    )
-                  end
-              end,
-              {description = "restore minimized", group = "client"}),
-
---    -- Prompt
---    awful.key({ modkey }, "x",
---              function ()
---                  awful.prompt.run {
---                    prompt       = "Run Lua code: ",
---                    textbox      = awful.screen.focused().mypromptbox.widget,
---                    exe_callback = awful.util.eval,
---                    history_path = awful.util.get_cache_dir() .. "/history_eval"
---                  }
---              end,
---              {description = "lua execute prompt", group = "awesome"}),
-
-    -- Toggle Polybar
-    awful.key({ modkey, "Control" }, "p", function() awful.spawn.with_shell("polybar-msg cmd toggle") end,
-    	      {description = "polybar", group = "client" }),
-
+-- Key bindings for Launcher
+    -- Terminal
+    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+              {description = "terminal", group = "launcher"}),
     -- Unimatrix
     awful.key({ modkey }, "u", function() awful.spawn("alacritty -e unimatrix") end,
     	      {description = "unimatrix", group = "launcher"}),
-
-    -- Cli-Visualizer
-    awful.key({ modkey }, "v", function() awful.spawn("alacritty -e vis") end,
-    	      {description = "vis", group = "launcher" }),
 
     -- Htop
     awful.key({ modkey }, "h", function() awful.spawn("alacritty -e htop") end,
@@ -374,30 +385,27 @@ globalkeys = gears.table.join(
 
     -- Signal
     awful.key({ modkey }, "d", function() awful.util.spawn("signal-desktop") end,
-    	      {description = "signal", group = "launcher" }),
-    
-    -- Reload Wallpaper & Colour scheme
-    awful.key({ modkey, "Control" }, "w", function() awful.spawn.with_shell("~/.script/wallcolour.sh") end,
-    	      {description = "wallpaper", group = "client" }),
+    	      {description = "signal", group = "launcher" })
 
-    -- Desktop
-    awful.key({ modkey, "Control" }, "d", 
-    	function(c)
-	    if show_desktop then
-		    for _, c in ipairs(client.get()) do
-			c:emit_signal("request::activate", "key.unminimize", {raise = true})
-		    end
-			show_desktop = false
-	    else
-		    for _, c in ipairs(client.get()) do
-			c.minimized = true
-		    end
-			show_desktop = true
-	    end
-	end,
-	{description = "desktop", group = "client"})
+-- Unused key bindings
+--    -- Prompt
+--    awful.key({ modkey }, "x",
+--              function ()
+--                  awful.prompt.run {
+--                    prompt       = "Run Lua code: ",
+--                    textbox      = awful.screen.focused().mypromptbox.widget,
+--                    exe_callback = awful.util.eval,
+--                    history_path = awful.util.get_cache_dir() .. "/history_eval"
+--                  }
+--              end,
+--              {description = "lua execute prompt", group = "awesome"}),
+--    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
+--              {description = "next screen", group = "screen"}),
+--    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
+--              {description = "previous screen", group = "screen"}),
 )
 
+-- More key bindings for Client
 clientkeys = gears.table.join(
     awful.key({ modkey, "Control" }, "f",
         function (c)
@@ -415,26 +423,26 @@ clientkeys = gears.table.join(
               {description = "move to screen", group = "client"}),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
-    awful.key({ modkey,           }, "n",
+    awful.key({ modkey, "Control" }, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
             c.minimized = true
         end ,
         {description = "minimize", group = "client"}),
-    awful.key({ modkey,           }, "m",
+    awful.key({ modkey, "Control" }, "m",
         function (c)
             c.maximized = not c.maximized
             c:raise()
         end ,
         {description = "(un)maximize", group = "client"}),
-    awful.key({ modkey, "Control" }, "m",
+    awful.key({ modkey, "Control" }, "v",
         function (c)
             c.maximized_vertical = not c.maximized_vertical
             c:raise()
         end ,
         {description = "(un)maximize vertically", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "m",
+    awful.key({ modkey, "Control"   }, "b",
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
@@ -714,13 +722,14 @@ naughty.config.presets.spotify = {
 }
 table.insert(naughty.dbus.config.mapping, {{appname = "Spotify"}, naughty.config.presets.spotify})
 
--- Initialize additional services
--- Run single instance programs via autorun.sh script
+-- Initialize Polybar for AwesomeWM 
 awful.spawn.with_shell("~/.script/awesome.sh")
+
+-- Run single instance programs via init.sh
 awful.spawn.with_shell("~/.script/init.sh")
 
--- Run startup programs
+-- Run startup programs via startup.sh
 awful.spawn.with_shell("~/.script/startup.sh")
 
--- Apply wallpaper & colour scheme settings
+-- Apply wallpaper & set colour scheme using pywal
 awful.spawn.with_shell("~/.script/wallcolour.sh")

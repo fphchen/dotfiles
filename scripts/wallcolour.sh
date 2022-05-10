@@ -3,9 +3,6 @@
 # Clear Pywall cache
 wal -c
 
-# kill existing vis
-killall vis
-
 # Randomly select directories in ~/Wallpapers
 # Randomly select file in above selcted directory
 initdir=~/wallpapers
