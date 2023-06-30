@@ -1,4 +1,9 @@
-require "configs.autostart"
-require "configs.titlebar"
-require "configs.keybindings"
-require "configs.notifications"
+require("configs.layout")
+require("configs.menu")
+require("configs.rules")
+require("configs.titlebar")
+require("configs.keybindings")
+require("configs.mousebindings")
+require("configs.signals")
+require("configs.notifications")
+require("configs.autostart")

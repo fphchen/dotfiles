@@ -120,11 +120,13 @@ theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
     theme.menu_height, theme.bg_focus, theme.fg_focus
-)
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
+
+-- Define Gaps
+--beautiful.useless_gap = 15
 
 return theme
 

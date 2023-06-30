@@ -1,9 +1,10 @@
 local awful = require("awful")
 local gears = require("gears")
-local hotkeys_popup = require("awful.hotkeys_popup").widget
+local hotkeys_popup = require("awful.hotkeys_popup")
+local myhotkeys_menu = hotkeys_popup.widget.new({ width = 1000, height = 1000, border_width = 0 })
 ---- Enable hotkeys help widget for VIM and other apps
 ---- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
+--require("awful.hotkeys_popup.keys")
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -15,8 +16,11 @@ modkey = "Mod4"
 -- {{{ Key bindings
 globalkeys = gears.table.join(
 -- Key bindings for AwesomeWM
-    --awful.key({ modkey, "Shift"   }, "`",      hotkeys_popup.show_help,                            
-    --          {description="keyboard shortcuts", group="awesome"}),
+    awful.key({ modkey, "Shift" }, "`",
+        function () 
+            myhotkeys_menu:show_help()
+        end,
+        {description="keyboard shortcuts", group="awesome"}),
     awful.key({ modkey, "Shift" }, "m", 
         function () 
             mymainmenu:show() 
@@ -45,7 +49,8 @@ globalkeys = gears.table.join(
         {description = "refresh wallpaper", group = "awesome" }),
     -- Desktop
     awful.key({ modkey, "Shift" }, "d", 
-    	function (c)
+    	function ()
+            local c = client.focus
 	        if show_desktop then
 		        for _, c in ipairs(client.get()) do
 			        c:emit_signal("request::activate", "key.unminimize", {raise = true})
@@ -111,42 +116,63 @@ globalkeys = gears.table.join(
         {description = "restore minimized", group = "client"}),
 
     awful.key({ modkey, "Control" }, "f",
-        function (c)
+        function ()
+            local c = client.focus
             c.fullscreen = not c.fullscreen
             c:raise()
         end,
         {description = "fullscreen", group = "client"}),
     --awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     
     --          {description = "toggle floating", group = "client"}),
-    awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
-              {description = "move to master", group = "client"}),
-    awful.key({ modkey, "Control" }, "c",      function (c) c:kill()                         end,
-              {description = "close focused", group = "client"}),
-    awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
-              {description = "move to screen", group = "client"}),
-    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
-              {description = "toggle keep on top", group = "client"}),
+    awful.key({ modkey, "Control" }, "Return", 
+        function ()
+            local c = client.focus
+            c:swap(awful.client.getmaster()) 
+        end,
+        {description = "move to master", group = "client"}),
+    awful.key({ modkey, "Control" }, "c",
+        function () 
+            local c = client.focus
+            c:kill()
+        end,
+        {description = "close focused", group = "client"}),
+    awful.key({ modkey,           }, "o", 
+        function () 
+            local c = client.focus
+            c:move_to_screen()
+        end,
+        {description = "move to screen", group = "client"}),
+    awful.key({ modkey,           }, "t",
+        function ()
+            local c = client.focus
+            c.ontop = not c.ontop
+        end,
+        {description = "toggle keep on top", group = "client"}),
     awful.key({ modkey, "Control" }, "n",
-        function (c)
+        function ()
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
+            local c = client.focus
             c.minimized = true
         end,
         {description = "minimize", group = "client"}),
     awful.key({ modkey, "Control" }, "m",
-        function (c)
+        function ()
+            local c = client.focus
             c.maximized = not c.maximized
             c:raise()
         end,
         {description = "(un)maximize", group = "client"}),
     awful.key({ modkey, "Control" }, "v",
-        function (c)
+        function ()
+            local c = client.focus
             c.maximized_vertical = not c.maximized_vertical
             c:raise()
         end,
         {description = "(un)maximize vertically", group = "client"}),
     awful.key({ modkey, "Control"   }, "b",
-        function (c)
+        function ()
+            local c = client.focus
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end,
@@ -182,9 +208,6 @@ globalkeys = gears.table.join(
     -- Terminal
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "terminal", group = "launcher"}),
-    -- Unimatrix
-    awful.key({ modkey }, "u", function() awful.spawn("alacritty -e unimatrix") end,
-    	      {description = "unimatrix", group = "launcher"}),
 
     -- Htop
     awful.key({ modkey }, "h", function() awful.spawn("alacritty -e htop") end,
