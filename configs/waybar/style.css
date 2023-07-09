@@ -1,0 +1,111 @@
+#waybar {
+    /* background: rgba(17, 17, 27, 0.87); */
+    background: transparent;
+    color: #CDD6F4;
+    font-family: "FiraCode Nerd Font";
+    text-shadow: 0 0 0px black;
+    border-radius: 12px;
+}
+
+#workspaces {
+    margin: 0;
+    padding: 0px;
+    font-size: 14px;
+    text-shadow: 0 0 0px black;
+}
+
+#workspaces button {
+    margin: 0px 0px 0px 3px;
+    text-shadow: 0 0 0px black;
+    color: #cdd6f4;
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    background: transparent;
+    border: transparent;
+}
+
+#workspaces button.urgent {
+    color: #ffb86c;
+}
+
+#workspaces button.active label {
+    box-shadow: 0 0 0px black; 
+    font-size: 14px;
+    margin: 5px 0px 5px 0;
+    background-image: linear-gradient(
+        135deg, 
+        #F38BA8,
+     	#A6E3A1,
+        #F9E2AF,
+        #89B4FA,
+     	#F5C2E7,
+        #94E2D5,
+        #F38BA8,
+     	#94E2D5,
+        #F5C2E7,
+        #89B4FA,
+     	#F9E2AF,
+        #A6E3A1,
+     	#F38BA8
+    );
+    background-size: 800% 800%;
+    animation: active 120s linear infinite;
+    transition: ease-in-out;
+    border-radius: 50%;
+}
+
+@keyframes active {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 800% 800%;
+    }
+}
+#custom-sep {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-weight: 200;
+}
+
+#tray {
+    margin: 10px 0px 5px 0px;
+    opacity: 0.80;
+}
+
+#tray > widget > image {
+    margin: 10px 0 8px 0;
+}
+
+#clock, #pulseaudio, #backlight, #bluetooth, #network, #battery, #custom-arch {
+    margin: 10px 0px 5px 0px;
+    font-size: 15px;
+}
+
+#custom-cpu, #custom-ram {
+    margin: 10px 0px 5px 0px;
+    font-size: 12px;
+}
+
+#clock, #backlight, #bluetooth, #network, #battery, #workspaces,  #pulseaudio, #custom-arch {
+    border-radius: 10px;
+    background-color: #11111B;
+    opacity: 0.8;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#custom-cpu, #custom-ram {
+    border-radius: 10px;
+    background-color: #11111B;
+    opacity: 0.8;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

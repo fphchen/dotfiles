@@ -1,0 +1,141 @@
+// Waybar Configuration File
+
+{
+    "position": "left",
+    "layer": "top",
+    "width": 60,
+    "margin": "20 0 20 20",
+    "modules-left": ["custom/arch", "wlr/workspaces"],
+    //"modules-center": [""], 
+    "modules-right": [
+    	"pulseaudio",
+        "bluetooth",
+        "network",
+        "network#net2",
+        "custom/cpu",
+        "custom/ram",
+        "clock"
+        //"battery",
+    	//"backlight",
+        //"tray"
+    ],
+    "clock": {
+        "format": "{:%m\n%d\n%H\n%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    },
+    "wlr/workspaces": {
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "urgent": "🌕︎",
+            "active": "  ",
+            "hidden": "H",
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10",
+            "-99":".",
+            "default": "⏺"
+		    },
+    },
+    "pulseaudio": {
+        "rotate": 0,
+        "format": "{icon}",
+        "format-bluetooth": "{icon}",
+        "format-muted": "󰖁",
+        "format-icons": {
+            "headphone": "󰋋",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "tooltip-format": "{volume}",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol"
+    },
+    "backlight": {
+    	"rotate": 270,
+        "device": "intel_backlight",
+        "format": " {icon} ",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+        ],
+        "on-scroll-up": "light -A 1",
+        "on-scroll-down": "light -U 1",
+    },
+    "network": {
+        "net": "NET1",
+        "interface": "enp4s0",
+        "rotate": 0,
+        "format-ethernet": "󰒍",
+        "format-linked": "󰒎",
+        "format-disconnected": "󰒎"
+    },
+    "network#net2": {
+        "net": "NET2",
+        "interface": "wlan0",
+        "rotate": 0,
+        "format-wifi": "{icon}",
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+        "format-disconnected": "󰖪",
+        "tooltip-format": "{essid}",
+        "on-click-right": "nm-connection-editor"
+    },
+    "bluetooth": {
+        "rotate": 0,
+        "format-on": "󰂯",
+        "format-off": "󰂲",
+        "format-connected": "󰂱",
+        "on-click-right": "systemsettings kcm_bluetooth"
+    },
+    "battery": {
+        "rotate": 0,
+        "states": {
+            "warning": 90,
+            "critical": 50
+        },
+        "format": "{icon}",
+        "format-charging": "{icon}",
+        "format-icons": ["󰂎", "󰁺", "󰁺", "󰁼", "󰁽", "󰁾", "󰁾", "󰂀", "󰂁", "󰂂", "󱈑"],
+        "tooltip-format": "{capacity}"
+    },
+    "custom/arch": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "~/.config/swww/wallchanger.sh"
+    },
+    "custom/sep": {
+        "format": "__",
+    },
+    "custom/cpu": {
+        "exec": "~/.config/waybar/scripts/graph.rs CPU 100",
+        "return-type": "json"
+    },
+    "custom/ram": {
+        "exec": "~/.config/waybar/scripts/graph.rs RAM 500",
+        "tooltip": true,            
+        "return-type": "json"
+    }
+}
