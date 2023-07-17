@@ -1,3 +1,30 @@
+" PLUGINS ---------------------------------------------------------------- {{{
+
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+call plug#begin('~/.vim/plugged')
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
+" Make sure you use single quotes
+    Plug 'junegunn/fzf.vim'
+    Plug 'danilo-augusto/vim-afterglow'
+" Initialize plugin system
+call plug#end()
+
+" }}}
+
 " BASIC ------------------------------------------------------------------ {{{
 
 " Set Encoding to UTF-8
@@ -25,8 +52,8 @@ syntax on
 set spelllang=en_ca
 			
 " Set vim colourscheme
-colorscheme elflord
-		  
+colorscheme afterglow
+
 " Enable auto completion menu after pressing TAB
 set wildmenu
 
@@ -64,10 +91,8 @@ set scrolloff=5
 " Show & set colour for  horizontal & vertical cursor line
 set cursorline
 set cursorcolumn
-highlight Cursorline ctermfg=Black
-highlight CursorColumn ctermfg=Black
-highlight Cursorline ctermbg=DarkGrey
-highlight CursorColumn ctermbg=DarkGrey
+highlight Cursorline ctermbg=Black
+highlight CursorColumn ctermbg=Black
 
 " Search as characters are entered
 set incsearch
@@ -88,32 +113,6 @@ let g:netrw_liststyle = 3
 
 " }}}
 
-" PLUGINS ---------------------------------------------------------------- {{{
-
-" Install vim-plug if not found
-if empty(glob('~/.vim/autoload/plug.vim'))
-      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  endif
-
-" Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-    \| PlugInstall --sync | source $MYVIMRC
-\| endif
-
-call plug#begin('~/.vim/plugged')
-" The default plugin directory will be as follows:
-"   - Vim (Linux/macOS): '~/.vim/plugged'
-" You can specify a custom plugin directory by passing it as the argument
-"   - e.g. `call plug#begin('~/.vim/plugged')`
-"   - Avoid using standard Vim directory names like 'plugin'
-" Make sure you use single quotes
-    Plug 'junegunn/fzf.vim'
-" Initialize plugin system
-call plug#end()
-
-" }}}
-
 " MAPPINGS --------------------------------------------------------------- {{{
 
 " Set <leader> to \
@@ -123,8 +122,7 @@ let mapleader = "\\"
 nnoremap <leader>f :Files ~<CR>
 nnoremap <leader>s :source ~/.vimrc<CR>
 nnoremap <leader>w :w<CR>
-nnoremap <leader>q :wq<CR>
-nnoremap <leader>x :q!<CR>
+nnoremap <leader>q :q!<CR>
 nnoremap <leader>v :Vexplore<CR>
 nnoremap <leader>h :Sexplore<CR>
 
