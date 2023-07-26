@@ -1,0 +1,17 @@
+[global]
+format = "<b>%s</b>\n%b"
+
+icon_theme = Breeze_Snow
+icon_path = /usr/share/icons
+max_icon_size = 64
+enable_recursive_icon_lookup = true
+
+origin = top-right
+offset = 22x22
+frame_width = 2
+frame_color = "#b4befe"
+separator_color= frame
+font = "Fira Code 10"
+corner_radius = 7
+background = "#11111B"
+foreground = "#CDD6F4"
