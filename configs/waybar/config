@@ -91,6 +91,7 @@
         "format-ethernet": "󰒍",
         "format-linked": "󰒎",
         "format-disconnected": "󰒎"
+        "on-click-right": "systemsettings kcm_networkmanagement"
     },
     "network#net2": {
         "net": "NET2",
@@ -100,7 +101,7 @@
         "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
         "format-disconnected": "󰖪",
         "tooltip-format": "{essid}",
-        "on-click-right": "nm-connection-editor"
+        "on-click-right": "systemsettings kcm_networkmanagement"
     },
     "bluetooth": {
         "rotate": 0,
