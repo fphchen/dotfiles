@@ -4,7 +4,7 @@
     "position": "left",
     "layer": "top",
     "width": 60,
-    "margin": "20 0 20 20",
+    "margin": "10 -10 20 0",
     "modules-left": ["custom/arch", "wlr/workspaces"],
     //"modules-center": [""], 
     "modules-right": [
@@ -14,10 +14,10 @@
         "network#net2",
         "custom/cpu",
         "custom/ram",
+        "battery",
+    	"backlight",
+        //"tray",
         "clock"
-        //"battery",
-    	//"backlight",
-        //"tray"
     ],
     "clock": {
         "format": "{:%m\n%d\n%H\n%M}",
@@ -62,7 +62,7 @@
         "on-click-right": "pavucontrol"
     },
     "backlight": {
-    	"rotate": 270,
+    	"rotate": 0,
         "device": "intel_backlight",
         "format": " {icon} ",
         "format-icons": [
