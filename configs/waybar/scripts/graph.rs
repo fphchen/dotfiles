@@ -8,7 +8,7 @@ use psutil::{cpu::CpuPercentCollector, memory::virtual_memory};
 use std::{env::args, str::FromStr, thread::sleep, time::Duration};
 
 const CHARS: &[char] = &['▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'];
-const WIDTH: usize = 7;
+const WIDTH: usize = 5;
 const USAGE: &str = "Usage: ./graph.rs <cpu|ram> [delay]";
 
 struct Printer<'a> {
@@ -34,7 +34,7 @@ impl<'a> Printer<'a> {
 
         if self.buf != self.last {
             println!(
-                r#"{{"text":"_  _  _\n{}\n  {}", "alt": "{value:.01}"}}"#,
+                r#"{{"text":"_ _ _\n{}\n {}", "alt": "{value:.01}"}}"#,
                 self.buf, self.subtext
             );
             self.last = self.buf.clone();

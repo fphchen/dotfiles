@@ -3,12 +3,13 @@
 {
     "position": "left",
     "layer": "top",
-    "width": 60,
-    "margin": "10 -10 20 0",
+    "width": 50,
+    "margin": "10 0 20 20",
     "modules-left": ["custom/arch", "wlr/workspaces"],
     //"modules-center": [""], 
     "modules-right": [
-    	"pulseaudio",
+        "tray",
+        "pulseaudio",
         "bluetooth",
         "network",
         "network#net2",
@@ -16,7 +17,6 @@
         "custom/ram",
         "battery",
     	"backlight",
-        //"tray",
         "clock"
     ],
     "clock": {
@@ -24,8 +24,7 @@
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
     },
     "tray": {
-        "icon-size": 18,
-        "spacing": 10
+        "icon-size": 15,
     },
     "wlr/workspaces": {
         "on-click": "activate",
