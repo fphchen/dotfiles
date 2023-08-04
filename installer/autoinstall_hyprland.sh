@@ -5,7 +5,7 @@ GREEN="$(tput setaf 2)[OK]$(tput sgr0)"
 RED="$(tput setaf 1)[ERROR]$(tput sgr0)"
 YELLOW="$(tput setaf 3)[NOTE]$(tput sgr0)"
 CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
-LOG="install.log"
+LOG="~/install.log"
 
 # Set the script to exit on error
 set -e
@@ -96,11 +96,10 @@ fi
 ### Install packages ####
 read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" inst
 if [[ $inst =~ ^[Yy]$ ]]; then
-    wm_pkgs="hyprland waybar wofi xdg-desktop-portal-hyprland xorg-xwayland wlr-randr polkit wl-clipboard ttf-firacode-nerd dunst swww"
+    wm_pkgs="hyprland waybar wofi xdg-desktop-portal-hyprland xorg-xwayland wlr-randr polkit wl-clipboard ttf-firacode-nerd dunst swww swaylock-effects"
     app_pkgs="firefox noto-fonts-cjk kitty neofetch zathura rust-script pavucontrol fzf gimp gparted brave-bin spotify"
-    git_pkgs=""
     theme_pkgs=""
-    if ! $aur -S --noconfirm $git_pkgs $wm_pkgs $app_pkgs $theme_pkgs 2>&1 | tee -a $LOG; then
+    if ! $aur -S --noconfirm $wm_pkgs $app_pkgs $theme_pkgs 2>&1 | tee -a $LOG; then
         print_error " Failed to install additional packages - please check the install.log \n"
         exit 1
     fi
@@ -109,6 +108,19 @@ if [[ $inst =~ ^[Yy]$ ]]; then
     print_success " All necessary packages installed successfully."
 else
     printf "${YELLOW} No packages installed. Moving on!\n"
+    sleep 1
+fi
+
+read -n1 -rep "${CAT} Would you like to install AMD packages? (y/n)" amd
+if [[ $amd =~ ^[Yy]$ ]]; then
+    amd_pkgs="amdgpu_top"
+    if ! $aur -S --noconfirm $amd_pkgs 2>&1 | tee -a $LOG; then
+        print_error " Failed to install AMD packages - please check the install.log \n"
+        exit 1
+    fi
+    print_success " All AMD packages installed successfully."
+else
+    printf "${YELLOW} No AMD packages installed. Moving on!\n"
     sleep 1
 fi
 
@@ -128,6 +140,7 @@ if [[ $CFG =~ ^[Yy]$ ]]; then
     ln -s ~/Documents/git/fphchen/dotfiles/configs/swww ~/.config/ 2>&1 | tee -a $LOG
     ln -s ~/Documents/git/fphchen/dotfiles/configs/waybar ~/.config/ 2>&1 | tee -a $LOG
     ln -s ~/Documents/git/fphchen/dotfiles/configs/wofi ~/.config/ 2>&1 | tee -a $LOG
+    ln -s ~/Documents/git/fphchen/dotfiles/configs/swaylock ~/.config/ 2>&1 | tee -a $LOG
     ln -s ~/Documents/git/fphchen/dotfiles/configs/zathura ~/.config/ 2>&1 | tee -a $LOG
     rm ~/.bashrc
     ln -s ~/Documents/git/fphchen/dotfiles/configs/.bashrc ~/ 2>&1 | tee -a $LOG
