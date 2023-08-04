@@ -34,7 +34,7 @@ impl<'a> Printer<'a> {
 
         if self.buf != self.last {
             println!(
-                r#"{{"text":"_ _ _\n{}\n {}", "alt": "{value:.01}"}}"#,
+                r#"{{"text":"{}\n {}", "alt": "{value:.01}"}}"#,
                 self.buf, self.subtext
             );
             self.last = self.buf.clone();
