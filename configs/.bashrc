@@ -33,7 +33,7 @@ alias r='cd /'
 alias ..='cd ..;pwd'
 alias .2='cd ..; cd ..;pwd'
 alias .3='cd ..; cd ..; cd ..;pwd'
-alias rmd='sudo rm -rf'
+alias rmdir='sudo rm -rf'
 
 # Pacman Alias
 alias pcm='sudo pacman'
@@ -56,12 +56,20 @@ alias dec='cal -m 12 2023'
 # VIM Alias
 alias rswap='rm -rf ~/.cache/vim/swap/*.*'
 alias v='vim'
-alias v.brc='vim ~/.bashrc'
 alias s.brc='source ~/.bashrc'
+alias v.brc='vim ~/.bashrc'
 alias v.vrc='vim ~/.vimrc'
+
+# Hyprland Alias
+alias v.hypr='vim ~/.config/hypr/hyprland.conf'
+alias v.waybar='vim ~/.config/waybar/config'
+
+# AsesomeWM Alias
 alias vrc.lua='vim ~/.config/awesome/rc.lua'
 alias vtheme.lua='vim ~/.config/awesome/theme.lua'
 alias vpoly='vim ~/.config/polybar/config.ini'
+
+# lf Alias
 alias vlf='vim ~/.config/lf/lfrc'
 
 # Git
@@ -71,6 +79,7 @@ alias gs='git status'
 alias gc='git commit'
 alias gps='git push'
 alias gpl='git pull'
+alias gitdir='cd ~/Documents/git'
 
 # Key Binding
 bind -x '"\C-f":exec lf'
