@@ -99,9 +99,9 @@ fi
 ### Install packages ####
 read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" inst
 if [[ $inst =~ ^[Yy]$ ]]; then
-    wm_pkgs="hyprland waybar wofi xdg-desktop-portal-hyprland xorg-xwayland wlr-randr polkit wl-clipboard swww swaylock-effects swayidle swayimg grim"
+    wm_pkgs="hyprland waybar wofi xdg-desktop-portal-hyprland xorg-xwayland wlr-randr polkit polkit-kde-agent wl-clipboard swww swaylock-effects swayidle swayimg grim"
     app_pkgs="firefox kitty zathura gimp gparted brave-bin spotify signal-desktop"
-    util_pkgs="neofetch rust-script pavucontrol fzf dunst"
+    util_pkgs="neofetch rust-script pavucontrol fzf dunsti usbutils acpid amdgpu_top"
     font_pkgs="noto-fonts-cjk ttf-firacode-nerd"
     theme_pkgs=""
     if ! $aur -S --noconfirm --needed $wm_pkgs $app_pkgs $util_pkgs $font_pkgs $theme_pkgs 2>&1 | tee -a $LOG; then
@@ -162,17 +162,33 @@ fi
 # BLUETOOTH
 read -n1 -rep "${CAT} OPTIONAL - Would you like to install Bluetooth packages? (y/n)" BLUETOOTH
 if [[ $BLUETOOTH =~ ^[Yy]$ ]]; then
-    printf "${GREEN} Installing Bluetooth Packages...\n"
+    printf "${GREEN} Installing Bluetooth packages...\n"
     blue_pkgs="bluez bluez-utils"
     if ! $aur -S --noconfirm --needed $blue_pkgs 2>&1 | tee -a $LOG; then
         print_error "Failed to install bluetooth packages - please check ${LOG}\n"    
     else    
-        printf " Activating Bluetooth Services...\n"
+        printf " Activating Bluetooth services...\n"
         sudo systemctl enable --now bluetooth.service
         sleep 1
     fi
 else
     printf "${YELLOW} No bluetooth packages installed. Moving on!\n"
+fi
+
+# ACPI
+read -n1 -rep "${CAT} OPTIONAL - Would you like to install ACPI packages? (y/n)" ACPI
+if [[ $ACPI =~ ^[Yy]$ ]]; then
+    printf "${GREEN} Installing ACPI packages...\n"
+    acpi_pkgs="acpid"
+    if ! $aur -S --noconfirm --needed $acpi_pkgs 2>&1 | tee -a $LOG; then
+        print_error "Failed to install ACPI packages - please check ${LOG}\n"    
+    else    
+        printf " Activating ACPI services...\n"
+        sudo systemctl enable --now acpid.service
+        sleep 1
+    fi
+else
+    printf "${YELLOW} No ACIP packages installed. Moving on!\n"
 fi
 
 ### Enable SDDM Autologin ###
@@ -192,12 +208,12 @@ fi
 # SUNSHINE
 read -n1 -rep "${CAT} OPTIONAL - Would you like to install remote desktop streaming packages? (y/n)" SUNSHINE
 if [[ $SUNSHINE =~ ^[Yy]$ ]]; then
-    printf "${GREEN} Installing Sunshine Packages...\n"
+    printf "${GREEN} Installing Sunshine packages...\n"
     rds_pkgs="sunshine"
     if ! $aur -S --noconfirm --needed $rds_pkgs 2>&1 | tee -a $LOG; then
        	print_error "Failed to install remote desktop streaming packages - please check ${LOG} \n"    
     else    
-        printf " Activating avahi-daemon Services for Sunshine...\n"
+        printf " Activating avahi-daemon services for Sunshine...\n"
         sudo systemctl enable --now avahi-daemon
         sleep 1
     fi
@@ -205,4 +221,34 @@ else
     printf "${YELLOW} No remote desktop streaming packages installed. Goodbye!\n"
 fi
 
-printf "${GREEN} Autoinstaller completed.\n"
+# Asus ROG G14 packages
+read -n1 -rep "${CAT} OPTIONAL - Would you like to install Asus ROG packages? (y/n)" ASUS
+if [[ $ASUS =~ ^[Yy]$ ]]; then
+    printf "${GREEN} Installing Asus ROG packages...\n"
+    asus_pkgs="asusctl rog-control-center supergfxctl"
+    if ! $aur -S --noconfirm --needed $asus_pkgs 2>&1 | tee -a $LOG; then
+        print_error "Failed to install Asus ROG packages - please check ${LOG}\n"    
+    else    
+        printf " Activating Asus services...\n"
+        sudo systemctl enable --now asusd.service
+        sleep 1
+    fi
+else
+    printf "${YELLOW} No Asus  packages installed. Moving on!\n"
+fi
+
+# Asus Rog G14 Fingerprint Scanner packages
+read -n1 -rep "${CAT} OPTIONAL - Would you like to install Asus ROG G14 fingerprint packages? (y/n)" ASUSFINGERPRINT
+if [[ $ASUSFINGERPRINT =~ ^[Yy]$ ]]; then
+    printf "${GREEN} Installing Asus ROG G14 fingerprint packages...\n"
+    asusfp_pkgs="libfprint-goodix-521d fprintd"
+    if ! $aur -S --noconfirm --needed $asusfp_pkgs 2>&1 | tee -a $LOG; then
+        print_error "Failed to install Asus ROG G14 fingerprint packages - please check ${LOG}\n"    
+    else    
+        printf " Activating Asus ROG G14 fingerprint services...\n"
+        sudo systemctl enable --now asusd.service
+        sleep 1
+    fi
+else
+    printf "${YELLOW} No Asus  packages installed. Moving on!\n"                         printf "${GREEN} Autoinstaller completed.\n"
+fi
