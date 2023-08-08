@@ -76,7 +76,7 @@ else
             aur=paru
             # Perform system update
             printf "${YELLOW} Upgrading AUR packages to avoid issue.\n"
-            $aur -Syu --noconfirm --needed 2>&1 | tee -a $LOG
+            $aur -Syu --noconfirm 2>&1 | tee -a $LOG
         else
             if [[ $INST =~ yay ]]; then
                 git clone https://aur.archlinux.org/yay.git
@@ -87,7 +87,7 @@ else
                 aur=yay
                 # Perform system update
                 printf "${YELLOW} Upgrading AUR packages to avoid issue.\n"
-                $aur -Syu --noconfirm --needed 2>&1 | tee -a $LOG
+                $aur -Syu --noconfirm 2>&1 | tee -a $LOG
             else
                 printf "${RED} - yay/paru is required for auto-installation. Goodbye!\n"
                 exit
@@ -155,6 +155,7 @@ if [[ $CFG =~ ^[Yy]$ ]]; then
     ### Symbolic linking Pipewire upmix for 7.1 Surround Sound ###
     mkdir -p ~/.config/pipewire/pipewire-pulse.conf.d
     ln -s /usr/share/pipewire.conf/avail/20-upmix.conf ~/.config/pipewire/pipewire-pulse.conf.d/ 2>&1 | tee -a $LOG
+    ln -s /usr/share/pipewire.conf/avail/20-upmix.conf /etc    ln -s /usr/share/pipewire.conf/avail/20-upmix.conf ~/.config/pipewire/pipewire-pulse.conf.d/ 2>&1 | tee -a $LOG/pipewire/pipewire-pulse.conf.d/ 2>&1 | tee -a $LOG
 else
     printf "${YELLOW} No symbolic link created. Moving on!\n"
     sleep 1
