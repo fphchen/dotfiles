@@ -88,7 +88,7 @@
         "interface": "enp5s0",
         "rotate": 0,
         "format-ethernet": "󰒍",
-        "format-linked": "󰒎",
+        "format-linked": "󰒍",
         "format-disconnected": "󰒎",
         "on-click-right": "systemsettings kcm_networkmanagement"
     },

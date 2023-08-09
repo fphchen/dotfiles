@@ -64,11 +64,11 @@
 }
 
 #bluetooth.connected {
-    background-color: blue;
+    color: blue;
 }
 
-#network.disconnected, #bluetooth.disabled, #pulseaudio.muted {
-    background-color: red;
+#network.disconnected, #network.linked, #bluetooth.disabled, #pulseaudio.muted {
+    color: red;
 }
 
 #custom-sep {
@@ -84,11 +84,11 @@
 
 #clock, #backlight, #bluetooth, #network, #battery, #pulseaudio, #custom-arch, #tray {
     margin: 20px 0px 5px 0px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
     border-radius: 10px;
     background-color: #11111B;
-    opacity: 0.8;
+    opacity: 1;
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 10px;
@@ -100,7 +100,7 @@
     font-size: 12px;
     border-radius: 10px;
     background-color: #11111B;
-    opacity: 0.8;
+    opacity: 1;
     padding-left: 0px;
     padding-right: 0px;
     padding-top: 5px;
