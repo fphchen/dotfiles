@@ -106,15 +106,15 @@
     "bluetooth": {
         "rotate": 0,
         "format-on": "󰂯",
-        "format-off": "󰂲",
-        "format-connected": "󰂱",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂯",
         "on-click-right": "systemsettings kcm_bluetooth"
     },
     "battery": {
         "rotate": 0,
         "states": {
-            "warning": 90,
-            "critical": 50
+            "warning": 50,
+            "critical": 20
         },
         "format": "{icon}",
         "format-charging": "{icon}",

@@ -80,6 +80,7 @@ alias gc='git commit'
 alias gps='git push'
 alias gpl='git pull'
 alias gitdir='cd ~/Documents/git'
+alias fphchen='cd ~/Documents/git/fphchen/'
 
 # Key Binding
 bind -x '"\C-f":exec lf'

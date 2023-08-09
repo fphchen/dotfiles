@@ -155,7 +155,7 @@ if [[ $CFG =~ ^[Yy]$ ]]; then
     ### Symbolic linking Pipewire upmix for 7.1 Surround Sound ###
     mkdir -p ~/.config/pipewire/pipewire-pulse.conf.d
     ln -s /usr/share/pipewire.conf/avail/20-upmix.conf ~/.config/pipewire/pipewire-pulse.conf.d/ 2>&1 | tee -a $LOG
-    ln -s /usr/share/pipewire.conf/avail/20-upmix.conf /etc    ln -s /usr/share/pipewire.conf/avail/20-upmix.conf ~/.config/pipewire/pipewire-pulse.conf.d/ 2>&1 | tee -a $LOG/pipewire/pipewire-pulse.conf.d/ 2>&1 | tee -a $LOG
+    ln -s /usr/share/pipewire.conf/avail/20-upmix.conf /etc/pipewire/pipewire-pulse.conf.d/ 2>&1 | tee -a $LOG
 else
     printf "${YELLOW} No symbolic link created. Moving on!\n"
     sleep 1
