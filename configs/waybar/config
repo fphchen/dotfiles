@@ -1,5 +1,4 @@
 // Waybar Configuration File
-
 {
     "position": "left",
     "layer": "top",

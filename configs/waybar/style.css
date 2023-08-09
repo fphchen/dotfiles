@@ -2,7 +2,7 @@
     /* background: rgba(17, 17, 27, 0.87); */
     background: transparent;
     color: #CDD6F4;
-    font-family: "FiraCode Nerd Font";
+    font-family: "FiraCode Nerd Font Propo";
     text-shadow: 0 0 0px black;
     border-radius: 10px;
 }
@@ -85,6 +85,7 @@
 #clock, #backlight, #bluetooth, #network, #battery, #pulseaudio, #custom-arch, #tray {
     margin: 20px 0px 5px 0px;
     font-size: 15px;
+    font-weight: bold;
     border-radius: 10px;
     background-color: #11111B;
     opacity: 0.8;
