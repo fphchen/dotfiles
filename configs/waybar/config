@@ -90,7 +90,7 @@
         "format-ethernet": "󰒍",
         "format-linked": "󰒍",
         "format-disconnected": "󰒎",
-        "on-click-right": "systemsettings kcm_networkmanagement"
+        "on-click-right": "nm-connection-editor"
     },
     "network#net2": {
         "net": "NET2",
@@ -100,14 +100,14 @@
         "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
         "format-disconnected": "󰖪",
         "tooltip-format": "{essid}",
-        "on-click-right": "systemsettings kcm_networkmanagement"
+        "on-click-right": "nm-connection-editor"
     },
     "bluetooth": {
         "rotate": 0,
         "format-on": "󰂯",
         "format-disabled": "󰂲",
         "format-connected": "󰂯",
-        "on-click-right": "systemsettings kcm_bluetooth"
+        "on-click-right": "blueman-manager"
     },
     "battery": {
         "rotate": 0,

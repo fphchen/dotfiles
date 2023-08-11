@@ -104,7 +104,7 @@ if [[ $inst =~ ^[Yy]$ ]]; then
     util_pkgs="neofetch rust-script pavucontrol fzf dunst usbutils acpid amdgpu_top wev xorg-xhost"
     font_pkgs="noto-fonts-cjk ttf-firacode-nerd"
     theme_pkgs=""
-    extra_pkgs="brave-bin swww swaylock-effects wlr-randr spotify"
+    extra_pkgs="brave-bin swww swaylock-effects wlr-randr spotify sddm"
     if ! $aur -S --noconfirm --needed $wm_pkgs $app_pkgs $util_pkgs $font_pkgs $theme_pkgs $extra_pkgs 2>&1 | tee -a $LOG; then
         print_error " Failed to install additional packages - please check ${LOG}\n"
         exit 1
@@ -134,6 +134,7 @@ fi
 read -n1 -rep "${CAT} Would you like to git clone and symbolic link config files? (y/n)" CFG
 if [[ $CFG =~ ^[Yy]$ ]]; then
     printf "${YELLOW} Git cloning GitHub files...\n"
+    mkdir -p ~/.config ~/Desktop ~/Documents ~/Downloads ~/Pictures ~/Videos ~/Temp
     mkdir -p ~/Documents/git/fphchen/
     cd ~/Documents/git/fphchen
     git clone https://github.com/fphchen/dotfiles.git
@@ -155,7 +156,7 @@ if [[ $CFG =~ ^[Yy]$ ]]; then
     ### Symbolic linking Pipewire upmix for 7.1 Surround Sound ###
     mkdir -p ~/.config/pipewire/pipewire-pulse.conf.d
     ln -s /usr/share/pipewire.conf/avail/20-upmix.conf ~/.config/pipewire/pipewire-pulse.conf.d/ 2>&1 | tee -a $LOG
-    ln -s /usr/share/pipewire.conf/avail/20-upmix.conf /etc/pipewire/pipewire-pulse.conf.d/ 2>&1 | tee -a $LOG
+    sudo ln -s /usr/share/pipewire.conf/avail/20-upmix.conf /etc/pipewire/pipewire-pulse.conf.d/ 2>&1 | tee -a $LOG
 else
     printf "${YELLOW} No symbolic link created. Moving on!\n"
     sleep 1
@@ -193,14 +194,33 @@ else
     printf "${YELLOW} No ACIP packages installed. Moving on!\n"
 fi
 
+read -n1 -rep "${CAT} OPTIONAL - Would you like to install SDDM Login Manager? (y/n)" LOGINMAN
+if [[ $LOGINMAN =~ ^[Yy]$ ]]; then
+    printf "${GREEN} Removing existing LightDM packages...\n"
+    $aur -Rns --noconfirm lightdm lightdm-gtk-greeter 2>&1 | tee -a $LOG
+
+    printf "${GREEN} Installing SDDM packages...\n"
+    loginman_pkgs="sddm"
+    if ! $aur -S --noconfirm --needed $loginman_pkgs 2>&1 | tee -a $LOG; then
+        print_error "Failed to install SDDM packages - please check ${LOG}\n"    
+    else    
+        printf " Activating SDDM services...\n"
+        sudo systemctl enable sddm
+        sleep 1
+    fi
+else
+    printf "${YELLOW} No SDDM packages installed. Moving on!\n"
+fi
+
 ### Enable SDDM Autologin ###
 read -n1 -rep "${CAT} Would you like to enable SDDM autologin? (y/n)" SDDM
 if [[ $SDDM =~ ^[Yy]$ ]]; then
+    sudo systemctl disable sddm
     sudo mkdir -p /etc/sddm.conf.d
     LOC="/etc/sddm.conf.d/autologin.conf"
     echo -e "The following has been added to $LOC."
     echo -e "[Autologin]\nUser = $(whoami)\nSession=hyprland" | sudo tee -a $LOC
-    echo -e "Enabling SDDM service...\n"
+    echo -e "Restarting SDDM service...\n"
     sudo systemctl enable sddm
     sleep 1
 else
