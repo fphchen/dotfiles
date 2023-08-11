@@ -166,7 +166,7 @@ fi
 read -n1 -rep "${CAT} OPTIONAL - Would you like to install Bluetooth packages? (y/n)" BLUETOOTH
 if [[ $BLUETOOTH =~ ^[Yy]$ ]]; then
     printf "${GREEN} Installing Bluetooth packages...\n"
-    blue_pkgs="bluez bluez-utils"
+    blue_pkgs="bluez bluez-utils blueman"
     if ! $aur -S --noconfirm --needed $blue_pkgs 2>&1 | tee -a $LOG; then
         print_error "Failed to install bluetooth packages - please check ${LOG}\n"    
     else    
