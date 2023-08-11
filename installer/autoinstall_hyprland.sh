@@ -263,7 +263,7 @@ fi
 read -n1 -rep "${CAT} OPTIONAL - Would you like to install Asus ROG G14 fingerprint packages? (y/n)" ASUSFINGERPRINT
 if [[ $ASUSFINGERPRINT =~ ^[Yy]$ ]]; then
     printf "${YELLOW} Removing libfprint package conflicts.\n"
-    $aur -Rns libfprint fprintd
+    $aur -Rns libfprint fprintd 2>&1 | tee -a $LOG
     printf "${GREEN} Installing Asus ROG G14 fingerprint packages...\n"
     asusfp_pkgs="libfprint-goodix-521d fprintd"
     if ! $aur -S --noconfirm --needed $asusfp_pkgs 2>&1 | tee -a $LOG; then
