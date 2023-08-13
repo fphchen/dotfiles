@@ -7,7 +7,7 @@
     "modules-left": ["custom/arch", "wlr/workspaces"],
     //"modules-center": [""], 
     "modules-right": [
-        "tray",
+        //"tray",
         "pulseaudio",
         "bluetooth",
         "network",
