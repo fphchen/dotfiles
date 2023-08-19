@@ -67,7 +67,7 @@
     color: blue;
 }
 
-#network.disconnected, #network.linked, #bluetooth.disabled, #pulseaudio.muted {
+#battery.critical, #network.disconnected, #network.linked, #bluetooth.disabled, #pulseaudio.muted {
     color: red;
 }
 
