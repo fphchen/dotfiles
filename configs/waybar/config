@@ -12,10 +12,10 @@
         "bluetooth",
         "network",
         "network#net2",
-        "custom/cpu",
-        "custom/ram",
         "battery",
     	"backlight",
+        "custom/cpu",
+        "custom/ram",
         "clock"
     ],
     "clock": {
@@ -80,8 +80,9 @@
             "",
             "",
         ],
-        "on-scroll-up": "light -A 1",
-        "on-scroll-down": "light -U 1",
+        "on-scroll-up": "",
+        "on-scroll-down": "",
+        "tooltip-format": "{percent}"
     },
     "network": {
         "net": "NET1",
@@ -90,6 +91,7 @@
         "format-ethernet": "󰒍",
         "format-linked": "󰒍",
         "format-disconnected": "󰒎",
+        "tooltip-format": "{ifname}:{ipaddr}",
         "on-click-right": "nm-connection-editor"
     },
     "network#net2": {
@@ -99,7 +101,7 @@
         "format-wifi": "{icon}",
         "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
         "format-disconnected": "󰖪",
-        "tooltip-format": "{essid}",
+        "tooltip-format": "{essid}:{ipaddr}",
         "on-click-right": "nm-connection-editor"
     },
     "bluetooth": {
@@ -107,7 +109,8 @@
         "format-on": "󰂯",
         "format-disabled": "󰂲",
         "format-connected": "󰂯",
-        "on-click-right": "blueman-manager"
+        "on-click-right": "blueman-manager",
+        "tooltip-format": "{device_enumerate}"
     },
     "battery": {
         "rotate": 0,
