@@ -67,7 +67,7 @@
     color: blue;
 }
 
-#battery.charging, #battery.warning, #network.linked {
+#battery.warning, #network.linked {
     color: yellow;
 }
 
