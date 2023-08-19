@@ -110,7 +110,7 @@
         "format-disabled": "󰂲",
         "format-connected": "󰂯",
         "on-click-right": "blueman-manager",
-        "tooltip-format": "{device_enumerate}"
+        "tooltip-format": "{device_alias}"
     },
     "battery": {
         "rotate": 0,

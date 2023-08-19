@@ -67,7 +67,11 @@
     color: blue;
 }
 
-#battery.critical, #network.disconnected, #network.linked, #bluetooth.disabled, #pulseaudio.muted {
+#battery.charging, #battery.warning, #network.linked {
+    color: yellow;
+}
+
+#battery.critical, #network.disconnected, #bluetooth.disabled, #pulseaudio.muted {
     color: red;
 }
 
