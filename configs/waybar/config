@@ -111,7 +111,8 @@
         "format-connected": "󰂯",
         "on-click-right": "blueman-manager",
         "tooltip-format": "{controller_address}",
-        "tooltip-format-connected": "{device_alias}:{device_battery_percentage}%"
+      	"tooltip-format-enumerate-connected": "{device_alias} : {device_battery_percentage}%",
+  	    "tooltip-format-connected": "{device_enumerate}"
     },
     "battery": {
         "rotate": 0,
