@@ -1,5 +1,4 @@
 #waybar {
-    /* background: rgba(17, 17, 27, 0.87); */
     background: transparent;
     color: #CDD6F4;
     font-family: "FiraCode Nerd Font Propo";
@@ -86,8 +85,21 @@
     margin: 5px 0 5px 0;
 }
 
-#clock, #backlight, #bluetooth, #network, #battery, #pulseaudio, #custom-arch, #tray {
-    margin: 20px 0px 5px 0px;
+#custom-arch {
+    margin: 15px 0px 10px 0px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #11111B;
+    opacity: 1;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#clock, #backlight, #bluetooth, #network, #battery, #pulseaudio, #tray {
+    margin: 10px 0px 10px 0px;
     font-size: 16px;
     font-weight: bold;
     border-radius: 10px;
@@ -100,7 +112,7 @@
 }
 
 #custom-cpu, #custom-ram, #workspaces {
-    margin: 20px 0px 5px 0px;
+    margin: 10px 0px 10px 0px;
     font-size: 12px;
     border-radius: 10px;
     background-color: #11111B;
