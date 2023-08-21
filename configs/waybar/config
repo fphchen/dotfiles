@@ -107,6 +107,7 @@
     "bluetooth": {
         "rotate": 0,
         "format-on": "󰂯",
+        "format-off": "󰂲",
         "format-disabled": "󰂲",
         "format-connected": "󰂯",
         "on-click-right": "blueman-manager",
