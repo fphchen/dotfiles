@@ -1,8 +1,8 @@
 AwesomeWM configurations
 
 Screenshot:
-![Screenshot](./images/screenshot01.jpg)
-![Screenshot](./images/screenshot02.jpg)
+![Screenshot](.screenshot01.jpg)
+![Screenshot](.screenshot02.jpg)
 
 Credits:
 - MateoNitro550/xxxwindowPolybarModule  
