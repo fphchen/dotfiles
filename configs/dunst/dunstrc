@@ -14,4 +14,4 @@ separator_color= frame
 font = "Fira Code 10"
 corner_radius = 7
 background = "#11111B"
-foreground = "#CDD6F4"
+foreground = "#FFDEAD"

@@ -11,39 +11,40 @@ fade-in=0.2
 
 effect-blur=50x5
 effect-scale=0.3
+font=FiraCode Nerd Font Propo
 
 indicator
 indicator-radius=150
 indicator-thickness=10
 indicator-caps-lock
 
-key-hl-color=8fce00FF
-bs-hl-color=ee2e24FF
+key-hl-color=00BF00FF
+bs-hl-color=FF0000FF
 separator-color=00000000
 
-inside-color=1f1d2e00
-inside-clear-color=ffd20400
-inside-caps-lock-color=009ddc00
-inside-ver-color=ffd20400
-inside-wrong-color=ee2e2400
+inside-color=00000000
+inside-clear-color=FFFF0000
+inside-caps-lock-color=0000FF00
+inside-ver-color=FFFF0000
+inside-wrong-color=FF000000
 
-ring-color=231f20D9
-ring-clear-color=231f20D9
-ring-caps-lock-color=231f20D9
-ring-ver-color=231f20D9
-ring-wrong-color=231f20D9
+ring-color=000000D9
+ring-clear-color=000000D9
+ring-caps-lock-color=000000D9
+ring-ver-color=000000D9
+ring-wrong-color=000000D9
 
 line-color=00000000
-line-clear-color=ffd204FF
-line-caps-lock-color=009ddcFF
-line-ver-color=ffd204FF
-line-wrong-color=ee2e24FF
+line-clear-color=FFFF00FF
+line-caps-lock-color=0000FFFF
+line-ver-color=FFFF00FF
+line-wrong-color=FF0000FF
 
-text-color=e0def4
-text-clear-color=ffd20400
-text-caps-lock-color=009ddcFF
-text-ver-color=ffd20400
-text-wrong-color=ee2e2400
+text-color=FFFFFF
+text-clear-color=FFFF0000
+text-caps-lock-color=0000FFFF
+text-ver-color=FFFF0000
+text-wrong-color=FF000000
 
-caps-lock-key-hl-color=ffd204FF
-caps-lock-bs-hl-color=ee2e24FF
+caps-lock-key-hl-color=FFFF00FF
+caps-lock-bs-hl-color=FF0000FF
