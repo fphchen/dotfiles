@@ -1,6 +1,7 @@
 #waybar {
     background: transparent;
-    color: #CDD6F4;
+    /* color: #CDD6F4; */
+    color: #FFDEAD;
     font-family: "FiraCode Nerd Font Propo";
     text-shadow: 0 0 0px black;
     border-radius: 10px;
