@@ -219,7 +219,7 @@ if [[ $SDDM =~ ^[Yy]$ ]]; then
     sudo mkdir -p /etc/sddm.conf.d
     LOC="/etc/sddm.conf.d/autologin.conf"
     echo -e "The following has been added to $LOC."
-    echo -e "[Autologin]\nUser = $(whoami)\nSession=hyprland" | sudo tee -a $LOC
+    echo -e "[Autologin]\nUser=$(whoami)\nSession=hyprland" | sudo tee -a $LOC
     echo -e "Restarting SDDM service...\n"
     sudo systemctl enable sddm
     sleep 1
