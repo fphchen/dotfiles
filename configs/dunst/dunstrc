@@ -1,7 +1,7 @@
 [global]
 format = "<b>%s</b>\n%b"
 
-icon_theme = Breeze_Snow
+icon_theme = elementary 
 icon_path = /usr/share/icons
 max_icon_size = 64
 enable_recursive_icon_lookup = true
@@ -13,5 +13,5 @@ frame_color = "#b4befe"
 separator_color= frame
 font = "Fira Code 10"
 corner_radius = 7
-background = "#11111B"
-foreground = "#FFDEAD"
+background = "#000000"
+foreground = "#FFFFFF"
