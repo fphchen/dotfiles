@@ -8,12 +8,12 @@
     //"modules-center": [""], 
     "modules-right": [
         //"tray",
-        "pulseaudio",
         "bluetooth",
         "network",
         "network#net2",
         "battery",
     	"backlight",
+        "pulseaudio",
         "custom/cpu",
         "custom/ram",
         "clock"
