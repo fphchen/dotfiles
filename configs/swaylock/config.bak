@@ -1,10 +1,19 @@
-image= $HOME/.config/swaylock/Background.jpg
-
 daemonize
 ignore-empty-password
 
+clock
+timestr=%R
+datestr=%a, %B %e
+
+screenshots
+
+fade-in=0.2
+
+effect-blur=50x5
+effect-scale=0.3
 font=FiraCode Nerd Font Propo
 
+indicator
 indicator-radius=150
 indicator-thickness=10
 indicator-caps-lock
