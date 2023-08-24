@@ -99,12 +99,12 @@ fi
 ### Install packages ####
 read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" inst
 if [[ $inst =~ ^[Yy]$ ]]; then
-    wm_pkgs="hyprland waybar wofi xdg-desktop-portal-hyprland xorg-xwayland wlr-randr qt5 polkit polkit-kde-agent wl-clipboard swayidle swayimg grim"
+    wm_pkgs="hyprland waybar wofi xdg-desktop-portal-hyprland xorg-xwayland wlr-randr polkit polkit-kde-agent wl-clipboard swayidle swayimg grim"
     app_pkgs="firefox kitty zathura zathura-pdf-mupdf zathura-ps gimp gparted signal-desktop"
     util_pkgs="neofetch rust-script pavucontrol fzf dunst usbutils wev xorg-xhost trash-cli brightnessctl nfs-utils cifs-utils smbclient gvfs-smb gvfs-nfs"
     font_pkgs="noto-fonts-cjk ttf-firacode-nerd"
     theme_pkgs=""
-    extra_pkgs="brave-bin swww swaylock-effects wlr-randr spotify"
+    extra_pkgs="brave-bin swww swaylock wlr-randr spotify"
     if ! $aur -S --noconfirm --needed $wm_pkgs $app_pkgs $util_pkgs $font_pkgs $theme_pkgs $extra_pkgs 2>&1 | tee -a $LOG; then
         print_error " Failed to install additional packages - please check ${LOG}\n"
         exit 1
@@ -200,7 +200,7 @@ if [[ $LOGINMAN =~ ^[Yy]$ ]]; then
     $aur -Rns --noconfirm lightdm lightdm-gtk-greeter 2>&1 | tee -a $LOG
 
     printf "${GREEN} Installing SDDM packages...\n"
-    loginman_pkgs="sddm"
+    loginman_pkgs="sddm qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 qt5-svg qt5-multimedia gst-libav gst-plugins-good phonon-qt5-gstreamer"
     if ! $aur -S --noconfirm --needed $loginman_pkgs 2>&1 | tee -a $LOG; then
         print_error "Failed to install SDDM packages - please check ${LOG}\n"    
     else    
