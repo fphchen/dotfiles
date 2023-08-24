@@ -1,17 +1,41 @@
 [global]
-format = "<b>%s</b>\n%b"
+    origin = top-center
+    offset = 20x20
+    width = (0, 470)
+    corner_radius = 10
+    format = "<b>%s (%a)\n</b>%b"
+    font = "Fira Code 10"
+    line_height = 2
+    alignment = center
+    vertical_alignment = center
+    background = "#000000"
+    foreground = "#FFFFFF"
+    frame_width = 0
+    frame_color = "#FFFFFF"
+    separator_color= frame
+    
+    icon_theme = elementary 
+    icon_path = /usr/share/icons
+    icon_position = top
+    max_icon_size = 100
+    enable_recursive_icon_lookup = true
+    
+    title = dunst
+    class = dunst
+    
+    force_xwayland = false
+    
+[urgency_low]
+    background = "#000000"
+    foreground = "#FFFFFF"
+    timeout = 5
 
-icon_theme = elementary 
-icon_path = /usr/share/icons
-max_icon_size = 64
-enable_recursive_icon_lookup = true
+[urgency_normal]
+    background = "#000000"
+    foreground = "#FFFF00"
+    timeout = 10
 
-origin = top-right
-offset = 22x22
-frame_width = 2
-frame_color = "#b4befe"
-separator_color= frame
-font = "Fira Code 10"
-corner_radius = 7
-background = "#000000"
-foreground = "#FFFFFF"
+[urgency_critical]
+    background = "#000000"
+    foreground = "#FF0000"
+    timeout = 0
