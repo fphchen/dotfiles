@@ -71,7 +71,7 @@
     color: yellow;
 }
 
-#battery.critical, #pulseaudio.muted {
+#battery.critical, #wireplumber.muted {
     color: red;
 }
 
@@ -99,7 +99,7 @@
     padding-bottom: 10px;
 }
 
-#clock, #backlight, #bluetooth, #network, #battery, #pulseaudio, #tray {
+#clock, #backlight, #bluetooth, #network, #battery, #wireplumber, #tray {
     margin: 10px 0px 10px 0px;
     font-size: 16px;
     font-weight: bold;

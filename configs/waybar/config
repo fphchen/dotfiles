@@ -13,7 +13,7 @@
         "network#net2",
         "battery",
     	"backlight",
-        "pulseaudio",
+        "wireplumber",
         "custom/cpu",
         "custom/ram",
         "clock"
@@ -46,7 +46,7 @@
             "default": "⏺"
 		    },
     },
-    "pulseaudio": {
+    "wireplumber": {
         "rotate": 0,
         "format": "{icon}",
         "format-bluetooth": "{icon}",
@@ -56,7 +56,7 @@
             "default": ["󰕿", "󰖀", "󰕾"]
         },
         "tooltip-format": "{volume}",
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
         "on-click-right": "pavucontrol"
     },
     "backlight": {
