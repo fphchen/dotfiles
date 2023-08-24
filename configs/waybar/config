@@ -116,6 +116,7 @@
   	    "tooltip-format-connected": "{device_enumerate}"
     },
     "battery": {
+        "interval": 10,
         "rotate": 0,
         "states": {
             "warning": 50,
