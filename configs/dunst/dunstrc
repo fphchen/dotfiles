@@ -16,7 +16,7 @@
     
     icon_theme = elementary 
     icon_path = /usr/share/icons
-    icon_position = top
+    icon_position = left
     max_icon_size = 100
     enable_recursive_icon_lookup = true
     
@@ -33,9 +33,11 @@
 [urgency_normal]
     background = "#000000"
     foreground = "#FFFF00"
+    frame_color = "FFFF00"
     timeout = 10
 
 [urgency_critical]
     background = "#000000"
     foreground = "#FF0000"
+    frame_color = "FF0000"
     timeout = 0
