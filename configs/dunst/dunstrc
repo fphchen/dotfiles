@@ -1,5 +1,5 @@
 [global]
-    origin = top-center
+    origin = bottom-left
     offset = 20x20
     width = (0, 470)
     corner_radius = 10
@@ -32,12 +32,14 @@
 
 [urgency_normal]
     background = "#000000"
-    foreground = "#FFFF00"
+    foreground = "#FFFFFF"
+    frame_width = 2
     frame_color = "FFFF00"
     timeout = 10
 
 [urgency_critical]
     background = "#000000"
-    foreground = "#FF0000"
+    foreground = "#FFFFFF"
+    frame_width = 4
     frame_color = "FF0000"
     timeout = 0
