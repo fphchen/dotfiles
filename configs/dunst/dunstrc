@@ -33,13 +33,11 @@
 [urgency_normal]
     background = "#000000"
     foreground = "#FFFFFF"
-    frame_width = 2
     frame_color = "FFFF00"
     timeout = 10
 
 [urgency_critical]
     background = "#000000"
     foreground = "#FFFFFF"
-    frame_width = 4
     frame_color = "FF0000"
     timeout = 0
