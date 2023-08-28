@@ -99,18 +99,16 @@ fi
 ### Install packages ####
 read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" inst
 if [[ $inst =~ ^[Yy]$ ]]; then
-    wm_pkgs="hyprland waybar wofi xdg-desktop-portal-hyprland xorg-xwayland polkit polkit-kde-agent wl-clipboard swayidle swayimg grim"
-    app_pkgs="firefox kitty zathura zathura-pdf-mupdf zathura-ps gimp gparted signal-desktop"
-    util_pkgs="neofetch rust-script pavucontrol fzf dunst usbutils wev xorg-xhost trash-cli brightnessctl nfs-utils cifs-utils smbclient gvfs-smb gvfs-nfs"
-    font_pkgs="noto-fonts-cjk ttf-firacode-nerd"
+    blackedarch_pkgs="wireshark-qt nmap gnu-netcat hcxdumptool hcxtools"
+    app_pkgs="firefox kitty zathura zathura-pdf-mupdf zathura-ps gimp gparted"
+    util_pkgs="rust-script fzf usbutils trash-cli brightnessctl nfs-utils cifs-utils smbclient gvfs-smb gvfs-nfs"
+    font_pkgs="noto-fonts-cjk"
     theme_pkgs=""
-    extra_pkgs="brave-bin swww swaylock wlr-randr spotify"
-    if ! $aur -S --noconfirm --needed $wm_pkgs $app_pkgs $util_pkgs $font_pkgs $theme_pkgs $extra_pkgs 2>&1 | tee -a $LOG; then
+    extra_pkgs="brave-bin"
+    if ! $aur -S --noconfirm --needed $blackedarch_pkg $app_pkgs $util_pkgs $font_pkgs $theme_pkgs $extra_pkgs 2>&1 | tee -a $LOG; then
         print_error " Failed to install additional packages - please check ${LOG}\n"
         exit 1
     fi
-    printf "${YELLOW} Removing hyprland xdg-desktop-portal conflicts.\n"
-    $aur -Rnsdd --noconfirm xdg-desktop-portal-kde 2>&1 | tee -a $LOG
     print_success " All necessary packages installed successfully.\n"
 else
     printf "${YELLOW} No packages installed. Moving on!\n"
@@ -140,14 +138,6 @@ if [[ $CFG =~ ^[Yy]$ ]]; then
     git clone https://github.com/fphchen/dotfiles.git
     git clone https://github.com/fphchen/wallpapers.git
     printf "${YELLOW} Symbolic linking config files...\n"
-    ln -s ~/Documents/git/fphchen/dotfiles/configs/dunst ~/.config/ 2>&1 | tee -a $LOG
-    ln -s ~/Documents/git/fphchen/dotfiles/configs/hypr ~/.config/ 2>&1 | tee -a $LOG
-    ln -s ~/Documents/git/fphchen/dotfiles/configs/kitty ~/.config/ 2>&1 | tee -a $LOG
-    ln -s ~/Documents/git/fphchen/dotfiles/configs/neofetch ~/.config/ 2>&1 | tee -a $LOG
-    ln -s ~/Documents/git/fphchen/dotfiles/configs/swaylock ~/.config/ 2>&1 | tee -a $LOG
-    ln -s ~/Documents/git/fphchen/dotfiles/configs/swww ~/.config/ 2>&1 | tee -a $LOG
-    ln -s ~/Documents/git/fphchen/dotfiles/configs/waybar ~/.config/ 2>&1 | tee -a $LOG
-    ln -s ~/Documents/git/fphchen/dotfiles/configs/wofi ~/.config/ 2>&1 | tee -a $LOG
     ln -s ~/Documents/git/fphchen/dotfiles/configs/zathura ~/.config/ 2>&1 | tee -a $LOG
     rm ~/.bashrc
     ln -s ~/Documents/git/fphchen/dotfiles/configs/.bashrc ~/ 2>&1 | tee -a $LOG
@@ -257,7 +247,7 @@ if [[ $ASUS =~ ^[Yy]$ ]]; then
         sleep 1
     fi
 else
-    printf "${YELLOW} No Asus  packages installed. Moving on!\n"
+    printf "${YELLOW} No Asus packages installed. Moving on!\n"
 fi
 
 # Asus Rog G14 Fingerprint Scanner packages
@@ -276,6 +266,25 @@ if [[ $ASUSFINGERPRINT =~ ^[Yy]$ ]]; then
     fi
 else
     printf "${YELLOW} No Asus packages installed. Moving on!\n"
+fi
+
+read -n1 -rep "${CAT} OPTIONAL - Would you like to install 8814AU WLAN driver packages from morrownr git? (y/n)" WLAN8814AU
+if [[ $WLAN8814AU =~ ^[Yy]$ ]]; then
+    printf "${GREEN} Installing 8814AU WLAN driver dependency packages...\n"    
+    wlan8814au_pkgs="linux-headers dkms git bc iw"
+    if ! $aur -S --noconfirm --needed $wlan8814au_pkgs 2>&1 | tee -a $LOG; then
+        print_error "Failed to install 8814AU WLAN driver dependency packages - please check ${LOG}\n"    
+    else    
+        printf " Cloning git packages...\n"
+        mkdir -p ~/Documents/git
+        cd ~/Documents/git
+        git clone https://github.com/morrownr/8814au.git
+        cd 8814au
+        printf " Installing 8814AU WLAN driver"
+        sudo ./install-driver.sh
+    fi
+else
+    printf "${YELLOW} No 8814AU WLAN drier packages installed. Moving on!\n"
 fi
 
 printf "${GREEN} Autoinstaller completed.\n"
