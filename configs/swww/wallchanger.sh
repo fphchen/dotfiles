@@ -8,3 +8,5 @@ randfile=$(exec ls $randdir | shuf -n 1)
 wall=$randdir/$randfile
 
 swww img ${wall} --transition-fps 60 --transition-type simple --transition-duration 2
+echo "$wall"
+cp -f $wall ~/.config/swaylock/Background.jpg
