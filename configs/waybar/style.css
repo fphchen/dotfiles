@@ -21,7 +21,6 @@
 #workspaces button:hover {
     box-shadow: inherit;
     background: transparent;
-    border: transparent;
 }
 
 #workspaces button.urgent {
