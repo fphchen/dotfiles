@@ -283,8 +283,6 @@ if [[ $WLAN8814AU =~ ^[Yy]$ ]]; then
         printf " Installing 8814AU WLAN driver"
         sudo ./install-driver.sh
         sleep 1
-        cd ..
-        rm -rf 8814au
     fi
 else
     printf "${YELLOW} No 8814AU WLAN drier packages installed. Moving on!\n"
