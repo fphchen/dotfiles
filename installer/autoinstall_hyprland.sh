@@ -101,7 +101,7 @@ read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" inst
 if [[ $inst =~ ^[Yy]$ ]]; then
     wm_pkgs="hyprland waybar wofi xdg-desktop-portal-hyprland xorg-xwayland polkit polkit-kde-agent wl-clipboard swayidle swayimg grim"
     app_pkgs="firefox libreoffice kitty zathura zathura-pdf-mupdf zathura-ps gimp gparted signal-desktop"
-    util_pkgs="neofetch rust-script pavucontrol fzf dunst usbutils wev xorg-xhost trash-cli brightnessctl nfs-utils cifs-utils smbclient gvfs-smb gvfs-nfs"
+    util_pkgs="neofetch rust-script pavucontrol fzf dunst usbutils wev xorg-xhost trash-cli brightnessctl nfs-utils cifs-utils smbclient gvfs-smb gvfs-nfs python-pip"
     font_pkgs="noto-fonts-cjk ttf-firacode-nerd"
     theme_pkgs=""
     extra_pkgs="brave-bin swww swaylock wlr-randr spotify"

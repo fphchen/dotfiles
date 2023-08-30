@@ -99,9 +99,9 @@ fi
 ### Install packages ####
 read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" inst
 if [[ $inst =~ ^[Yy]$ ]]; then
-    blackedarch_pkgs="wireshark-qt nmap gnu-netcat hcxdumptool hcxtools"
+    blackedarch_pkgs="wireshark-qt nmap gnu-netcat hcxdumptool hcxtools graphviz python-requests"
     app_pkgs="firefox libreoffice zathura zathura-pdf-mupdf zathura-ps gimp gparted"
-    util_pkgs="neofetch rust-script fzf usbutils trash-cli brightnessctl nfs-utils cifs-utils smbclient gvfs-smb gvfs-nfs"
+    util_pkgs="neofetch rust-script fzf usbutils trash-cli brightnessctl nfs-utils cifs-utils smbclient gvfs-smb gvfs-nfs python-pip"
     font_pkgs="noto-fonts-cjk"
     theme_pkgs=""
     extra_pkgs="brave-bin"
