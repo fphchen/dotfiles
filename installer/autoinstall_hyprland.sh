@@ -99,13 +99,13 @@ fi
 ### Install packages ####
 read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" inst
 if [[ $inst =~ ^[Yy]$ ]]; then
-    wm_pkgs="grim hyprland polkit polkit-kde-agent swayidle swayimg waybar wl-clipboard wofi xdg-desktop-portal-hyprland xorg-xhost xorg-xwayland swww swaylock wev wlr-randr"
+    hyprland_pkgs="grim hyprland polkit polkit-kde-agent swayidle swayimg waybar wl-clipboard wofi xdg-desktop-portal-hyprland xorg-xhost xorg-xwayland swww swaylock wev wlr-randr"
     app_pkgs="firefox gimp gparted kitty libreoffice pavucontrol signal-desktop zathura zathura-pdf-mupdf zathura-ps"
     util_pkgs="brightnessctl cifs-utils dunst fzf gvfs-nfs gvfs-smb neofetch nfs-utils python-pip rust-script smbclient trash-cli usbutils"
     font_pkgs="noto-fonts-cjk ttf-firacode-nerd"
     theme_pkgs=""
     extra_pkgs="brave-bin spotify"
-    if ! $aur -S --noconfirm --needed $wm_pkgs $app_pkgs $util_pkgs $font_pkgs $theme_pkgs $extra_pkgs 2>&1 | tee -a $LOG; then
+    if ! $aur -S --noconfirm --needed $hyprland_pkgs $app_pkgs $util_pkgs $font_pkgs $theme_pkgs $extra_pkgs 2>&1 | tee -a $LOG; then
         print_error " Failed to install additional packages - please check ${LOG}\n"
         exit 1
     fi

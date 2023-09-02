@@ -99,9 +99,9 @@ fi
 ### Install packages ####
 read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" inst
 if [[ $inst =~ ^[Yy]$ ]]; then
-    awesomewm_pkgs="awesome rofi feh picom polybar"
-    app_pkgs="firefox libreoffice kitty zathura zathura-pdf-mupdf zathura-ps gimp gparted signal-desktop"
-    util_pkgs="neofetch rust-script pavucontrol fzf xdotool sxiv usbutils trash-cli brightnessctl nfs-utils cifs-utils smbclient gvfs-smb gvfs-nfs python-pip zscroll"
+    awesomewm_pkgs="awesome feh picom polybar rofi sxiv xdotool zscroll"
+    app_pkgs="firefox gimp gparted kitty libreoffice pavucontrol signal-desktop zathura zathura-pdf-mupdf zathura-ps"
+    util_pkgs="brightnessctl cifs-utils dunst fzf gvfs-nfs gvfs-smb neofetch nfs-utils python-pip rust-script smbclient trash-cli usbutils"
     font_pkgs="noto-fonts-cjk"
     theme_pkgs=""
     extra_pkgs="brave-bin spotify"
