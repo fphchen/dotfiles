@@ -138,7 +138,14 @@ if [[ $CFG =~ ^[Yy]$ ]]; then
     git clone https://github.com/fphchen/dotfiles.git
     git clone https://github.com/fphchen/wallpapers.git
     printf "${YELLOW} Symbolic linking config files...\n"
+    ln -s ~/Docuemtns/git/fphchen/dotfiles/configs/awesome ~/.config/ 2>&1 | tee -a $LOG
+    ln -s ~/Docuemtns/git/fphchen/dotfiles/configs/polybar ~/.config/ 2>&1 | tee -a $LOG
+    ln -s ~/Docuemtns/git/fphchen/dotfiles/configs/picom ~/.config/ 2>&1 | tee -a $LOG
+    ln -s ~/Docuemtns/git/fphchen/dotfiles/configs/kitty ~/.config/ 2>&1 | tee -a $LOG
+    ln -s ~/Docuemtns/git/fphchen/dotfiles/configs/neofetch ~/.config/ 2>&1 | tee -a $LOG
+    ln -s ~/Docuemtns/git/fphchen/dotfiles/configs/rofi ~/.config/ 2>&1 | tee -a $LOG
     ln -s ~/Documents/git/fphchen/dotfiles/configs/zathura ~/.config/ 2>&1 | tee -a $LOG
+    ln -s ~/Documents/git/fphchen/dotfiles/scripts ~/.script 2>&1 | tee -a $LOG
     rm ~/.bashrc
     ln -s ~/Documents/git/fphchen/dotfiles/configs/.bashrc ~/ 2>&1 | tee -a $LOG
     ln -s ~/Documents/git/fphchen/dotfiles/configs/.vimrc ~/ 2>&1 | tee -a $LOG
