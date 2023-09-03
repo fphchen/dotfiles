@@ -105,7 +105,7 @@ if [[ $inst =~ ^[Yy]$ ]]; then
     font_pkgs="noto-fonts-cjk"
     theme_pkgs=""
     extra_pkgs="brave-bin spotify"
-    if ! $aur -S --noconfirm --needed $awesomewm_pkg $app_pkgs $util_pkgs $font_pkgs $theme_pkgs $extra_pkgs 2>&1 | tee -a $LOG; then
+    if ! $aur -S --noconfirm --needed $awesomewm_pkgs $app_pkgs $util_pkgs $font_pkgs $theme_pkgs $extra_pkgs 2>&1 | tee -a $LOG; then
         print_error " Failed to install additional packages - please check ${LOG}\n"
         exit 1
     fi
@@ -138,12 +138,12 @@ if [[ $CFG =~ ^[Yy]$ ]]; then
     git clone https://github.com/fphchen/dotfiles.git
     git clone https://github.com/fphchen/wallpapers.git
     printf "${YELLOW} Symbolic linking config files...\n"
-    ln -s ~/Docuemtns/git/fphchen/dotfiles/configs/awesome ~/.config/ 2>&1 | tee -a $LOG
-    ln -s ~/Docuemtns/git/fphchen/dotfiles/configs/polybar ~/.config/ 2>&1 | tee -a $LOG
-    ln -s ~/Docuemtns/git/fphchen/dotfiles/configs/picom ~/.config/ 2>&1 | tee -a $LOG
-    ln -s ~/Docuemtns/git/fphchen/dotfiles/configs/kitty ~/.config/ 2>&1 | tee -a $LOG
-    ln -s ~/Docuemtns/git/fphchen/dotfiles/configs/neofetch ~/.config/ 2>&1 | tee -a $LOG
-    ln -s ~/Docuemtns/git/fphchen/dotfiles/configs/rofi ~/.config/ 2>&1 | tee -a $LOG
+    ln -s ~/Documents/git/fphchen/dotfiles/configs/awesome ~/.config/ 2>&1 | tee -a $LOG
+    ln -s ~/Documents/git/fphchen/dotfiles/configs/polybar ~/.config/ 2>&1 | tee -a $LOG
+    ln -s ~/Documents/git/fphchen/dotfiles/configs/picom ~/.config/ 2>&1 | tee -a $LOG
+    ln -s ~/Documents/git/fphchen/dotfiles/configs/kitty ~/.config/ 2>&1 | tee -a $LOG
+    ln -s ~/Documents/git/fphchen/dotfiles/configs/neofetch ~/.config/ 2>&1 | tee -a $LOG
+    ln -s ~/Documents/git/fphchen/dotfiles/configs/rofi ~/.config/ 2>&1 | tee -a $LOG
     ln -s ~/Documents/git/fphchen/dotfiles/configs/zathura ~/.config/ 2>&1 | tee -a $LOG
     ln -s ~/Documents/git/fphchen/dotfiles/scripts ~/.script 2>&1 | tee -a $LOG
     rm ~/.bashrc
