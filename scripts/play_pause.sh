@@ -15,8 +15,8 @@ if [ "$1" == "--status" ]; then
     echo "$status"
     else
 	if [ "$status" = "Playing"  ]; then
-	    	echo ""
+	    	echo ""
 	else
-	    	echo "契"
+	    	echo ""
 	fi
 fi

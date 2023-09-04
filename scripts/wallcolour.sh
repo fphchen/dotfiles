@@ -5,7 +5,7 @@ wal -c
 
 # Randomly select directories in ~/Wallpapers
 # Randomly select file in above selcted directory
-initdir=~/wallpapers
+initdir=~/Documents/git/fphchen/wallpapers
 randdir=$initdir/$(exec ls $initdir | shuf -n 1)
 randfile=$(exec ls $randdir | shuf -n 1)
 wall=$randdir/$randfile
