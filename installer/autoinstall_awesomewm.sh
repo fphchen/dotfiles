@@ -99,7 +99,7 @@ fi
 ### Install packages ####
 read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" inst
 if [[ $inst =~ ^[Yy]$ ]]; then
-    awesomewm_pkgs="awesome feh picom polybar rofi sxiv xdotool zscroll"
+    awesomewm_pkgs="alacritty awesome feh picom polybar rofi sxiv xdotool zscroll"
     app_pkgs="firefox gimp gparted kitty libreoffice pavucontrol signal-desktop zathura zathura-pdf-mupdf zathura-ps"
     util_pkgs="brightnessctl cifs-utils dunst fzf gvfs-nfs gvfs-smb neofetch nfs-utils python-pip rust-script smbclient trash-cli usbutils"
     font_pkgs="noto-fonts-cjk"
@@ -138,6 +138,7 @@ if [[ $CFG =~ ^[Yy]$ ]]; then
     git clone https://github.com/fphchen/dotfiles.git
     git clone https://github.com/fphchen/wallpapers.git
     printf "${YELLOW} Symbolic linking config files...\n"
+    ln -s ~/Documents/git/fphchen/dotfiles/configs/alacritty ~/.config/ 2>&1 | tee -a $LOG
     ln -s ~/Documents/git/fphchen/dotfiles/configs/awesome ~/.config/ 2>&1 | tee -a $LOG
     ln -s ~/Documents/git/fphchen/dotfiles/configs/polybar ~/.config/ 2>&1 | tee -a $LOG
     ln -s ~/Documents/git/fphchen/dotfiles/configs/picom ~/.config/ 2>&1 | tee -a $LOG
