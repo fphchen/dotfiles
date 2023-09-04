@@ -210,7 +210,7 @@ globalkeys = gears.table.join(
               {description = "terminal", group = "launcher"}),
 
     -- Htop
-    awful.key({ modkey }, "h", function() awful.spawn("alacritty -e htop") end,
+    awful.key({ modkey }, "h", function() awful.spawn("kitty -e htop") end,
     	      {description = "htop", group = "launcher" }),
 
     -- Rofi

@@ -9,7 +9,7 @@ local myhotkeys_menu = hotkeys_popup.widget.new({ width = 1000, height = 1000, b
 --require("awful.hotkeys_popup.keys")
 
 -- This is used later as the default terminal and editors to run
-terminal = "alacritty"
+terminal = "kitty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
