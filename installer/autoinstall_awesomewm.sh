@@ -99,10 +99,10 @@ fi
 ### Install packages ####
 read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" inst
 if [[ $inst =~ ^[Yy]$ ]]; then
-    awesomewm_pkgs="alacritty awesome feh picom polybar python-pywal rofi sxiv xdotool zscroll"
+    awesomewm_pkgs="awesome feh picom polybar python-pywal rofi sxiv xdotool zscroll"
     app_pkgs="firefox gimp gparted kitty libreoffice pavucontrol signal-desktop zathura zathura-pdf-mupdf zathura-ps"
     util_pkgs="brightnessctl cifs-utils dunst fzf gvfs-nfs gvfs-smb neofetch nfs-utils python-pip rust-script smbclient trash-cli usbutils"
-    font_pkgs="noto-fonts-cjk"
+    font_pkgs="noto-fonts-cjk ttf-firacode-nerd"
     theme_pkgs=""
     extra_pkgs="brave-bin spotify"
     if ! $aur -S --noconfirm --needed $awesomewm_pkgs $app_pkgs $util_pkgs $font_pkgs $theme_pkgs $extra_pkgs 2>&1 | tee -a $LOG; then
