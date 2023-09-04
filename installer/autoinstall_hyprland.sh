@@ -39,8 +39,8 @@ if [ -f "$ISgit" ]; then
     printf "${GREEN} - AUR Helper dependencies found. Moving on!\n"
 else
     printf "${GREEN} - AUR Helper dependencies NOT found.\n"
-    read -n1 -rep "${CAT} Would you like to install git and dependencies? (y/n)" INST
-    if [[ $INST =~ ^[Yy]$ ]]; then
+    read -n1 -rep "${CAT} Would you like to install git and dependencies? (y/n)" GIT
+    if [[ $GIT =~ ^[Yy]$ ]]; then
         printf "${GREEN} Installing git and dependencies.\n"
         sudo pacman -S --noconfirm --needed git base-devel rustup
         rustup default stable
@@ -64,8 +64,8 @@ else
         aur=yay
     else
         printf "${YELLOW} - yay NOT found.\n"
-        read -n4 -rep "${CAT} paru/yay is needed, would you like to install paru or yay? " INST
-        if [[ $INST =~ paru ]]; then
+        read -n4 -rep "${CAT} paru/yay is needed, would you like to install paru or yay? " AUR
+        if [[ $AUR =~ paru ]]; then
             mkdir -p ~/Documents/git
             cd ~/Documents/git
             git clone https://aur.archlinux.org/paru.git
@@ -78,7 +78,7 @@ else
             printf "${YELLOW} Upgrading AUR packages to avoid issue.\n"
             $aur -Syu --noconfirm 2>&1 | tee -a $LOG
         else
-            if [[ $INST =~ yay ]]; then
+            if [[ $AUR =~ yay ]]; then
                 git clone https://aur.archlinux.org/yay.git
                 cd yay
                 makepkg -si --noconfirm --needed 2>&1 | tee -a $LOG
@@ -97,8 +97,8 @@ else
 fi
 
 ### Install packages ####
-read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" inst
-if [[ $inst =~ ^[Yy]$ ]]; then
+read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" PKGS
+if [[ $PKGS =~ ^[Yy]$ ]]; then
     hyprland_pkgs="grim hyprland polkit polkit-kde-agent swayidle swayimg waybar wl-clipboard wofi xdg-desktop-portal-hyprland xorg-xhost xorg-xwayland swww swaylock wev wlr-randr"
     app_pkgs="firefox gimp gparted kitty libreoffice pavucontrol signal-desktop zathura zathura-pdf-mupdf zathura-ps"
     util_pkgs="brightnessctl cifs-utils dunst fzf gvfs-nfs gvfs-smb neofetch nfs-utils python-pip rust-script smbclient trash-cli usbutils"
@@ -117,8 +117,8 @@ else
     sleep 1
 fi
 
-read -n1 -rep "${CAT} Would you like to install AMD packages? (y/n)" amd
-if [[ $amd =~ ^[Yy]$ ]]; then
+read -n1 -rep "${CAT} Would you like to install AMD packages? (y/n)" AMD
+if [[ $AMD =~ ^[Yy]$ ]]; then
     amd_pkgs="amdgpu_top"
     if ! $aur -S --noconfirm --needed $amd_pkgs 2>&1 | tee -a $LOG; then
         print_error " Failed to install AMD packages - please check ${LOG}\n"
@@ -131,8 +131,8 @@ else
 fi
 
 ### Symbolic linking Config Files ###
-read -n1 -rep "${CAT} Would you like to git clone and symbolic link config files? (y/n)" CFG
-if [[ $CFG =~ ^[Yy]$ ]]; then
+read -n1 -rep "${CAT} Would you like to git clone and symbolic link config files? (y/n)" GITCFG
+if [[ $GITCFG =~ ^[Yy]$ ]]; then
     printf "${YELLOW} Git cloning GitHub files...\n"
     mkdir -p ~/.config ~/Desktop ~/Documents ~/Downloads ~/Pictures ~/Videos ~/Temp
     mkdir -p ~/Documents/git/fphchen/
