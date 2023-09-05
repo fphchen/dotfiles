@@ -20,28 +20,42 @@ globalkeys = gears.table.join(
         function () 
             myhotkeys_menu:show_help()
         end,
-    {description="Shortcuts", group="AwesomeWM"}),
+        {description="Shortcuts", group="AwesomeWM"}),
 
     awful.key({ modkey, "Control", "Shift" }, "m", 
         function () 
             mymainmenu:show() 
         end,
-    {description = "Menu", group = "AwesomeWM"}),
+        {description = "Menu", group = "AwesomeWM"}),
 
     awful.key({ modkey, "Control", "Shift" }, "r", 
         awesome.restart,
-    {description = "Reload", group = "AwesomeWM"}),
+        {description = "Reload", group = "AwesomeWM"}),
     
     awful.key({ modkey, "Control", "Shift" }, "q",
         awesome.quit,
-    {description = "Quit", group = "AwesomeWM"}),
+        {description = "Quit", group = "AwesomeWM"}),
 
     -- Reload Wallpaper & Colour scheme
     awful.key({ modkey, "Control", "Shift" }, "w", 
         function () 
             awful.spawn.with_shell("~/.script/wallcolour.sh") 
         end,
-    {description = "Wallpaper", group = "AwesomeWM" }),
+        {description = "Wallpaper", group = "AwesomeWM" }),
+
+    awful.key({}, "Print", 
+        function () 
+            awful.spawn.with_shell("import -window root screenshot.jpg") 
+        end,
+        {description = "Screenshot", group = "AwesomeWM"}),
+
+    -- Toggle Polybar
+    awful.key({ modkey, "Control", "Shift" }, "p", 
+        function () 
+            awful.spawn.with_shell("polybar-msg cmd toggle") 
+        end,
+        {description = "Polybar Toggle", group = "AwesomeWM" }),
+
 
 
 
@@ -59,7 +73,7 @@ globalkeys = gears.table.join(
                 client.focus:kill()
             end
         end,
-    {description = "Close Focused", group = "Windows"}),
+        {description = "Close Focused", group = "Windows"}),
 
     awful.key({ modkey, "Shift" }, "Return", 
         function ()
@@ -67,11 +81,11 @@ globalkeys = gears.table.join(
                 client.focus:swap(awful.client.getmaster())
             end
         end,
-    {description = "Move to Master", group = "Windows"}),
+        {description = "Move to Master", group = "Windows"}),
 
     awful.key({ modkey, "Mod1" }, "u", 
         awful.client.urgent.jumpto,   
-    {description = "Urgent Window", group = "Windows"}),
+        {description = "Urgent Window", group = "Windows"}),
  
     awful.key({ "Mod1" }, "Tab",
         function ()
@@ -80,16 +94,17 @@ globalkeys = gears.table.join(
                 c:raise()
             end
         end,
-    {description = "Last Window", group = "Windows"}),
+        {description = "Last Window", group = "Windows"}),
 
     awful.key({ }, "F11",
         function ()
+            awful.spawn.with_shell("polybar-msg cmd toggle") 
             if client.focus then
                 client.focus.fullscreen = not client.focus.fullscreen
                 client.focus:raise()
             end
         end,
-    {description = "Fullscreen", group = "Windows"}),
+        {description = "Fullscreen", group = "Windows"}),
 
     -- Desktop Toggle
     awful.key({ modkey, "Shift" }, "d", 
@@ -107,7 +122,7 @@ globalkeys = gears.table.join(
 			    show_desktop = true
 	        end
 	    end,
-	{description = "Desktop", group = "AwesomeWM"}),
+	    {description = "Desktop", group = "AwesomeWM"}),
 
 
 
@@ -123,15 +138,15 @@ globalkeys = gears.table.join(
     -- Key bindings for Tag/Window Management
     awful.key({ modkey }, "Left",
         awful.tag.viewprev,
-    {description = "view previous", group = "Tags/Workspaces"}),
+        {description = "view previous", group = "Tags/Workspaces"}),
 
     awful.key({ modkey }, "Right",
         awful.tag.viewnext,
-    {description = "view next", group = "Tags/Workspaces"}),
+        {description = "view next", group = "Tags/Workspaces"}),
     
     awful.key({ modkey }, "Tab", 
         awful.tag.history.restore,
-    {description = "last tag", group = "Tags/Workspaces"}),
+        {description = "last tag", group = "Tags/Workspaces"}),
 
 
 
@@ -152,58 +167,42 @@ globalkeys = gears.table.join(
         function () 
             awful.spawn(terminal)
         end,
-    {description = "Terminal", group = "Launcher"}),
+        {description = "Terminal", group = "Launcher"}),
     
     -- Rofi
     awful.key({ modkey }, "q", 
         function() 
             awful.util.spawn("rofi -show")
         end,
-    {description = "Quick Launcher", group = "Launcher" }),
+        {description = "Quick Launcher", group = "Launcher" }),
 
     -- Brave
     awful.key({ modkey }, "b", 
         function() 
             awful.util.spawn("brave")
         end,
-    {description = "Browser", group = "Launcher" }),
+        {description = "Browser", group = "Launcher" }),
 
     -- Htop
     awful.key({ modkey }, "h", 
         function() 
             awful.spawn("kitty -e htop")
         end,
-    {description = "Htop", group = "Launcher" }),
+        {description = "Htop", group = "Launcher" }),
 
 -- ****************************************************************************** 
-
-    awful.key({ modkey, "Shift" }, "Print", 
-        function () 
-            awful.spawn.with_shell("import -window root screenshot.jpg") 
-        end,
-        {description = "screenshot", group = "awesome"}),
-
-    -- Toggle Polybar
-    awful.key({ modkey, "Shift" }, "p", 
-        function () 
-            awful.spawn.with_shell("polybar-msg cmd toggle") 
-        end,
-        {description = "(un)hide polybar", group = "awesome" }),
-
 -- Key bindings for Client
     awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx( 1)
         end,
-        {description = "focus next by index", group = "client"}
-    ),
+        {description = "focus next by index", group = "client"}),
    
     awful.key({ modkey,           }, "k",
         function ()
             awful.client.focus.byidx(-1)
         end,
-        {description = "focus previous by index", group = "client"}
-    ),
+        {description = "focus previous by index", group = "client"}),
     
     awful.key({ modkey, "Shift" }, "j",
         function ()
@@ -295,20 +294,47 @@ globalkeys = gears.table.join(
         end,
     {description = "decrease master window", group = "layout"}),
     
-    awful.key({ "Shift", "Control" }, "h",     function () awful.tag.incmwfact(-0.05)          end,
-              {description = "increase master window", group = "layout"}),
-    awful.key({ modkey, "Control"  }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
-              {description = "increase master clients", group = "layout"}),
-    awful.key({ modkey, "Control"  }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
-              {description = "decrease master clients", group = "layout"}),
-    awful.key({ modkey, "Shift" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
-              {description = "increase columns", group = "layout"}),
-    awful.key({ modkey, "Shift" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
-              {description = "decrease columns", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
-              {description = "next layout", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-              {description = "previous layout", group = "layout"})
+    awful.key({ "Shift", "Control" }, "h",
+        function () 
+            awful.tag.incmwfact(-0.05)
+        end,
+        {description = "increase master window", group = "layout"}),
+    
+    awful.key({ modkey, "Control"  }, "h",
+        function () 
+            awful.tag.incnmaster( 1, nil, true)
+        end,
+        {description = "increase master clients", group = "layout"}),
+    
+    awful.key({ modkey, "Control"  }, "l",
+        function ()
+            awful.tag.incnmaster(-1, nil, true) 
+        end,
+        {description = "decrease master clients", group = "layout"}),
+    
+    awful.key({ modkey, "Shift" }, "h",
+        function ()
+            awful.tag.incncol( 1, nil, true)
+        end,
+        {description = "increase columns", group = "layout"}),
+    
+    awful.key({ modkey, "Shift" }, "l",
+        function () 
+            awful.tag.incncol(-1, nil, true)
+        end,
+        {description = "decrease columns", group = "layout"}),
+    
+    awful.key({ modkey,           }, "space",
+        function ()
+            awful.layout.inc(1)
+        end,
+        {description = "next layout", group = "layout"}),
+    
+    awful.key({ modkey, "Shift"   }, "space",
+        function ()
+            awful.layout.inc(-1)
+        end,
+        {description = "previous layout", group = "layout"})
 
 -- Unused key bindings
 --    -- Prompt
