@@ -115,7 +115,7 @@ globalkeys = gears.table.join(
         end,
         {description = "restore minimized", group = "client"}),
 
-    awful.key({ modkey, "Control" }, "f",
+    awful.key({ , }, "F11",
         function ()
             local c = client.focus
             c.fullscreen = not c.fullscreen
