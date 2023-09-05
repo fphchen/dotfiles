@@ -16,6 +16,77 @@ modkey = "Mod4"
 -- {{{ Key bindings
 globalkeys = gears.table.join(
 -- Key bindings for AwesomeWM
+    awful.key({ modkey, "Control" }, "c",
+        function () 
+            local c = client.focus
+            if c then
+                c:kill()
+            end
+        end,
+        {description = "close focused", group = "client"}),
+
+    awful.key({ modkey, "Shift" }, "Return", 
+        function ()
+            local c = client.focus
+            if c then
+                c:swap(awful.client.getmaster())
+            end
+        end,
+        {description = "move to master", group = "client"}),
+
+    awful.key({ modkey, "Mod1" }, "u", 
+        awful.client.urgent.jumpto,   
+        {description = "urgent", group = "client"}),
+ 
+    awful.key({ "Mod1" }, "Tab",
+        function ()
+            local c = awful.client.focus.history.previous()
+            if c  then
+                c:raise()
+            end
+        end,
+        {description = "go back", group = "client"}),
+
+    awful.key({ }, "F11",
+        function ()
+            local c = client.focus
+            if c then
+                c.fullscreen = not c.fullscreen
+                c:raise()
+            end
+        end,
+        {description = "fullscreen", group = "client"}),
+
+    --awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     
+    --    {description = "toggle floating", group = "client"}),
+    
+-- Key bindings for Launcher
+    -- Terminal
+    awful.key({ modkey }, "t", 
+        function () 
+            awful.spawn(terminal) end,
+        {description = "terminal", group = "launcher"}),
+    
+    -- Rofi
+    awful.key({ modkey }, "q", 
+        function() 
+            awful.util.spawn("rofi -show") end,
+    	{description = "rofi", group = "launcher" }),
+
+    -- Brave
+    awful.key({ modkey }, "b", 
+        function() 
+            awful.util.spawn("brave") end,
+    	{description = "brave", group = "launcher" }),
+
+    -- Htop
+    awful.key({ modkey }, "h", 
+        function() 
+            awful.spawn("kitty -e htop") end,
+    	{description = "htop", group = "launcher" }),
+
+-- ****************************************************************************** 
+
     awful.key({ modkey, "Shift" }, "`",
         function () 
             myhotkeys_menu:show_help()
@@ -78,12 +149,13 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
+    
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
+    
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
-    awful.key({ modkey, "Control" }, "k", awful.client.urgent.jumpto,
-              {description = "urgent", group = "client"}),
+    
     awful.key({ modkey, "Control" }, "j",
         function ()
             local c = awful.client.focus.history.list[2]
@@ -95,14 +167,7 @@ globalkeys = gears.table.join(
             c:raise()
         end,
         {description = "previous", group = "client"}),
-    awful.key({ modkey,           }, "Tab",
-        function ()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end,
-        {description = "go back", group = "client"}),
+
     awful.key({ modkey, "Shift" }, "n",
         function ()
             local c = awful.client.restore()
@@ -115,39 +180,20 @@ globalkeys = gears.table.join(
         end,
         {description = "restore minimized", group = "client"}),
 
-    awful.key({ , }, "F11",
-        function ()
-            local c = client.focus
-            c.fullscreen = not c.fullscreen
-            c:raise()
-        end,
-        {description = "fullscreen", group = "client"}),
-    --awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     
-    --          {description = "toggle floating", group = "client"}),
-    awful.key({ modkey, "Control" }, "Return", 
-        function ()
-            local c = client.focus
-            c:swap(awful.client.getmaster()) 
-        end,
-        {description = "move to master", group = "client"}),
-    awful.key({ modkey, "Control" }, "c",
-        function () 
-            local c = client.focus
-            c:kill()
-        end,
-        {description = "close focused", group = "client"}),
     awful.key({ modkey,           }, "o", 
         function () 
             local c = client.focus
             c:move_to_screen()
         end,
         {description = "move to screen", group = "client"}),
-    awful.key({ modkey,           }, "t",
+    
+    awful.key({ modkey,           }, "",
         function ()
             local c = client.focus
             c.ontop = not c.ontop
         end,
         {description = "toggle keep on top", group = "client"}),
+    
     awful.key({ modkey, "Control" }, "n",
         function ()
             -- The client currently has the input focus, so it cannot be
@@ -156,6 +202,7 @@ globalkeys = gears.table.join(
             c.minimized = true
         end,
         {description = "minimize", group = "client"}),
+
     awful.key({ modkey, "Control" }, "m",
         function ()
             local c = client.focus
@@ -163,6 +210,7 @@ globalkeys = gears.table.join(
             c:raise()
         end,
         {description = "(un)maximize", group = "client"}),
+    
     awful.key({ modkey, "Control" }, "v",
         function ()
             local c = client.focus
@@ -170,6 +218,7 @@ globalkeys = gears.table.join(
             c:raise()
         end,
         {description = "(un)maximize vertically", group = "client"}),
+    
     awful.key({ modkey, "Control"   }, "b",
         function ()
             local c = client.focus
@@ -204,34 +253,17 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "previous layout", group = "layout"}),
 
--- Key bindings for Launcher
-    -- Terminal
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
-              {description = "terminal", group = "launcher"}),
 
-    -- Htop
-    awful.key({ modkey }, "h", function() awful.spawn("kitty -e htop") end,
-    	      {description = "htop", group = "launcher" }),
 
-    -- Rofi
-    awful.key({ modkey }, "r", function() awful.util.spawn("rofi -show") end,
-    	      {description = "rofi", group = "launcher" }),
 
-    -- Firefox
-    awful.key({ modkey }, "f", function() awful.util.spawn("firefox") end,
-    	      {description = "firefox", group = "launcher" }),
-    
-    -- Brave
-    awful.key({ modkey }, "b", function() awful.util.spawn("brave") end,
-    	      {description = "brave", group = "launcher" }),
-    
-    -- Spotify
-    awful.key({ modkey }, "s", function() awful.util.spawn("spotify") end,
-    	      {description = "spotify", group = "launcher" }),
 
-    -- Signal
-    awful.key({ modkey }, "d", function() awful.util.spawn("signal-desktop") end,
-    	      {description = "signal", group = "launcher" })
+
+
+
+
+
+
+
 
 -- Unused key bindings
 --    -- Prompt
