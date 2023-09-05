@@ -18,18 +18,16 @@ globalkeys = gears.table.join(
 -- Key bindings for AwesomeWM
     awful.key({ modkey, "Control" }, "c",
         function () 
-            local c = client.focus
-            if c then
-                c:kill()
+            if client.focus then
+                client.focus:kill()
             end
         end,
         {description = "close focused", group = "client"}),
 
     awful.key({ modkey, "Shift" }, "Return", 
         function ()
-            local c = client.focus
-            if c then
-                c:swap(awful.client.getmaster())
+            if client.focus then
+                client.focus:swap(awful.client.getmaster())
             end
         end,
         {description = "move to master", group = "client"}),
@@ -41,11 +39,11 @@ globalkeys = gears.table.join(
     awful.key({ "Mod1" }, "Tab",
         function ()
             local c = awful.client.focus.history.previous()
-            if c  then
+            if c then
                 c:raise()
             end
         end,
-        {description = "go back", group = "client"}),
+        {description = "previous window", group = "client"}),
 
     awful.key({ }, "F11",
         function ()
@@ -56,6 +54,29 @@ globalkeys = gears.table.join(
             end
         end,
         {description = "fullscreen", group = "client"}),
+
+-- Key bindings for Tags
+    awful.key({ modkey,           }, "Left",
+        awful.tag.viewprev,
+        {description = "view previous", group = "tag"}),
+
+    awful.key({ modkey,           }, "Right",
+        awful.tag.viewnext,
+        {description = "view next", group = "tag"}),
+    
+    awful.key({ modkey }, "Tab", 
+        awful.tag.history.restore,
+        {description = "previou tag", group = "tag"}),
+
+
+
+
+
+
+
+
+
+
 
     --awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     
     --    {description = "toggle floating", group = "client"}),
@@ -227,13 +248,13 @@ globalkeys = gears.table.join(
         end,
         {description = "(un)maximize horizontally", group = "client"}),
 
--- Key bindings for Tags
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
-              {description = "view previous", group = "tag"}),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
-              {description = "view next", group = "tag"}),
-    awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
-              {description = "go back", group = "tag"}),
+
+
+
+
+
+
+
 
 -- Key bindings for Layout
     awful.key({ "Shift", "Control" }, "l",     function () awful.tag.incmwfact( 0.05)          end,
@@ -251,19 +272,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
               {description = "next layout", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-              {description = "previous layout", group = "layout"}),
-
-
-
-
-
-
-
-
-
-
-
-
+              {description = "previous layout", group = "layout"})
 
 -- Unused key bindings
 --    -- Prompt
@@ -288,6 +297,7 @@ globalkeys = gears.table.join(
 -- This should map on the top row of your keyboard, usually 1 to 9.
 for i = 1, 5 do
     globalkeys = gears.table.join(globalkeys,
+        
         -- View tag only.
         awful.key({ modkey }, "#" .. i + 9,
             function ()
@@ -298,16 +308,7 @@ for i = 1, 5 do
                 end
             end,
             {description = "view tag #"..i, group = "tag"}),
-        -- Toggle tag display.
-        awful.key({ modkey, "Control" }, "#" .. i + 9,
-            function ()
-                local screen = awful.screen.focused()
-                local tag = screen.tags[i]
-                if tag then
-                    awful.tag.viewtoggle(tag)
-                end
-            end,
-            {description = "toggle tag #" .. i, group = "tag"}),
+
         -- Move client to tag.
         awful.key({ modkey, "Shift" }, "#" .. i + 9,
             function ()
@@ -319,6 +320,18 @@ for i = 1, 5 do
                 end
             end,
             {description = "move focused client to tag #"..i, group = "tag"}),
+
+        -- Toggle tag display.
+        awful.key({ modkey, "Control" }, "#" .. i + 9,
+            function ()
+                local screen = awful.screen.focused()
+                local tag = screen.tags[i]
+                if tag then
+                    awful.tag.viewtoggle(tag)
+                end
+            end,
+            {description = "toggle tag #" .. i, group = "tag"}),
+
         -- Toggle tag on focused client.
         awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
             function ()
