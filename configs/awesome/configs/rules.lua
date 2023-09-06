@@ -18,41 +18,32 @@ awful.rules.rules = {
      }
     },
 
-    -- Floating clients.
-    { rule_any = {
-        instance = {
-          "DTA",  -- Firefox addon DownThemAll.
-          "copyq",  -- Includes session name in class.
-          "pinentry",
-        },
-        class = {
-          "Arandr",
-          --"Blueman-manager",
-          "Gpick",
-          "Kruler",
-          "MessageWin",  -- kalarm.
-          --"Sxiv",
-          "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
-          "Wpa_gui",
-          "veromix",
-          "xtightvncviewer"},
-
-        -- Note that the name property shown in xprop might be set slightly after creation of the client
-        -- and the name shown there might not match defined rules here.
-        name = {
-          "Event Tester",  -- xev.
-        },
-        role = {
-          "AlarmWindow",  -- Thunderbird's calendar.
-          "ConfigManager",  -- Thunderbird's about:config.
-          "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
-        }
-      }, properties = { floating = true }},
-
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = false }
     },
+
+    -- Floating clients.
+    { rule_any = {
+        instance = {
+            --"copyq",
+            -- Enter window instances to be in floating mode permanently
+        },
+        class = {
+            -- "Brave",
+            -- Enter window class to be in floating mode permanently
+            -- Note that the name property shown in xprop might be set slightly after creation of the client
+            -- and the name shown there might not match defined rules here
+        },
+        name = {
+            -- "Event Tester", -- xev
+            -- Enter window name to be in floating mode permanently
+        },
+        role = {
+            --"pop-up", -e.g. Google Chrome's (detached) Developer Tools
+            -- Enter window role to be in floating mode permanently
+        }
+      }, properties = { floating = true, titlebars_enabled = true, placement = awful.placement.centered }},
 
     -- Set Firefox to always map on the tag named "WEB" on screen 1.
     { rule = { class = "[Ff]irefox" },

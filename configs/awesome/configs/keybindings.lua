@@ -66,7 +66,25 @@ globalkeys = gears.table.join(
         function () 
             awful.spawn.with_shell("polybar-msg cmd toggle") 
         end,
-        {description = "Polybar Toggle", group = "AwesomeWM" }),
+        {description = "Polybar", group = "AwesomeWM" }),
+
+        -- Desktop Toggle
+    awful.key({ modkey, "Control", "Shift" }, "d", 
+    	function ()
+            local c = client.focus
+	        if show_desktop then
+		        for _, c in ipairs(client.get()) do
+			        c:emit_signal("request::activate", "key.unminimize", {raise = true})
+		        end
+			    show_desktop = false
+	        else
+		        for _, c in ipairs(client.get()) do
+			        c.minimized = true
+		        end
+			    show_desktop = true
+	        end
+	    end,
+	    {description = "Desktop", group = "AwesomeWM"}),
 
     -- Key bindings for Window Management
     awful.key({ modkey, "Control" }, "j",
@@ -106,17 +124,19 @@ globalkeys = gears.table.join(
         {description = "Increase Master", group = "Windows"}),
 
     awful.key({ modkey, "Control" }, "c",
-        function () 
-            if client.focus then
-                client.focus:kill()
+        function ()
+            local c = client.focus
+            if c then
+                c:kill()
             end
         end,
         {description = "Close Focused", group = "Windows"}),
 
     awful.key({ modkey, "Shift" }, "Return", 
         function ()
-            if client.focus then
-                client.focus:swap(awful.client.getmaster())
+            local c = client.focus
+            if c then
+                c:swap(awful.client.getmaster())
             end
         end,
         {description = "Move to Master", group = "Windows"}),
@@ -146,37 +166,68 @@ globalkeys = gears.table.join(
         end,
         {description = "Previous Window", group = "Windows"}),
 
+    awful.key({ modkey, }, "n",
+        function ()
+            local c = awful.client.restore()
+            -- Focus restored client
+            if c then
+                c:emit_signal(
+                    "request::activate", "key.unminimize", {raise = true}
+                )
+            end
+        end,
+        {description = "Minimize Restore", group = "Windows"}),
+
+    awful.key({ modkey, "Control" }, "n",
+        function ()
+            -- The client currently has the input focus, so it cannot be
+            -- minimized, since minimized clients can't have the focus.
+            local c = client.focus
+            if c then
+                c.minimized = true
+            end
+        end,
+        {description = "Minimize", group = "Windows"}),
+
+    awful.key({ modkey, "Control" }, "m",
+        function ()
+            local c = client.focus
+            if c then
+                c.maximized = not c.maximized
+                c:raise()
+            end
+        end,
+        {description = "Maximize", group = "Windows"}),
+
     awful.key({ }, "F11",
         function ()
-            awful.spawn.with_shell("polybar-msg cmd toggle") 
-            if client.focus then
-                client.focus.fullscreen = not client.focus.fullscreen
-                client.focus:raise()
+            awful.spawn.with_shell("polybar-msg cmd toggle")
+            local c = client.focus
+            if c then
+                c.fullscreen = not c.fullscreen
+                c:raise()
             end
         end,
         {description = "Fullscreen", group = "Windows"}),
 
-    -- Desktop Toggle
-    awful.key({ modkey, "Shift" }, "d", 
-    	function ()
+    awful.key({ modkey, "Mod1"}, "f",  
+        function ()
             local c = client.focus
-	        if show_desktop then
-		        for _, c in ipairs(client.get()) do
-			        c:emit_signal("request::activate", "key.unminimize", {raise = true})
-		        end
-			    show_desktop = false
-	        else
-		        for _, c in ipairs(client.get()) do
-			        c.minimized = true
-		        end
-			    show_desktop = true
-	        end
-	    end,
-	    {description = "Desktop", group = "AwesomeWM"}),
+            if c then
+                c.floating = not c.floating
+                c:raise()
+            end
+        end,
+        {description = "Floating", group = "Windows"}),
 
-    --awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     
-    --    {description = "toggle floating", group = "client"}),
-
+     awful.key({ modkey, "Mod1"}, "t",                           
+         function ()
+             local c = client.focus
+             if c then
+                 c.ontop = not c.ontop
+             end
+         end,
+         {description = "On Top", group = "Windows"}),
 
     -- Key bindings for Window Layout Management
     awful.key({ modkey,           }, "space",
@@ -246,41 +297,6 @@ globalkeys = gears.table.join(
         {description = "Htop", group = "Launcher" }),
 
 -- ****************************************************************************** 
-    awful.key({ modkey, }, "n",
-        function ()
-            local c = awful.client.restore()
-            -- Focus restored client
-            if c then
-                c:emit_signal(
-                    "request::activate", "key.unminimize", {raise = true}
-                )
-            end
-        end,
-        {description = "restore minimized", group = "client"}),
-
-    awful.key({ modkey,           }, "",
-        function ()
-            local c = client.focus
-            c.ontop = not c.ontop
-        end,
-        {description = "toggle keep on top", group = "client"}),
-    
-    awful.key({ modkey, "Control" }, "n",
-        function ()
-            -- The client currently has the input focus, so it cannot be
-            -- minimized, since minimized clients can't have the focus.
-            local c = client.focus
-            c.minimized = true
-        end,
-        {description = "minimize", group = "client"}),
-
-    awful.key({ modkey, "Control" }, "m",
-        function ()
-            local c = client.focus
-            c.maximized = not c.maximized
-            c:raise()
-        end,
-        {description = "(un)maximize", group = "client"}),
 
 -- Key bindings for Layout
     awful.key({ modkey, "Shift" }, "h",
@@ -311,19 +327,20 @@ for i = 1, 5 do
                     tag:view_only()
                 end
             end,
-            {description = "view tag #"..i, group = "tag"}),
+            {description = "View Workspaces "..i, group = "Tags/Workspaces"}),
 
         -- Move client to tag.
         awful.key({ modkey, "Shift" }, "#" .. i + 9,
             function ()
-                if client.focus then
-                    local tag = client.focus.screen.tags[i]
+                local c = client.focus
+                if c then
+                    local tag = c.screen.tags[i]
                     if tag then
-                        client.focus:move_to_tag(tag)
+                        c:move_to_tag(tag)
                     end
                 end
             end,
-            {description = "move focused client to tag #"..i, group = "tag"}),
+            {description = "Move Window to Workspaces "..i, group = "Tags/Workspaces"}),
 
         -- Toggle tag display.
         awful.key({ modkey, "Control" }, "#" .. i + 9,
@@ -334,19 +351,20 @@ for i = 1, 5 do
                     awful.tag.viewtoggle(tag)
                 end
             end,
-            {description = "toggle tag #" .. i, group = "tag"}),
+            {description = "Display All Windows on Workspaces " .. i, group = "Tags/Workspaces"}),
 
         -- Toggle tag on focused client.
         awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
             function ()
-                if client.focus then
-                    local tag = client.focus.screen.tags[i]
+                local c = client.focus
+                if c then
+                    local tag = c.screen.tags[i]
                     if tag then
-                        client.focus:toggle_tag(tag)
+                        c:toggle_tag(tag)
                     end
                 end
             end,
-            {description = "toggle focused client on tag #" .. i, group = "tag"})
+            {description = "Display Focused Window on Workspaces " .. i, group = "Tags/Workspaces"})
     )
 end
 
@@ -370,7 +388,9 @@ root.keys(globalkeys)
 --    awful.key({ modkey,           }, "o", 
 --        function () 
 --            local c = client.focus
---            c:move_to_screen()
+--            if c then
+--                c:move_to_screen()
+--            end
 --        end,
 --        {description = "Move to Screen", group = "Screens"}),
 --
@@ -389,15 +409,19 @@ root.keys(globalkeys)
 --    awful.key({ modkey, "Control" }, "v",
 --        function ()
 --            local c = client.focus
---            c.maximized_vertical = not c.maximized_vertical
---            c:raise()
+--            if c then
+--                c.maximized_vertical = not c.maximized_vertical
+--                c:raise()
+--            end
 --        end,
 --        {description = "Maximize Vertically Toggle", group = "Windows"}),
 --    
 --    awful.key({ modkey, "Control"   }, "b",
 --        function ()
 --            local c = client.focus
---            c.maximized_horizontal = not c.maximized_horizontal
---            c:raise()
+--            if c then
+--                c.maximized_horizontal = not c.maximized_horizontal
+--                c:raise()
+--            end
 --        end,
 --        {description = "Maximize Horizontally Toggle", group = "Windows"}),
