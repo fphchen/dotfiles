@@ -216,7 +216,7 @@ globalkeys = gears.table.join(
         awful.tag.history.restore,
         {description = "Last Workspaces", group = "Tags/Workspaces"}),
 
--- Key bindings for Launcher
+    -- Key bindings for Launcher
     -- Terminal
     awful.key({ modkey }, "t", 
         function () 
@@ -296,56 +296,6 @@ globalkeys = gears.table.join(
         {description = "decrease columns", group = "layout"})
 )
 
--- Unused key bindings
---    -- Prompt
---    awful.key({ modkey }, "x",
---        function ()
---            awful.prompt.run {
---                prompt = "Run Lua code: ",
---                textbox = awful.screen.focused().mypromptbox.widget,
---                exe_callback = awful.util.eval,
---                history_path = awful.util.get_cache_dir() .. "/history_eval"
---            }
---        end,
---        {description = "Lua Prompt", group = "AwesomeWM"}),
---    
---    -- Key bindings for Screen Management
---    awful.key({ modkey,           }, "o", 
---        function () 
---            local c = client.focus
---            c:move_to_screen()
---        end,
---        {description = "Move to Screen", group = "Screens"}),
---
---    awful.key({ modkey, "Control" }, "j", 
---        function () 
---            awful.screen.focus_relative(1) 
---        end,
---        {description = "Next Screen", group = "Screens"}),
---    
---    awful.key({ modkey, "Control" }, "k",
---        function () 
---            awful.screen.focus_relative(-1)
---        end,
---        {description = "Previous Screen", group = "Screens"}),
---    
---    awful.key({ modkey, "Control" }, "v",
---        function ()
---            local c = client.focus
---            c.maximized_vertical = not c.maximized_vertical
---            c:raise()
---        end,
---        {description = "Maximize Vertically Toggle", group = "Windows"}),
---    
---    awful.key({ modkey, "Control"   }, "b",
---        function ()
---            local c = client.focus
---            c.maximized_horizontal = not c.maximized_horizontal
---            c:raise()
---        end,
---        {description = "Maximize Horizontally Toggle", group = "Windows"}),
-
-
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
@@ -400,7 +350,54 @@ for i = 1, 5 do
     )
 end
 
--- Set keys
+-- Set Global Keys
 root.keys(globalkeys)
--- }}}
 
+-- Unused key bindings
+--    -- Prompt
+--    awful.key({ modkey }, "x",
+--        function ()
+--            awful.prompt.run {
+--                prompt = "Run Lua code: ",
+--                textbox = awful.screen.focused().mypromptbox.widget,
+--                exe_callback = awful.util.eval,
+--                history_path = awful.util.get_cache_dir() .. "/history_eval"
+--            }
+--        end,
+--        {description = "Lua Prompt", group = "AwesomeWM"}),
+--    
+--    -- Key bindings for Screen Management
+--    awful.key({ modkey,           }, "o", 
+--        function () 
+--            local c = client.focus
+--            c:move_to_screen()
+--        end,
+--        {description = "Move to Screen", group = "Screens"}),
+--
+--    awful.key({ modkey, "Control" }, "j", 
+--        function () 
+--            awful.screen.focus_relative(1) 
+--        end,
+--        {description = "Next Screen", group = "Screens"}),
+--    
+--    awful.key({ modkey, "Control" }, "k",
+--        function () 
+--            awful.screen.focus_relative(-1)
+--        end,
+--        {description = "Previous Screen", group = "Screens"}),
+--    
+--    awful.key({ modkey, "Control" }, "v",
+--        function ()
+--            local c = client.focus
+--            c.maximized_vertical = not c.maximized_vertical
+--            c:raise()
+--        end,
+--        {description = "Maximize Vertically Toggle", group = "Windows"}),
+--    
+--    awful.key({ modkey, "Control"   }, "b",
+--        function ()
+--            local c = client.focus
+--            c.maximized_horizontal = not c.maximized_horizontal
+--            c:raise()
+--        end,
+--        {description = "Maximize Horizontally Toggle", group = "Windows"}),
