@@ -16,23 +16,24 @@ editor_cmd = terminal .. " -e " .. editor
 -- {{{ Menu
 -- Create a launcher widget and a main menu
 myawesomemenu = {
-   { "hotkeys", function() myhotkeys_menu:show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal },
-				    { "reload", awesome.restart },
-				    { "exit to tty", function() awesome.quit() end },
-				    { "restart", function() awful.spawn.with_shell("shutdown -r now") end },
-				    { "shutdown", function() awful.spawn.with_shell("shutdown now") end }
-                                  }
-                        })
-
--- mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
---                                      menu = mymainmenu })
+mymainmenu = awful.menu(
+    { items = 
+        { 
+        { "Awesome", myawesomemenu, beautiful.awesome_icon },
+        { "Shortcuts", function() myhotkeys_menu:show_help(nil, awful.screen.focused()) end },
+        { "Terminal", terminal },
+		{ "Reload", awesome.restart },
+		{ "Quit", function() awesome.quit() end },
+		{ "Restart", function() awful.spawn.with_shell("reboot") end },
+		{ "Poweroff", function() awful.spawn.with_shell("poweroff") end }
+        }
+    }
+)
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
--- }}}
+
+-- mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
+--                                      menu = mymainmenu })

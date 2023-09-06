@@ -38,13 +38,13 @@ globalkeys = gears.table.join(
 
     awful.key({ modkey, "Control", "Shift" }, "r",
         function ()
-            awful.spawn.with_shell("shutdown -r now")
+            awful.spawn.with_shell("reboot")
         end,
         {description = "Reboot", group = "AwesomeWM"}),
 
     awful.key({ modkey, "Control", "Shift" }, "p",
         function ()
-            awful.spawn.with_shell("shutdown now")
+            awful.spawn.with_shell("poweroff")
         end,
         {description = "Poweroff", group = "AwesomeWM"}),
 
