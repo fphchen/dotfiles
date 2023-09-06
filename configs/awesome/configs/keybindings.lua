@@ -28,13 +28,25 @@ globalkeys = gears.table.join(
         end,
         {description = "Menu", group = "AwesomeWM"}),
 
-    awful.key({ modkey, "Control", "Shift" }, "r", 
+    awful.key({ modkey, "Control", "Shift" }, "a", 
         awesome.restart,
         {description = "Reload", group = "AwesomeWM"}),
     
     awful.key({ modkey, "Control", "Shift" }, "q",
         awesome.quit,
         {description = "Quit", group = "AwesomeWM"}),
+
+    awful.key({ modkey, "Control", "Shift" }, "r",
+        function ()
+            awful.spawn.with_shell("shutdown -r now")
+        end,
+        {description = "Reboot", group = "AwesomeWM"}),
+
+    awful.key({ modkey, "Control", "Shift" }, "p",
+        function ()
+            awful.spawn.with_shell("shutdown now")
+        end,
+        {description = "Poweroff", group = "AwesomeWM"}),
 
     -- Reload Wallpaper & Colour scheme
     awful.key({ modkey, "Control", "Shift" }, "w", 
@@ -227,7 +239,7 @@ globalkeys = gears.table.join(
         {description = "Browser", group = "Launcher" }),
 
     -- Htop
-    awful.key({ modkey }, "h", 
+    awful.key({ modkey }, "p", 
         function() 
             awful.spawn("kitty -e htop")
         end,
