@@ -89,7 +89,7 @@ globalkeys = gears.table.join(
     -- Key bindings for Window Management
     awful.key({ modkey, "Control" }, "j",
         function ()
-            awful.client.focus.byidx( 1)
+            awful.client.focus.byidx(1)
         end,
         {description = "Focus Next", group = "Windows"}),
    
@@ -145,16 +145,7 @@ globalkeys = gears.table.join(
         awful.client.urgent.jumpto,   
         {description = "Urgent Window", group = "Windows"}),
  
-    awful.key({ "Mod1" }, "Tab",
-        function ()
-            local c = awful.client.focus.history.previous()
-            if c then
-                c:raise()
-            end
-        end,
-        {description = "Last Window", group = "Windows"}),
-
-    awful.key({ modkey, }, "j",
+    awful.key({ "Mod1", }, "Tab",
         function ()
             local c = awful.client.focus.history.list[2]
             client.focus = c
@@ -162,9 +153,8 @@ globalkeys = gears.table.join(
             if t then
                 t:view_only()
             end
-            c:raise()
         end,
-        {description = "Previous Window", group = "Windows"}),
+        {description = "Last Window", group = "Windows"}),
 
     awful.key({ modkey, }, "n",
         function ()
@@ -194,7 +184,6 @@ globalkeys = gears.table.join(
             local c = client.focus
             if c then
                 c.maximized = not c.maximized
-                c:raise()
             end
         end,
         {description = "Maximize", group = "Windows"}),
@@ -205,7 +194,6 @@ globalkeys = gears.table.join(
             local c = client.focus
             if c then
                 c.fullscreen = not c.fullscreen
-                c:raise()
             end
         end,
         {description = "Fullscreen", group = "Windows"}),
@@ -215,7 +203,6 @@ globalkeys = gears.table.join(
             local c = client.focus
             if c then
                 c.floating = not c.floating
-                c:raise()
             end
         end,
         {description = "Floating", group = "Windows"}),
@@ -244,7 +231,7 @@ globalkeys = gears.table.join(
 
     awful.key({ modkey, "Control" }, "Up",
         function () 
-            awful.tag.incnmaster( 1, nil, true)
+            awful.tag.incnmaster(1, nil, true)
         end,
         {description = "Increase Master Clients", group = "Layout"}),
     
@@ -294,22 +281,7 @@ globalkeys = gears.table.join(
         function() 
             awful.spawn("kitty -e htop")
         end,
-        {description = "Htop", group = "Launcher" }),
-
--- ****************************************************************************** 
-
--- Key bindings for Layout
-    awful.key({ modkey, "Shift" }, "h",
-        function ()
-            awful.tag.incncol( 1, nil, true)
-        end,
-        {description = "increase columns", group = "layout"}),
-    
-    awful.key({ modkey, "Shift" }, "l",
-        function () 
-            awful.tag.incncol(-1, nil, true)
-        end,
-        {description = "decrease columns", group = "layout"})
+        {description = "Htop", group = "Launcher" })
 )
 
 -- Bind all key numbers to tags.
@@ -425,3 +397,15 @@ root.keys(globalkeys)
 --            end
 --        end,
 --        {description = "Maximize Horizontally Toggle", group = "Windows"}),
+--
+--    awful.key({ modkey, "Shift" }, "h",                       -
+--         function ()
+--             awful.tag.incncol(1, nil, true)
+--         end,
+--         {description = "Increase Columns", group = "Layout"}),
+--     
+--    awful.key({ modkey, "Shift" }, "l",
+--         function () 
+--             awful.tag.incncol(-1, nil, true)
+--         end,
+--         {description = "Decrease Columns", group = "Layout"})

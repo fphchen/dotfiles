@@ -9,11 +9,7 @@ source /usr/share/fzf/completion.bash
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
-
-# Enable VIM commands in terminal
-set -o vi
 
 # Enable AutoCorrect
 shopt -s cdspell
@@ -21,23 +17,23 @@ shopt -s cdspell
 # Terminal Shortcut Alias
 alias clr='clear'
 alias h='history'
-alias lsa='ls -ah'
-alias lsl='ls -l'
+alias ls='ls --color=auto'
 alias lsla='ls -lah'
 alias ka='killall'
+alias pk='pkill'
 alias now='date +%Y%m%d%H%M'
 
 # Terminal Directory Alias
 alias ~='cd ~'
 alias r='cd /'
-alias ..='cd ..;pwd'
-alias .2='cd ..; cd ..;pwd'
-alias .3='cd ..; cd ..; cd ..;pwd'
-alias rmdir='sudo rm -rf'
+alias ..='cd ..; pwd'
+alias ...='cd ..; cd ..; pwd'
+alias ....='cd ..; cd ..; cd ..; pwd'
+alias rmd='rm -rf'
 
 # Pacman Alias
 alias pcm='sudo pacman'
-alias pcmremove='sudo pacman -R $(pacman -Qdtq)'
+alias parucr='paru -Sccd'
 
 # 202333 Calendar Alias
 alias jan='cal -m 01 2023'
@@ -60,18 +56,6 @@ alias s.brc='source ~/.bashrc'
 alias v.brc='vim ~/.bashrc'
 alias v.vrc='vim ~/.vimrc'
 
-# Hyprland Alias
-alias v.hypr='vim ~/.config/hypr/hyprland.conf'
-alias v.waybar='vim ~/.config/waybar/config'
-
-# AsesomeWM Alias
-alias vrc.lua='vim ~/.config/awesome/rc.lua'
-alias vtheme.lua='vim ~/.config/awesome/theme.lua'
-alias vpoly='vim ~/.config/polybar/config.ini'
-
-# lf Alias
-alias vlf='vim ~/.config/lf/lfrc'
-
 # Git
 alias gi='git init'
 alias ga.='git add .'
@@ -80,10 +64,8 @@ alias gc='git commit'
 alias gps='git push'
 alias gpl='git pull'
 alias gitdir='cd ~/Documents/git'
-alias fphchen='cd ~/Documents/git/fphchen/'
-
-# Key Binding
-bind -x '"\C-f":exec lf'
+alias dotfiles='cd ~/Documents/git/fphchen/dotfiles'
+alias wallpapers='cd ~/Documents/git/fphchen/wallpapers'
 
 # Function Alias
 mkcd (){
@@ -97,4 +79,6 @@ alias peaclock='peaclock --config-dir ~/.config/peaclock'
 echo -e "\n"
 neofetch
 echo -e "\nWelcome ${USER^}, AVDENTES FORTVNA IVVAT!\n"
+
+# Enable VIM commands in terminal
 set -o vi
