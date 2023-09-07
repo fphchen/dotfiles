@@ -1,65 +1,45 @@
 local awful = require("awful")
-local beautiful = require("beautiful")
+local ruled = require("ruled")
 
--- {{{ Rules
--- Rules to apply to new clients (through the "manage" signal).
-awful.rules.rules = {
-    -- All clients will match this rule.
-    { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_width = 0,
-					 border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
-                     raise = true,
-                     keys = clientkeys,
-                     buttons = clientbuttons,
-                     screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
-     }
-    },
-
-    -- Add titlebars to normal clients and dialogs
-    { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = false }
-    },
-
-    -- Floating clients.
-    { rule_any = {
-        instance = {
-            --"copyq",
-            -- Enter window instances to be in floating mode permanently
-        },
-        class = {
-            -- "Brave",
-            -- Enter window class to be in floating mode permanently
-            -- Note that the name property shown in xprop might be set slightly after creation of the client
-            -- and the name shown there might not match defined rules here
-        },
-        name = {
-            -- "Event Tester", -- xev
-            -- Enter window name to be in floating mode permanently
-        },
-        role = {
-            --"pop-up", -e.g. Google Chrome's (detached) Developer Tools
-            -- Enter window role to be in floating mode permanently
+-- Rules
+-- Rules to apply to new clients.
+ruled.client.connect_signal("request::rules", 
+    function()
+        -- All clients will match this rule.
+        ruled.client.append_rule {
+            id         = "global",
+            rule       = { },
+            properties = {
+                focus     = awful.client.focus.filter,
+                raise     = true,
+                screen    = awful.screen.preferred,
+                placement = awful.placement.no_overlap+awful.placement.no_offscreen
+            }
         }
-      }, properties = { floating = true, titlebars_enabled = true, placement = awful.placement.centered }},
-
-    -- Set Firefox to always map on the tag named "WEB" on screen 1.
-    { rule = { class = "[Ff]irefox" },
-      properties = { screen = 1, tag = "WEB" } },
-    
-    -- Set Brave to always map on the tag named "WEB" on screen 1.
-    { rule = { class = "[Bb]rave" },
-      properties = { screen = 1, tag = "WEB" } },
-    
-    -- Set Spotify to always map on the tag named "MUSIC" on screen 1.
-    { rule = { class = "[Ss]potify" },
-      properties = { screen = 1, tag = "MUSIC" } },
-    
-    -- Set Signal to always map on the tag named "IM" on screen 1.
-    { rule = { class = "[Ss]ignal" },
-      properties = { screen = 1, tag = "IM" } },
-}
--- }}}
-
+        -- Disable Titlebars for Normal and Dialogs
+        ruled.client.append_rule {
+            id         = "titlebars",
+            rule_any   = { type = { "normal", "dialog" } },
+            properties = { titlebars_enabled = false }
+        }
+        -- Specific Floating Clients Rules
+        ruled.client.append_rule {
+            id       = "floating",
+            rule_any = {
+                -- "Brave",
+                instance = {},
+                class    = {},
+                -- Note that the name property shown in xprop might be set slightly after creation of the client
+                -- and the name shown there might not match defined rules here.
+                name    = {},
+                role    = {}
+            },
+            properties = { floating = true, titlebars_enabled = true }
+        }
+        ---- Set Firefox to always map on the tag named "2" on screen 1.
+        ruled.client.append_rule {
+            rule = { class = "[Ss]ignal" },
+            properties = { screen = 1, tag = "2" }
+        }
+    end
+)

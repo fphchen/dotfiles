@@ -1,47 +1,57 @@
+local awful = require("awful")
+local ruled = require("ruled")
 local naughty = require("naughty")
 
--- {{{ Error handling
+-- Notifications
+
+-- Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
-if awesome.startup_errors then
-    naughty.notify({ preset = naughty.config.presets.critical,
-                     title = "Oops, there were errors during startup!",
-                     text = awesome.startup_errors })
-end
+naughty.connect_signal("request::display_error", function(message, startup)
+    naughty.notification {
+        urgency = "critical",
+        title   = "Oops, an error happened"..(startup and " during startup!" or "!"),
+        message = message
+    }
+end)
 
--- Handle runtime errors after startup
-do
-    local in_error = false
-    awesome.connect_signal("debug::error", function (err)
-        -- Make sure we don't go into an endless error loop
-        if in_error then return end
-        in_error = true
+ruled.notification.connect_signal('request::rules',
+    function()
+        -- All notifications will match this rule.
+        ruled.notification.append_rule {
+            rule       = { },
+            properties = {
+                screen = awful.screen.preferred,
+                implicit_timeout = 5,
+            }
+        }
+    end
+)
 
-        naughty.notify({ preset = naughty.config.presets.critical,
-                         title = "Oops, an error happened!",
-                         text = tostring(err) })
-        in_error = false
-    end)
-end
--- }}}
+naughty.connect_signal("request::display",
+    function(n)
+        naughty.layout.box { notification = n }
+    end
+)
+
 -- Notification settings
 naughty.config.defaults['icon_size'] = 80
 naughty.config.defaults['position'] = 'bottom_left'
 naughty.config.presets.low.timeout = 5
 naughty.config.presets.normal.timeout = 10
 
--- Surpress Brave ads notification
-naughty.config.presets.brave = { 
-	callback = function()
-		return false
-	end
-}
-table.insert(naughty.dbus.config.mapping, {{appname = "Brave"}, naughty.config.presets.brave})
-
 -- Surpress Spotify notification
 naughty.config.presets.spotify = { 
-	callback = function()
-		return false
-	end
+	callback = 
+        function()
+		    return false
+	    end
 }
+
 table.insert(naughty.dbus.config.mapping, {{appname = "Spotify"}, naughty.config.presets.spotify})
+
+---- Enable sloppy focus, so that focus follows mouse.
+--client.connect_signal("mouse::enter", function(c)
+--    c:activate { context = "mouse_enter", raise = false }
+--end
+--)

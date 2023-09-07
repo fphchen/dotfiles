@@ -21,7 +21,7 @@ clientbuttons = gears.table.join(
     )
 )
 
--- {{{ Signals
+-- Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", 
     function (c)
@@ -37,7 +37,7 @@ client.connect_signal("manage",
         end
     end
 )
-
+--
 client.connect_signal("manage", 
     function (c)
 	    if c.class == nil then c. minimized = true

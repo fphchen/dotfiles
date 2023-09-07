@@ -64,7 +64,8 @@ client.connect_signal("request::titlebars",
 ---- Hook called when a client spawns
 --client.connect_signal("manage", function(c)
 --	setTitlebar(c, c.floating or c.first_tag.layout == awful.layout.suit.floating)
---end)
+--end
+--)
 --
 ---- Show titlebars on tags with the floating layout
 --tag.connect_signal("property::layout", function(t)
@@ -78,5 +79,6 @@ client.connect_signal("request::titlebars",
 --			setTitlebar(c, false)
 --		end
 --	end
---end)
+--end
+--)
 
