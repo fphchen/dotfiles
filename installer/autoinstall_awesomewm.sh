@@ -99,7 +99,7 @@ fi
 ### Install packages ####
 read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" PKGS
 if [[ $PKGS =~ ^[Yy]$ ]]; then
-    awesomewm_pkgs="awesome feh picom polybar python-pywal rofi sxiv xdotool zscroll"
+    awesomewm_pkgs="awesome-git feh picom polybar python-pywal rofi sxiv xdotool zscroll"
     app_pkgs="firefox gimp gparted kitty libreoffice pavucontrol signal-desktop zathura zathura-pdf-mupdf zathura-ps"
     util_pkgs="brightnessctl cifs-utils dunst fzf gvfs-nfs gvfs-smb neofetch nfs-utils pacman-contrib python-pip rust-script slurp smbclient trash-cli usbutils"
     font_pkgs="noto-fonts-cjk ttf-firacode-nerd"
