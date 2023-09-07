@@ -33,7 +33,7 @@ screen.connect_signal("request::desktop_decoration",
         local l = awful.layout.suit
         local layouts = {l.tile, l.tile, l,tile,fair, l.tile.top, l.tile}
         awful.tag(names, s, layouts)
-        awful.screen.padding(screen[s], {top=15})
+        awful.screen.padding(screen[s], {top=45})
     end
 )
 
@@ -50,26 +50,5 @@ client.connect_signal("manage",
             -- Prevent clients from being unreachable after screen count changes.
             awful.placement.no_offscreen(c)
         end
-    end
-)
-
--- {{{ Wallpaper
-screen.connect_signal("request::wallpaper", 
-    function(s)
-        awful.wallpaper {
-            screen = s,
-            widget = {
-                {
-                    image     = beautiful.wallpaper,
-                    upscale   = true,
-                    downscale = true,
-                    widget    = wibox.widget.imagebox,
-                },
-                valign = "center",
-                halign = "center",
-                tiled  = false,
-                widget = wibox.container.tile,
-            }
-        }
     end
 )

@@ -8,8 +8,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
-
-
 }
 
 mymainmenu = awful.menu({

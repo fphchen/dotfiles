@@ -16,7 +16,7 @@ ruled.client.connect_signal("request::rules",
                 placement = awful.placement.no_overlap+awful.placement.no_offscreen
             }
         }
-        -- Disable Titlebars for Normal and Dialogs
+        -- Disable Titlebars for Normal and Dialog Windows
         ruled.client.append_rule {
             id         = "titlebars",
             rule_any   = { type = { "normal", "dialog" } },
@@ -27,19 +27,24 @@ ruled.client.connect_signal("request::rules",
             id       = "floating",
             rule_any = {
                 -- "Brave",
-                instance = {},
+                instance = {"pavucontrol"},
                 class    = {},
                 -- Note that the name property shown in xprop might be set slightly after creation of the client
                 -- and the name shown there might not match defined rules here.
                 name    = {},
                 role    = {}
             },
-            properties = { floating = true, titlebars_enabled = true }
+            properties = { floating = true, titlebars_enabled = true, placement = awful.placement.centered}
         }
-        ---- Set Firefox to always map on the tag named "2" on screen 1.
+        -- Set Spotify to always be on "WEB"
+        ruled.client.append_rule {
+            rule = { class = "[Ss]potify" },
+            properties = { screen = 1, tag = "MUSIC" }
+        }
+        -- Set Signal to always be on "IM"
         ruled.client.append_rule {
             rule = { class = "[Ss]ignal" },
-            properties = { screen = 1, tag = "2" }
+            properties = { screen = 1, tag = "IM" }
         }
     end
 )

@@ -1,6 +1,7 @@
+require("configs.ui")
 require("configs.menu")
 require("configs.layout")
-require("configs.wibar")
+--require("configs.wibar")
 require("configs.mousebindings")
 require("configs.keybindings")
 require("configs.rules")
