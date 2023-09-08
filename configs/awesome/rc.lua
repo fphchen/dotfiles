@@ -10,6 +10,7 @@ require("awful.autofocus")
 -- when client with a matching name is opened:
 local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys.vim")
+require("awful.hotkeys_popup.keys.firefox")
 
 -- Default terminal and editor to run.
 terminal = "kitty"

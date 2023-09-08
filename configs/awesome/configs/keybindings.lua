@@ -145,7 +145,7 @@ awful.keyboard.append_global_keybindings({
         end,
         {description = "Focus Previous", group = "WINDOWS"}
     ),
-    awful.key({ "Mod1", }, "Tab",
+    awful.key({ "Mod1" }, "Tab",
         function ()
             local c = awful.client.focus.history.list[2]
             client.focus = c

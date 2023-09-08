@@ -18,7 +18,7 @@ ruled.client.connect_signal("request::rules",
         }
         -- Disable Titlebars for Normal and Dialog Windows
         ruled.client.append_rule {
-            id         = "titlebars",
+            id         = "notitlebars",
             rule_any   = { type = { "normal", "dialog" } },
             properties = { titlebars_enabled = false }
         }
@@ -27,7 +27,7 @@ ruled.client.connect_signal("request::rules",
             id       = "floating",
             rule_any = {
                 -- "Brave",
-                instance = {"pavucontrol"},
+                instance = {"pavucontrol", "blueman-manager", "nm-connection-editor"},
                 class    = {},
                 -- Note that the name property shown in xprop might be set slightly after creation of the client
                 -- and the name shown there might not match defined rules here.
@@ -46,5 +46,17 @@ ruled.client.connect_signal("request::rules",
             rule = { class = "[Ss]ignal" },
             properties = { screen = 1, tag = "IM" }
         }
+    end
+)
+-- Show Titlebar for Floating Clients
+client.connect_signal("property::floating",
+    function (c)
+        if c.floating then
+            awful.titlebar.show(c)
+            local placement_rule = (awful.placement.no_offscreen + awful.placement.centered + awful.placement.bottom)
+            placement_rule(c)
+        else
+            awful.titlebar.hide(c)
+        end
     end
 )

@@ -29,10 +29,10 @@ screen.connect_signal("request::desktop_decoration",
     function(s)
         -- Each screen has its own tag table.
         -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
-        local names = {"GENERAL", "CODE", "WEB", "MUSIC", "IM" }
+        local tagnames = {"A", "B", "C", "D", "E" }
         local l = awful.layout.suit
-        local layouts = {l.tile, l.tile, l,tile,fair, l.tile.top, l.tile}
-        awful.tag(names, s, layouts)
+        local layouts = {l.tile, l.tile, l.tile, l.tile.top, l.tile}
+        awful.tag(tagnames, s, layouts)
         awful.screen.padding(screen[s], {top=45})
     end
 )
