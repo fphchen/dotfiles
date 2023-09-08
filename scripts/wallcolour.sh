@@ -12,7 +12,9 @@ wall=$randdir/$randfile
 
 # Pass full path of the randomly selected wallpaper to Feh & Pywall
 feh --bg-fill $wall
+sleep 0.5
 wal -n -q -i $wall
+sleep 0.5
 
 # Apply Pywal colour scheme to Alacritty
 source $HOME/.script/alacolour.sh

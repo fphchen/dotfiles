@@ -10,4 +10,4 @@ awful.spawn.with_shell("~/.script/awesome/init.sh")
 awful.spawn.with_shell("~/.script/awesome/startup.sh")
 
 -- Apply wallpaper & set colour scheme using pywal
-awful.spawn.with_shell("~/.script/wallcolour.sh")
+--awful.spawn.with_shell("~/.script/wallcolour.sh")

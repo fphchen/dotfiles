@@ -1,129 +1,131 @@
----------------------------
--- Default awesome theme --
----------------------------
-local theme_assets = require("beautiful.theme_assets")
-local xresources = require("beautiful.xresources")
+-------------------------------
+--  "Zenburn" awesome theme  --
+--    By Adrian C. (anrxc)   --
+-------------------------------
+
+local themes_path = require("gears.filesystem").get_themes_dir()
 local rnotification = require("ruled.notification")
-local dpi = xresources.apply_dpi
+local dpi = require("beautiful.xresources").apply_dpi
 
-local gfs = require("gears.filesystem")
-local themes_path = gfs.get_themes_dir()
-
+-- {{{ Main
 local theme = {}
+theme.wallpaper = themes_path .. "zenburn/zenburn-background.png"
+-- }}}
 
-theme.font          = "sans 8"
+-- {{{ Styles
+theme.font      = "sans 8"
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
-theme.bg_systray    = theme.bg_normal
+-- {{{ Colors
+theme.fg_normal  = "#DCDCCC"
+theme.fg_focus   = "#F0DFAF"
+theme.fg_urgent  = "#CC9393"
+theme.bg_normal  = "#3F3F3F"
+theme.bg_focus   = "#1E2320"
+theme.bg_urgent  = "#3F3F3F"
+theme.bg_systray = theme.bg_normal
+-- }}}
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+-- {{{ Borders
+theme.useless_gap   = dpi(0)
+theme.border_width  = dpi(2)
+theme.border_color_normal = "#3F3F3F"
+theme.border_color_active = "#6F6F6F"
+theme.border_color_marked = "#CC9393"
+-- }}}
 
-theme.useless_gap         = dpi(0)
-theme.border_width        = dpi(1)
-theme.border_color_normal = "#000000"
-theme.border_color_active = "#535d6c"
-theme.border_color_marked = "#91231c"
+-- {{{ Titlebars
+theme.titlebar_bg_focus  = "#3F3F3F"
+theme.titlebar_bg_normal = "#3F3F3F"
+-- }}}
 
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
--- taglist_[bg|fg]_[focus|urgent|occupied|empty|volatile]
--- tasklist_[bg|fg]_[focus|urgent]
--- titlebar_[bg|fg]_[normal|focus]
+-- [taglist|tasklist]_[bg|fg]_[focus|urgent|occupied|empty|volatile]
+-- titlebar_[normal|focus]
 -- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
--- prompt_[fg|bg|fg_cursor|bg_cursor|font]
--- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
---theme.taglist_bg_focus = "#ff0000"
+--theme.taglist_bg_focus = "#CC9393"
+-- }}}
 
--- Generate taglist squares:
-local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-    taglist_square_size, theme.fg_normal
-)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-    taglist_square_size, theme.fg_normal
-)
-
--- Variables set for theming notifications:
--- notification_font
--- notification_[bg|fg]
--- notification_[width|height|margin]
--- notification_[border_color|border_width|shape|opacity]
-
--- Variables set for theming the menu:
--- menu_[bg|fg]_[normal|focus]
--- menu_[border_color|border_width]
-theme.menu_submenu_icon = themes_path.."default/submenu.png"
-theme.menu_height = dpi(15)
-theme.menu_width  = dpi(100)
-
+-- {{{ Widgets
 -- You can add as many variables as
 -- you wish and access them by using
 -- beautiful.variable in your rc.lua
---theme.bg_widget = "#cc0000"
+--theme.fg_widget        = "#AECF96"
+--theme.fg_center_widget = "#88A175"
+--theme.fg_end_widget    = "#FF5656"
+--theme.bg_widget        = "#494B4F"
+--theme.border_widget    = "#3F3F3F"
+-- }}}
 
--- Define the image to load
-theme.titlebar_close_button_normal = themes_path.."default/titlebar/close_normal.png"
-theme.titlebar_close_button_focus  = themes_path.."default/titlebar/close_focus.png"
+-- {{{ Menu
+-- Variables set for theming the menu:
+-- menu_[bg|fg]_[normal|focus]
+-- menu_[border_color|border_width]
+theme.menu_height = dpi(15)
+theme.menu_width  = dpi(100)
+-- }}}
 
-theme.titlebar_minimize_button_normal = themes_path.."default/titlebar/minimize_normal.png"
-theme.titlebar_minimize_button_focus  = themes_path.."default/titlebar/minimize_focus.png"
+-- {{{ Icons
+-- {{{ Taglist
+theme.taglist_squares_sel   = themes_path .. "zenburn/taglist/squarefz.png"
+theme.taglist_squares_unsel = themes_path .. "zenburn/taglist/squarez.png"
+--theme.taglist_squares_resize = "false"
+-- }}}
 
-theme.titlebar_ontop_button_normal_inactive = themes_path.."default/titlebar/ontop_normal_inactive.png"
-theme.titlebar_ontop_button_focus_inactive  = themes_path.."default/titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_active = themes_path.."default/titlebar/ontop_normal_active.png"
-theme.titlebar_ontop_button_focus_active  = themes_path.."default/titlebar/ontop_focus_active.png"
+-- {{{ Misc
+theme.awesome_icon           = themes_path .. "zenburn/awesome-icon.png"
+theme.menu_submenu_icon      = themes_path .. "default/submenu.png"
+-- }}}
 
-theme.titlebar_sticky_button_normal_inactive = themes_path.."default/titlebar/sticky_normal_inactive.png"
-theme.titlebar_sticky_button_focus_inactive  = themes_path.."default/titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_active = themes_path.."default/titlebar/sticky_normal_active.png"
-theme.titlebar_sticky_button_focus_active  = themes_path.."default/titlebar/sticky_focus_active.png"
+-- {{{ Layout
+theme.layout_tile       = themes_path .. "zenburn/layouts/tile.png"
+theme.layout_tileleft   = themes_path .. "zenburn/layouts/tileleft.png"
+theme.layout_tilebottom = themes_path .. "zenburn/layouts/tilebottom.png"
+theme.layout_tiletop    = themes_path .. "zenburn/layouts/tiletop.png"
+theme.layout_fairv      = themes_path .. "zenburn/layouts/fairv.png"
+theme.layout_fairh      = themes_path .. "zenburn/layouts/fairh.png"
+theme.layout_spiral     = themes_path .. "zenburn/layouts/spiral.png"
+theme.layout_dwindle    = themes_path .. "zenburn/layouts/dwindle.png"
+theme.layout_max        = themes_path .. "zenburn/layouts/max.png"
+theme.layout_fullscreen = themes_path .. "zenburn/layouts/fullscreen.png"
+theme.layout_magnifier  = themes_path .. "zenburn/layouts/magnifier.png"
+theme.layout_floating   = themes_path .. "zenburn/layouts/floating.png"
+theme.layout_cornernw   = themes_path .. "zenburn/layouts/cornernw.png"
+theme.layout_cornerne   = themes_path .. "zenburn/layouts/cornerne.png"
+theme.layout_cornersw   = themes_path .. "zenburn/layouts/cornersw.png"
+theme.layout_cornerse   = themes_path .. "zenburn/layouts/cornerse.png"
+-- }}}
 
-theme.titlebar_floating_button_normal_inactive = themes_path.."default/titlebar/floating_normal_inactive.png"
-theme.titlebar_floating_button_focus_inactive  = themes_path.."default/titlebar/floating_focus_inactive.png"
-theme.titlebar_floating_button_normal_active = themes_path.."default/titlebar/floating_normal_active.png"
-theme.titlebar_floating_button_focus_active  = themes_path.."default/titlebar/floating_focus_active.png"
+-- {{{ Titlebar
+theme.titlebar_close_button_focus  = themes_path .. "zenburn/titlebar/close_focus.png"
+theme.titlebar_close_button_normal = themes_path .. "zenburn/titlebar/close_normal.png"
 
-theme.titlebar_maximized_button_normal_inactive = themes_path.."default/titlebar/maximized_normal_inactive.png"
-theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar/maximized_focus_inactive.png"
-theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
-theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
+theme.titlebar_minimize_button_normal = themes_path .. "default/titlebar/minimize_normal.png"
+theme.titlebar_minimize_button_focus  = themes_path .. "default/titlebar/minimize_focus.png"
 
-theme.wallpaper = themes_path.."default/background.png"
+theme.titlebar_ontop_button_focus_active  = themes_path .. "zenburn/titlebar/ontop_focus_active.png"
+theme.titlebar_ontop_button_normal_active = themes_path .. "zenburn/titlebar/ontop_normal_active.png"
+theme.titlebar_ontop_button_focus_inactive  = themes_path .. "zenburn/titlebar/ontop_focus_inactive.png"
+theme.titlebar_ontop_button_normal_inactive = themes_path .. "zenburn/titlebar/ontop_normal_inactive.png"
 
--- You can use your own layout icons like this:
-theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
-theme.layout_fairv = themes_path.."default/layouts/fairvw.png"
-theme.layout_floating  = themes_path.."default/layouts/floatingw.png"
-theme.layout_magnifier = themes_path.."default/layouts/magnifierw.png"
-theme.layout_max = themes_path.."default/layouts/maxw.png"
-theme.layout_fullscreen = themes_path.."default/layouts/fullscreenw.png"
-theme.layout_tilebottom = themes_path.."default/layouts/tilebottomw.png"
-theme.layout_tileleft   = themes_path.."default/layouts/tileleftw.png"
-theme.layout_tile = themes_path.."default/layouts/tilew.png"
-theme.layout_tiletop = themes_path.."default/layouts/tiletopw.png"
-theme.layout_spiral  = themes_path.."default/layouts/spiralw.png"
-theme.layout_dwindle = themes_path.."default/layouts/dwindlew.png"
-theme.layout_cornernw = themes_path.."default/layouts/cornernww.png"
-theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
-theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
-theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
+theme.titlebar_sticky_button_focus_active  = themes_path .. "zenburn/titlebar/sticky_focus_active.png"
+theme.titlebar_sticky_button_normal_active = themes_path .. "zenburn/titlebar/sticky_normal_active.png"
+theme.titlebar_sticky_button_focus_inactive  = themes_path .. "zenburn/titlebar/sticky_focus_inactive.png"
+theme.titlebar_sticky_button_normal_inactive = themes_path .. "zenburn/titlebar/sticky_normal_inactive.png"
 
--- Generate Awesome icon:
-theme.awesome_icon = theme_assets.awesome_icon(
-    theme.menu_height, theme.bg_focus, theme.fg_focus
-)
+theme.titlebar_floating_button_focus_active  = themes_path .. "zenburn/titlebar/floating_focus_active.png"
+theme.titlebar_floating_button_normal_active = themes_path .. "zenburn/titlebar/floating_normal_active.png"
+theme.titlebar_floating_button_focus_inactive  = themes_path .. "zenburn/titlebar/floating_focus_inactive.png"
+theme.titlebar_floating_button_normal_inactive = themes_path .. "zenburn/titlebar/floating_normal_inactive.png"
 
--- Define the icon theme for application icons. If not set then the icons
--- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = nil
+theme.titlebar_maximized_button_focus_active  = themes_path .. "zenburn/titlebar/maximized_focus_active.png"
+theme.titlebar_maximized_button_normal_active = themes_path .. "zenburn/titlebar/maximized_normal_active.png"
+theme.titlebar_maximized_button_focus_inactive  = themes_path .. "zenburn/titlebar/maximized_focus_inactive.png"
+theme.titlebar_maximized_button_normal_inactive = themes_path .. "zenburn/titlebar/maximized_normal_inactive.png"
+-- }}}
+-- }}}
 
 -- Set different colors for urgent notifications.
 rnotification.connect_signal('request::rules', function()
