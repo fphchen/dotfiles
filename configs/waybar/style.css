@@ -1,29 +1,19 @@
 #waybar {
     background: transparent;
-    /* color: #CDD6F4; */
-    color: #FFFFFF;
+    color: white;
     font-family: "FiraCode Nerd Font Propo";
-    text-shadow: 0 0 0px black;
     border-radius: 10px;
 }
 
-#workspaces button {
-    margin: 0px 0px 0px 0px;
-    text-shadow: 0 0 0px black;
-    color: #cdd6f4;
-}
-
 #workspaces button:hover {
-    box-shadow: inherit;
     background: transparent;
 }
 
 #workspaces button.urgent {
-    color: #ffb86c;
+    color: red;
 }
 
 #workspaces button.active label {
-    box-shadow: 0 0 0px black; 
     font-size: 12px;
     margin: 4px 0px 4px 0px;
     background-image: linear-gradient(
@@ -76,41 +66,32 @@
     font-weight: 200;
 }
 
-#tray > widget > image {
-    margin: 5px 0 5px 0;
-}
-
-#custom-arch {
-    margin: 15px 0px 10px 0px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 10px;
-    background-color: #11111B;
-    opacity: 1;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-#clock, #backlight, #bluetooth, #network, #battery, #wireplumber, #tray {
+#custom-arch, #clock, #backlight, #bluetooth, #network, #battery, #wireplumber, #tray {
     margin: 10px 0px 10px 0px;
     font-size: 16px;
     font-weight: bold;
     border-radius: 10px;
-    background-color: #11111B;
+    background-color: black;
     opacity: 1;
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+#clock {
+    margin: 10px 0px 0px 0px;
+}
+
+#tray > widget > image {
+    margin: 10px 0 10px 0;
 }
 
 #custom-cpu, #custom-ram, #workspaces {
     margin: 10px 0px 10px 0px;
     font-size: 12px;
     border-radius: 10px;
-    background-color: #11111B;
+    background-color: black;
     opacity: 1;
     padding-left: 0px;
     padding-right: 0px;
