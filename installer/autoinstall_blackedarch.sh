@@ -99,9 +99,9 @@ fi
 ### Install packages ####
 read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" PKGS
 if [[ $PKGS =~ ^[Yy]$ ]]; then
-    blackedarch_pkgs="graphviz gnu-netcat hcxdumptool hcxtools less nmap python-requests wireshark-qt"
-    app_pkgs="firefox gimp gparted libreoffice zathura zathura-pdf-mupdf zathura-ps"
-    util_pkgs="brightnessctl cifs-utils fzf gvfs-nfs gvfs-smb neofetch nfs-utils pacman-contrib python-pip rust-script slurp smblient trash-cli usbutils"
+    blackedarch_pkgs="arp-scan graphviz gnu-netcat hcxdumptool hcxtools less metasploit netdiscover nmap python-requests wireshark-qt"
+    app_pkgs="firefox gimp gparted joplin joplin-desktop libreoffice openvpn zathura zathura-pdf-mupdf zathura-ps"
+    util_pkgs="brightnessctl cifs-utils fzf gvfs-nfs gvfs-smb networkmanager-openvpn neofetch nfs-utils pacman-contrib python-pip rust-script slurp smblient trash-cli unzip usbutils"
     font_pkgs="noto-fonts-cjk"
     theme_pkgs=""
     extra_pkgs="brave-bin"

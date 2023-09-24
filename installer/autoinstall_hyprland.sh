@@ -100,8 +100,8 @@ fi
 read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" PKGS
 if [[ $PKGS =~ ^[Yy]$ ]]; then
     hyprland_pkgs="grim hyprland polkit polkit-kde-agent swayidle swayimg waybar-hyprland wl-clipboard wofi xdg-desktop-portal-hyprland xorg-xhost xorg-xwayland swww swaylock wev wlr-randr"
-    app_pkgs="firefox gimp gparted kitty libreoffice pavucontrol signal-desktop zathura zathura-pdf-mupdf zathura-ps"
-    util_pkgs="brightnessctl cifs-utils dunst fzf gvfs-nfs gvfs-smb neofetch nfs-utils pacman-contrib python-pip rust-script slurp smbclient trash-cli usbutils"
+    app_pkgs="firefox gimp gparted joplin joplin-desktop kitty libreoffice openvpn pavucontrol signal-desktop zathura zathura-pdf-mupdf zathura-ps"
+    util_pkgs="brightnessctl cifs-utils dunst fzf gvfs-nfs gvfs-smb networkmanager-openvpn neofetch nfs-utils pacman-contrib python-pip rust-script slurp smbclient trash-cli unzip usbutils"
     font_pkgs="noto-fonts-cjk ttf-firacode-nerd"
     theme_pkgs=""
     extra_pkgs="brave-bin spotify"
