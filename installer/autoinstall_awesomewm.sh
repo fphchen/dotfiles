@@ -43,6 +43,7 @@ else
     if [[ $GIT =~ ^[Yy]$ ]]; then
         printf "${GREEN} Installing git and dependencies.\n"
         sudo pacman -S --noconfirm --needed git base-devel rustup
+        sleep 3
         rustup default stable
     else
         printf "${RED} git and dependencies are needed for AUR Helper installation. Goodbye!\n"
@@ -100,11 +101,11 @@ fi
 read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" PKGS
 if [[ $PKGS =~ ^[Yy]$ ]]; then
     awesomewm_pkgs="awesome-git feh picom polybar python-pywal rofi sxiv xdotool zscroll"
-    app_pkgs="firefox gimp gparted joplin joplin-desktop kitty libreoffice openvpn pavucontrol signal-desktop vlc zathura zathura-pdf-mupdf zathura-ps"
+    app_pkgs="firefox gimp gparted kitty libreoffice openvpn pavucontrol signal-desktop vlc zathura zathura-pdf-mupdf zathura-ps"
     util_pkgs="brightnessctl cifs-utils dunst fzf gvfs-nfs gvfs-smb networkmanager-openvpn neofetch nfs-utils pacman-contrib python-pip rust-script slurp smbclient trash-cli unzip usbutils"
     font_pkgs="noto-fonts-cjk ttf-firacode-nerd"
     theme_pkgs=""
-    extra_pkgs="brave-bin spotify"
+    extra_pkgs="brave-bin joplin joplin-desktop spotify"
     if ! $aur -S --noconfirm --needed $awesomewm_pkgs $app_pkgs $util_pkgs $font_pkgs $theme_pkgs $extra_pkgs 2>&1 | tee -a $LOG; then
         print_error " Failed to install additional packages - please check ${LOG}\n"
         exit 1

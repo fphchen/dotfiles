@@ -43,6 +43,7 @@ else
     if [[ $GIT =~ ^[Yy]$ ]]; then
         printf "${GREEN} Installing git and dependencies.\n"
         sudo pacman -S --noconfirm --needed git base-devel rustup
+        sleep 3
         rustup default stable
     else
         printf "${RED} git and dependencies are needed for AUR Helper installation. Goodbye!\n"
@@ -99,13 +100,13 @@ fi
 ### Install packages ####
 read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" PKGS
 if [[ $PKGS =~ ^[Yy]$ ]]; then
-    blackedarch_pkgs="arp-scan burpsuite dirbuster exploitdb graphviz gnu-netcat hcxdumptool hcxtools hydra less metasploit netdiscover nikto nmap python-requests sublist3r whatweb wireshark-qt"
-    app_pkgs="firefox gimp gparted joplin joplin-desktop libreoffice openvpn vlc zathura zathura-pdf-mupdf zathura-ps"
+    blackedarch_pkgs="aircrack-ng arp-scan burpsuite dirbuster exploitdb graphviz gnu-netcat hcxdumptool hcxtools hydra less metasploit netdiscover nikto nmap python-requests sublist3r whatweb wireshark-qt"
+    app_pkgs="firefox gimp gparted libreoffice openvpn vlc zathura zathura-pdf-mupdf zathura-ps"
     util_pkgs="brightnessctl cifs-utils fzf gvfs-nfs gvfs-smb networkmanager-openvpn neofetch nfs-utils pacman-contrib python-pip rust-script slurp smblient trash-cli unzip usbutils"
     font_pkgs="noto-fonts-cjk"
     theme_pkgs=""
-    extra_pkgs="brave-bin"
-    if ! $aur -S --noconfirm --needed $blackedarch_pkg $app_pkgs $util_pkgs $font_pkgs $theme_pkgs $extra_pkgs 2>&1 | tee -a $LOG; then
+    extra_pkgs="brave-bin joplin joplin-desktop"
+    if ! $aur -S --noconfirm --needed $blackedarch_pkgs $app_pkgs $util_pkgs $font_pkgs $theme_pkgs $extra_pkgs 2>&1 | tee -a $LOG; then
         print_error " Failed to install additional packages - please check ${LOG}\n"
         exit 1
     fi
