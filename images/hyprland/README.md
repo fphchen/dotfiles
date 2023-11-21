@@ -1,7 +1,6 @@
-Hyprland configurations
+# Hyprland configurations
 
 Screenshot:
-![Screenshot](screenshot01.jpg)
-![Screenshot](screenshot02.jpg)
+![Screenshot](screenshot01.png)
 
 Credits:
