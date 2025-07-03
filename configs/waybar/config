@@ -96,7 +96,7 @@
     },
     "network#net2": {
         "net": "NET2",
-        "interface": "wlan0",
+        "interface": "wlp0s20f3",
         "rotate": 0,
         "format-wifi": "{icon}",
         "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
@@ -130,7 +130,7 @@
     "custom/arch": {
         "format": "",
         "tooltip": false,
-        "on-click": "~/.config/swww/wallchanger.sh"
+        "on-click": "~/.config/hypr/wallchanger.sh"
     },
     "custom/sep": {
         "format": "__",
