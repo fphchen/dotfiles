@@ -8,4 +8,5 @@ FOCUSED_MONITOR=$(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name')
 WALLPAPER=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.bmp" \) ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
 
 # Apply the selected wallpaper
-hyprctl hyprpaper reload "$FOCUSED_MONITOR","$WALLPAPER"
+hyprctl hyprpaper wallpaper "$FOCUSED_MONITOR","$WALLPAPER"
+
