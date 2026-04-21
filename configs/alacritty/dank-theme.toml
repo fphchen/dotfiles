@@ -8,24 +8,24 @@ background = '#004c69'
 
 [colors.cursor]
 text = '#0f1417'
-cursor = '#90cef4'
+cursor = '#8fcef3'
 
 [colors.normal]
 black   = '#0f1417'
-red     = '#ff729e'
-green   = '#7af488'
+red     = '#ff729f'
+green   = '#79f387'
 yellow  = '#fff672'
-blue    = '#75bce7'
-magenta = '#1c5070'
-cyan    = '#90cef4'
+blue    = '#74bce6'
+magenta = '#1b5170'
+cyan    = '#8fcef3'
 white   = '#eff9ff'
 
 [colors.bright]
-black   = '#929a9e'
+black   = '#92999d'
 red     = '#ff9fbd'
 green   = '#a5ffb0'
 yellow  = '#fff9a5'
-blue    = '#a6ddff'
+blue    = '#a5ddff'
 magenta = '#b5e3ff'
 cyan    = '#cfedff'
 white   = '#f8fcff'
