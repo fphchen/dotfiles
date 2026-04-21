@@ -199,7 +199,7 @@
   "dankLauncherV2UnloadOnClose": false,
   "useAutoLocation": false,
   "weatherEnabled": true,
-  "networkPreference": "wifi",
+  "networkPreference": "ethernet",
   "iconTheme": "System Default",
   "cursorSettings": {
     "theme": "System Default",
