@@ -265,7 +265,11 @@
     ]
   },
   "audioInputDevicePins": {},
-  "audioOutputDevicePins": {},
+  "audioOutputDevicePins": {
+    "preferredOutput": [
+      "alsa_output.pci-0000_00_1f.3.hdmi-surround71"
+    ]
+  },
   "gtkThemingEnabled": false,
   "qtThemingEnabled": false,
   "syncModeWithPortal": true,
@@ -298,7 +302,7 @@
   "dockSmartAutoHide": false,
   "dockGroupByApp": false,
   "dockOpenOnOverview": false,
-  "dockPosition": 2,
+  "dockPosition": 3,
   "dockSpacing": 4,
   "dockBottomGap": 0,
   "dockMargin": 0,
@@ -486,7 +490,7 @@
       "widgetOutlineThickness": 1,
       "fontScale": 1,
       "iconScale": 1,
-      "autoHide": true,
+      "autoHide": false,
       "autoHideDelay": 250,
       "showOnWindowsOpen": false,
       "openOnOverview": false,
