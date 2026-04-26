@@ -12,12 +12,12 @@ binds {
     Mod+Space hotkey-overlay-title="Application Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
     Mod+V hotkey-overlay-title="Clipboard Manager" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
     Mod+Y hotkey-overlay-title="Browse Wallpapers" { spawn "dms" "ipc" "call" "dankdash" "wallpaper"; }
-    Super+Ctrl+Shift+F1 hotkey-overlay-title="Volume Down (5%)" { spawn "dms" "ipc" "call" "audio" "decrement" "5"; }
-    Super+Ctrl+Shift+F2 hotkey-overlay-title="Volume Up (5%)" { spawn "dms" "ipc" "call" "audio" "increment" "5"; }
+    Super+Ctrl+Shift+F1 hotkey-overlay-title="Volume Up (5%)" { spawn "dms" "ipc" "call" "audio" "increment" "5"; }
+    Super+Ctrl+Shift+F2 hotkey-overlay-title="Volume Down (5%)" { spawn "dms" "ipc" "call" "audio" "decrement" "5"; }
     Super+Ctrl+Shift+F3 hotkey-overlay-title="Volume Mute Toggle" { spawn "dms" "ipc" "call" "audio" "mute"; }
-    Super+Ctrl+Shift+F6 allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "previous"; }
     Super+Ctrl+Shift+F7 allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "playPause"; }
-    Super+Ctrl+Shift+F8 allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "next"; }
+    Super+Ctrl+Shift+F8 allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "previous"; }
+    Super+Ctrl+Shift+F9 allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "next"; }
     Super+X hotkey-overlay-title="Power Menu: Toggle" { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "decrement" "3"; }
     XF86AudioMicMute allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "micmute"; }
@@ -131,7 +131,7 @@ binds {
     Mod+Shift+E { quit; }
     Mod+T hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
     Super+B hotkey-overlay-title="Open Browser" { spawn "sh" "-c" "brave"; }
-    Super+S hotkey-overlay-title="Open Spotify" { spawn "sh" "-c" "spotify-launcher"; }
+    Super+Ctrl+Shift+F6 hotkey-overlay-title="Open Spotify" { spawn "sh" "-c" "spotify-launcher"; }
     Mod+D repeat=false { toggle-overview; }
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Mod+Shift+Slash { show-hotkey-overlay; }
