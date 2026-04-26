@@ -433,7 +433,7 @@
         {
           "id": "music",
           "enabled": true,
-          "mediaSize": 3
+          "mediaSize": 0
         }
       ],
       "rightWidgets": [
