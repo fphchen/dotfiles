@@ -421,7 +421,7 @@
         {
           "id": "focusedWindow",
           "enabled": true,
-          "focusedWindowCompactMode": true
+          "focusedWindowCompactMode": false
         }
       ],
       "centerWidgets": [
@@ -447,11 +447,14 @@
         },
         {
           "id": "cpuUsage",
-          "enabled": true
+          "enabled": true,
+          "minimumWidth": true
         },
         {
           "id": "memUsage",
-          "enabled": true
+          "enabled": true,
+          "minimumWidth": true,
+          "showSwap": false
         },
         {
           "id": "notificationButton",
@@ -463,7 +466,12 @@
         },
         {
           "id": "controlCenterButton",
-          "enabled": true
+          "enabled": true,
+          "showAudioIcon": true,
+          "showAudioPercent": false,
+          "showBrightnessIcon": false,
+          "showMicIcon": false,
+          "showPrinterIcon": false
         }
       ],
       "spacing": 4,
