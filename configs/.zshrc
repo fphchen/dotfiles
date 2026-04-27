@@ -151,18 +151,20 @@ alias v.vrc='vim ~/.vimrc'
 alias zshconfig="geany ~/.zshrc"
 alias ohmyzsh="thunar ~/.oh-my-zsh"
 
-# ls
-alias lsh='ls -lh'
+# Directory Alias
+alias ls='ls --color=auto'
 alias lsla='ls -lah'
+alias lsh='ls -lh'
 alias lsa='ls -A'
 alias lsm='ls -m'
 alias lsr='ls -R'
 alias lsg='ls -l --group-directories-first'
 
-# git
+# Git Alias
 alias gcl='git clone'
 alias gi='git init'
 alias ga='git add'
+alias gs='git status'
 alias gc='git commit'
 alias gps='git push'
 alias gpl='git pull'

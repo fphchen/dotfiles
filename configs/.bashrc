@@ -17,8 +17,6 @@ shopt -s cdspell
 # Terminal Shortcut Alias
 alias clr='clear'
 alias h='history'
-alias ls='ls --color=auto'
-alias lsla='ls -lah'
 alias ka='killall'
 alias pk='pkill'
 alias now='date +%Y%m%d%H%M'
@@ -29,7 +27,7 @@ alias r='cd /'
 alias ..='cd ..; pwd'
 alias ...='cd ..; cd ..; pwd'
 alias ....='cd ..; cd ..; cd ..; pwd'
-alias rmd='rm -rf'
+alias rmrf='rm -rf'
 
 # Pacman Alias
 alias pcm='sudo pacman'
@@ -54,11 +52,22 @@ alias rswap='rm -rf ~/.cache/vim/swap/*.*'
 alias v='vim'
 alias s.brc='source ~/.bashrc'
 alias v.brc='vim ~/.bashrc'
+alias v.zrc='vim ~/.zshrc'
 alias v.vrc='vim ~/.vimrc'
 
-# Git
+# Directory Alias
+alias ls='ls --color=auto'
+alias lsla='ls -lah'
+alias lsh='ls -lh'
+alias lsa='ls -A'
+alias lsm='ls -m'
+alias lsr='ls -R'
+alias lsg='ls -l --group-directories-first'
+
+# Git Alias
+alias gcl='git clone'
 alias gi='git init'
-alias ga.='git add .'
+alias ga='git add'
 alias gs='git status'
 alias gc='git commit'
 alias gps='git push'
@@ -66,6 +75,7 @@ alias gpl='git pull'
 alias gitdir='cd ~/Documents/git'
 alias dotfiles='cd ~/Documents/git/fphchen/dotfiles'
 alias wallpapers='cd ~/Documents/git/fphchen/wallpapers'
+alias installers='cd ~/Documents/git/fphchen/installers'
 
 # Function Alias
 mkcd (){
