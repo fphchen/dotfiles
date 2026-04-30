@@ -36,6 +36,12 @@
   "modalAnimationSpeed": 1,
   "modalCustomAnimationDuration": 150,
   "enableRippleEffects": true,
+  "blurEnabled": false,
+  "blurForegroundLayers": true,
+  "blurLayerOutlineOpacity": 0.12,
+  "blurBorderColor": "outline",
+  "blurBorderCustomColor": "#ffffff",
+  "blurBorderOpacity": 0.35,
   "wallpaperFillMode": "Fill",
   "blurredWallpaperLayer": false,
   "blurWallpaperOnOverview": false,
@@ -52,6 +58,9 @@
   "selectedGpuIndex": 0,
   "enabledGpuPciIds": [],
   "showSystemTray": true,
+  "systemTrayIconTintMode": "none",
+  "systemTrayIconTintSaturation": 50,
+  "systemTrayIconTintStrength": 135,
   "showClock": true,
   "showNotificationButton": true,
   "showBattery": true,
@@ -166,12 +175,6 @@
   "greeterEnableFprint": false,
   "greeterEnableU2f": false,
   "greeterWallpaperPath": "",
-  "greeterUse24HourClock": true,
-  "greeterShowSeconds": false,
-  "greeterPadHours12Hour": false,
-  "greeterLockDateFormat": "",
-  "greeterFontFamily": "",
-  "greeterWallpaperFillMode": "",
   "mediaSize": 1,
   "appLauncherViewMode": "list",
   "spotlightModalViewMode": "list",
@@ -274,6 +277,10 @@
   "qtThemingEnabled": false,
   "syncModeWithPortal": true,
   "terminalsAlwaysDark": true,
+  "muxType": "tmux",
+  "muxUseCustomCommand": false,
+  "muxCustomCommand": "",
+  "muxSessionFilter": "",
   "runDmsMatugenTemplates": true,
   "matugenTemplateGtk": true,
   "matugenTemplateNiri": true,
@@ -416,24 +423,24 @@
       ],
       "showOnLastDisplay": true,
       "leftWidgets": [
-        "launcherButton",
-        "workspaceSwitcher",
         {
-          "id": "focusedWindow",
-          "enabled": true,
-          "focusedWindowCompactMode": false
-        }
-      ],
-      "centerWidgets": [
-        {
-          "id": "clock",
-          "enabled": true,
-          "clockCompactMode": false
+          "id": "launcherButton",
+          "enabled": true
         },
         {
           "id": "music",
           "enabled": true,
-          "mediaSize": 0
+          "mediaSize": 2
+        },
+        {
+          "id": "appsDock",
+          "enabled": true
+        }
+      ],
+      "centerWidgets": [
+        {
+          "id": "workspaceSwitcher",
+          "enabled": true
         }
       ],
       "rightWidgets": [
@@ -472,6 +479,10 @@
           "showBrightnessIcon": false,
           "showMicIcon": false,
           "showPrinterIcon": false
+        },
+        {
+          "id": "clock",
+          "enabled": true
         }
       ],
       "spacing": 4,
