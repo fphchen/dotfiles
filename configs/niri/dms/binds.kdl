@@ -79,7 +79,6 @@ binds {
     Mod+Down { focus-window-down; }
     Mod+End { focus-column-last; }
     Mod+Equal { set-column-width "+10%"; }
-    Mod+F { maximize-column; }
     Mod+H { focus-column-left; }
     Mod+Home { focus-column-first; }
     Mod+J { focus-window-down; }
@@ -111,6 +110,7 @@ binds {
     Mod+WheelScrollLeft { focus-column-left; }
     Mod+WheelScrollRight { focus-column-right; }
     Super+Alt+C repeat=false { close-window; }
+    Super+Alt+F { maximize-column; }
     Ctrl+Print { screenshot-screen; }
     Ctrl+XF86Launch1 { screenshot-screen; }
     Print { screenshot; }
@@ -118,6 +118,7 @@ binds {
     Super+Alt+Q { quit; }
     Mod+T hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
     Super+B hotkey-overlay-title="Open Browser" { spawn "sh" "-c" "brave"; }
+    Super+F hotkey-overlay-title="Open Thunar" { spawn "sh" "-c" "Thunar"; }
     Super+S hotkey-overlay-title="Open Spotify" { spawn "sh" "-c" "spotify-launcher"; }
     Alt+Slash { show-hotkey-overlay; }
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
