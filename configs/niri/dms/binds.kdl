@@ -27,9 +27,7 @@ binds {
     Super+N hotkey-overlay-title="Open Notepad" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
 
     Alt+Slash { show-hotkey-overlay; }
-    Alt+F4 repeat=false { close-window; }
     Mod+Ctrl+Shift+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-    Ctrl+Alt+Delete hotkey-overlay-title="Task Manager" { spawn "dms" "ipc" "call" "processlist" "focusOrToggle"; }
     Alt+C hotkey-overlay-title="Clipboard Manager" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
     Alt+L hotkey-overlay-title="Lock Screen" { spawn "dms" "ipc" "call" "lock" "lock"; }
     Alt+N hotkey-overlay-title="Notification Center" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
@@ -38,6 +36,7 @@ binds {
     Alt+T hotkey-overlay-title="Task Manager" { spawn "dms" "ipc" "call" "processlist" "focusOrToggle"; }
     Alt+W hotkey-overlay-title="Browse Wallpapers" { spawn "dms" "ipc" "call" "dankdash" "wallpaper"; }
     Alt+R hotkey-overlay-title="Rename Workspace" { spawn "dms" "ipc" "call" "workspace-rename" "open"; }
+    Alt+X repeat=false { close-window; }
     Alt+Q { quit; }
     
     Super+Ctrl+M { focus-workspace "Media"; }                              
@@ -103,8 +102,6 @@ binds {
     Mod+Ctrl+Shift+Up { move-window-up; }
     Mod+Ctrl+Shift+Down { move-window-down; }
 
-    Super+Up { maximize-column; }
-    F11 { fullscreen-window; }
     Mod+Ctrl+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
 

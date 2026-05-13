@@ -1,0 +1,6 @@
+binds {
+    Ctrl+Alt+Delete hotkey-overlay-title="Task Manager" { spawn "dms" "ipc" "call" "processlist" "focusOrToggle"; }
+    Alt+F4 repeat=false { close-window; }
+    Super+Up { maximize-column; }
+    F11 { fullscreen-window; }
+}
