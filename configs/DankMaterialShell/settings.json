@@ -202,7 +202,7 @@
   "dankLauncherV2UnloadOnClose": false,
   "useAutoLocation": true,
   "weatherEnabled": true,
-  "networkPreference": "wifi",
+  "networkPreference": "ethernet",
   "iconTheme": "System Default",
   "cursorSettings": {
     "theme": "System Default",
@@ -261,7 +261,11 @@
   "fadeToDpmsGracePeriod": 5,
   "launchPrefix": "",
   "brightnessDevicePins": {},
-  "wifiNetworkPins": {},
+  "wifiNetworkPins": {
+    "preferredWifi": [
+      "SFWifi"
+    ]
+  },
   "bluetoothDevicePins": {
     "preferredDevice": [
       "FD:D7:F7:C2:A9:7C"
@@ -288,7 +292,7 @@
   "matugenTemplateMangowc": true,
   "matugenTemplateQt5ct": true,
   "matugenTemplateQt6ct": true,
-  "matugenTemplateFirefox": true,
+  "matugenTemplateFirefox": false,
   "matugenTemplatePywalfox": true,
   "matugenTemplateZenBrowser": true,
   "matugenTemplateVesktop": true,

@@ -1,0 +1,26 @@
+// Open Spotify on the "Music" workspace.
+workspace "Media"
+workspace "Communication"
+workspace "General"
+
+window-rule {
+    match app-id=r#"(?i)^spotify$"#
+    match app-id=r#"(?i)^vlc$"#
+    open-maximized true
+    open-on-workspace "Media"
+}
+// Window-rule using AppID
+window-rule {
+    // Open Signal on "Communication" workspace
+    match app-id=r#"(?i)^signal$"#
+    // Open Line on "Communication" workspace
+    match app-id=r#"(?i)^brave-ophjlpahpchlmihnnnihgmmeilfjmjjc-Default$"#
+    //match app-id=r#"(?i)^"#
+    open-on-workspace "Communication"
+}
+// Window-rule using Title
+window-rule {
+    // Open WhatsApp on "Communication" workspace
+    match title="(?i)^WhatsApp - Brave$"
+    open-on-workspace "Communication"
+}

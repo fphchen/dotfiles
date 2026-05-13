@@ -160,6 +160,7 @@ overview {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 environment {
   XDG_CURRENT_DESKTOP "niri"
+  GTK_THEME "Adwaita:dark"
 }
 hotkey-overlay {
     skip-at-startup
@@ -277,5 +278,6 @@ include "dms/alttab.kdl"
 include "dms/binds.kdl"
 include "dms/outputs.kdl"
 include "dms/cursor.kdl"
-
 include "dms/windowrules.kdl"
+
+spawn-at-startup "niri" "msg" "action" "focus-workspace" "General"
