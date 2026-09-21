@@ -39,6 +39,46 @@
           }
         }
       }
+    },
+    {
+      "id": "auto_ecaaf208",
+      "name": "",
+      "outputs": {
+        "Ancor Communications Inc ROG PG279Q #ASP5kEKa67rd": {
+          "mode": "2560x1440@165.000",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "scale": 1,
+          "transform": "Normal",
+          "vrr": false,
+          "disabled": false,
+          "niri": {
+            "focusAtStartup": false,
+            "layout": {
+              "alwaysCenterSingleColumn": true
+            }
+          }
+        },
+        "Ancor Communications Inc ROG PG279Q #ASMdcvFHtgrd": {
+          "mode": "2560x1440@165.000",
+          "position": {
+            "x": 2560,
+            "y": 0
+          },
+          "scale": 1,
+          "transform": "Normal",
+          "vrr": false,
+          "disabled": false,
+          "niri": {
+            "focusAtStartup": false,
+            "layout": {
+              "alwaysCenterSingleColumn": true
+            }
+          }
+        }
+      }
     }
   ]
 }

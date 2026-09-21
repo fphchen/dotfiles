@@ -26,8 +26,8 @@
       "cursorHideTimeout": 0
     }
   },
-  "acMonitorTimeout": 1800,
   "acLockTimeout": 900,
+  "acProfileName": "2",
   "terminalsAlwaysDark": true,
   "matugenTemplateFirefox": false,
   "dockAutoHide": true,
@@ -35,6 +35,7 @@
   "osdPowerProfileEnabled": true,
   "powerMenuDefaultAction": "reboot",
   "powerMenuGridLayout": true,
+  "displayNameMode": "model",
   "screenPreferences": {
     "wallpaper": [
       "all"

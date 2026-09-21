@@ -2,24 +2,29 @@
 // Define fixed named workspaces.
 workspace "Media" {
     open-on-output "Ancor Communications Inc ROG PG279Q #ASP5kEKa67rd"
+    //open-on-output "DP-2"
 }
 workspace "Communication" {
     open-on-output "Ancor Communications Inc ROG PG279Q #ASMdcvFHtgrd"
+    //open-on-output "DP-3"
 }
 workspace "General" {
     open-on-output "Ancor Communications Inc ROG PG279Q #ASMdcvFHtgrd"
-}
-
-output "Ancor Communications Inc ROG PG279Q #ASP5kEKa67rd" {
-    mode "2560x1440@143.998"
-    scale 1
-    position x=0 y=0
+    //open-on-output "DP-3"
 }
 
 output "Ancor Communications Inc ROG PG279Q #ASMdcvFHtgrd" {
-    mode "2560x1440@143.998"
+//output "DP-2" {
+    mode "2560x1440@165.000"
     scale 1
     position x=2560 y=0
+}
+
+output "Ancor Communications Inc ROG PG279Q #ASP5kEKa67rd" {
+//output "DP-3" {
+    mode "2560x1440@165.000"
+    scale 1
+    position x=0 y=0
 }
 
 // Monitor Output for ArchNiriDMS-GA605KM
