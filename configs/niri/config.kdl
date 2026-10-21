@@ -285,3 +285,4 @@ include "dms/windowrules.kdl"
 include "dms/customs.kdl"
 
 spawn-at-startup "niri" "msg" "action" "focus-workspace" "General"
+spawn-at-startup "fcitx5" "-d"

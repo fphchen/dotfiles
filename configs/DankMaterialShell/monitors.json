@@ -5,7 +5,7 @@
       "id": "auto_7cd4494c",
       "name": "",
       "outputs": {
-        "DP-2": {
+        "DP-3": {
           "mode": "2560x1440@165.000",
           "position": {
             "x": 0,
@@ -18,10 +18,11 @@
           "niri": {
             "layout": {
               "alwaysCenterSingleColumn": true
-            }
+            },
+            "focusAtStartup": true
           }
         },
-        "DP-3": {
+        "DP-2": {
           "mode": "2560x1440@165.000",
           "position": {
             "x": 2560,
@@ -55,7 +56,7 @@
           "vrr": false,
           "disabled": false,
           "niri": {
-            "focusAtStartup": false,
+            "focusAtStartup": true,
             "layout": {
               "alwaysCenterSingleColumn": true
             }
@@ -73,6 +74,30 @@
           "disabled": false,
           "niri": {
             "focusAtStartup": false,
+            "layout": {
+              "alwaysCenterSingleColumn": true
+            },
+            "hotCorners": null
+          }
+        }
+      }
+    },
+    {
+      "id": "auto_c9b1328e",
+      "name": "",
+      "outputs": {
+        "Ancor Communications Inc ROG PG279Q #ASMdcvFHtgrd": {
+          "mode": "2560x1440@165.000",
+          "position": {
+            "x": 2560,
+            "y": 0
+          },
+          "scale": 1,
+          "transform": "Normal",
+          "vrr": false,
+          "disabled": false,
+          "niri": {
+            "focusAtStartup": true,
             "layout": {
               "alwaysCenterSingleColumn": true
             }

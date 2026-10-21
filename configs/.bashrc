@@ -19,6 +19,7 @@ alias clr='clear'
 alias h='history'
 alias ka='killall'
 alias pk='pkill'
+alias ssh='kitten ssh'
 alias now='date +%Y%m%d%H%M'
 
 # Terminal Directory Alias
